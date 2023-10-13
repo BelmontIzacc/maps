@@ -2,7 +2,7 @@
   "name": "maps",
   "version": "1.0.0",
   "description": "programa nacional de ingles",
-  "main": "/proni/index.js",
+  "main": "./proni/index.js",
   "scripts": {
     "start": "node ./proni/index.js",
     "dev": "nodemon proni/index.js"

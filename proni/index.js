@@ -31,6 +31,9 @@ const name = "/vsts"
 // Rutas
 app.use(name + '/', require('./routers/maps.router'));
 
+// Esta ruta será una vista por defecto para rutas no definidas
+app.use((req, res) => { res.render(path.join(__dirname, '/views/error404.ejs')) });
+
 // Middleware de manejo de errores personalizado
 app.use(handleError);
 
