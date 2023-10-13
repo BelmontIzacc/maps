@@ -1,0 +1,25 @@
+{
+  "name": "maps",
+  "version": "1.0.0",
+  "description": "programa nacional de ingles",
+  "main": "/proni/index.js",
+  "scripts": {
+    "start": "node ./proni/index.js",
+    "dev": "nodemon proni/index.js"
+  },
+  "author": "vane softeck solutions",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.4.4",
+    "morgan": "^1.10.0",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

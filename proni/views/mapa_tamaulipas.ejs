@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_071057efb0be9e6a6d9aaf9a13fba0bc {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_071057efb0be9e6a6d9aaf9a13fba0bc" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_071057efb0be9e6a6d9aaf9a13fba0bc = L.map(
+                "map_071057efb0be9e6a6d9aaf9a13fba0bc",
+                {
+                    center: [24.0, -98.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_8f5938d98e426643e50d1b68cd78e536 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+
+        function geo_json_3a7e521fe9acb24d40846e9222746f4a_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_3a7e521fe9acb24d40846e9222746f4a = L.geoJson(null, {
+                onEachFeature: geo_json_3a7e521fe9acb24d40846e9222746f4a_onEachFeature,
+            
+        });
+
+        function geo_json_3a7e521fe9acb24d40846e9222746f4a_add (data) {
+            geo_json_3a7e521fe9acb24d40846e9222746f4a
+                .addData(data)
+                .addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        }
+            geo_json_3a7e521fe9acb24d40846e9222746f4a_add({"features": [{"geometry": {"coordinates": [23.770388, -99.166567], "type": "Point"}, "properties": {"clave": "28DPR0039O", "municipio": "CD. VICTORIA", "nombre": "SIMON BOLIVAR"}, "type": "Feature"}, {"geometry": {"coordinates": [23.736474, -99.124508], "type": "Point"}, "properties": {"clave": "28DPR0074U", "municipio": "CD. VICTORIA", "nombre": "PROF. JOSE MARTINEZ Y MARTINEZ"}, "type": "Feature"}, {"geometry": {"coordinates": [23.70989, -99.183508], "type": "Point"}, "properties": {"clave": "28DPR0513B", "municipio": "CD. VICTORIA", "nombre": "PROF. EUTIMIO MARTINEZ LARA"}, "type": "Feature"}, {"geometry": {"coordinates": [23.718721, -99.166488], "type": "Point"}, "properties": {"clave": "28DPR1121V", "municipio": "CD. VICTORIA", "nombre": "ANTONIO ALVAREZ BERRONES"}, "type": "Feature"}, {"geometry": {"coordinates": [23.731872453082364, -99.14007087731609], "type": "Point"}, "properties": {"clave": "28DPR1125R", "municipio": "CD. VICTORIA", "nombre": "JUAN B. TIJERINA"}, "type": "Feature"}, {"geometry": {"coordinates": [23.72704322, -99.14302198], "type": "Point"}, "properties": {"clave": "28DPR1130C", "municipio": "CD. VICTORIA", "nombre": "HIMNO NACIONAL"}, "type": "Feature"}, {"geometry": {"coordinates": [23.72713374, -99.15116719], "type": "Point"}, "properties": {"clave": "28DPR1139U", "municipio": "CD. VICTORIA", "nombre": "ENRIQUE C. REBSAMEN"}, "type": "Feature"}, {"geometry": {"coordinates": [23.74179536, -99.1457142], "type": "Point"}, "properties": {"clave": "28DPR1142H", "municipio": "CD. VICTORIA", "nombre": "CLUB DE LEONES"}, "type": "Feature"}, {"geometry": {"coordinates": [23.75039417, -99.15080548], "type": "Point"}, "properties": {"clave": "28DPR1143G", "municipio": "CD. VICTORIA", "nombre": "CLUB ROTARIO"}, "type": "Feature"}, {"geometry": {"coordinates": [23.72918223, -99.14831858], "type": "Point"}, "properties": {"clave": "28DPR1169O", "municipio": "CD. VICTORIA", "nombre": "LEONA VICARIO"}, "type": "Feature"}, {"geometry": {"coordinates": [23.732596793569613, -99.14015939021311], "type": "Point"}, "properties": {"clave": "28DPR1173A", "municipio": "CD. VICTORIA", "nombre": "LA CORREGIDORA"}, "type": "Feature"}, {"geometry": {"coordinates": [23.7121682, -99.16121633], "type": "Point"}, "properties": {"clave": "28DPR1593K", "municipio": "CD. VICTORIA", "nombre": "LIC. EMILIO PORTES GIL"}, "type": "Feature"}, {"geometry": {"coordinates": [23.73404, -99.12955037], "type": "Point"}, "properties": {"clave": "28DPR1686Z", "municipio": "CD. VICTORIA", "nombre": "VENUSTIANO CARRANZA"}, "type": "Feature"}, {"geometry": {"coordinates": [23.75954203, -99.13413792], "type": "Point"}, "properties": {"clave": "28DPR2098R", "municipio": "CD. VICTORIA", "nombre": "JOSE VASCONCELOS"}, "type": "Feature"}, {"geometry": {"coordinates": [23.75040297, -99.13250601], "type": "Point"}, "properties": {"clave": "28DPR2143N", "municipio": "CD. VICTORIA", "nombre": "LAZARO CARDENAS DEL RIO"}, "type": "Feature"}, {"geometry": {"coordinates": [23.768071830219885, -99.15758734722662], "type": "Point"}, "properties": {"clave": "28DPR2149H", "municipio": "CD. VICTORIA", "nombre": "IGNACIO JOSE ALLENDE"}, "type": "Feature"}, {"geometry": {"coordinates": [23.728179923637672, -99.16756705522371], "type": "Point"}, "properties": {"clave": "28DPR2164Z", "municipio": "CD. VICTORIA", "nombre": "IGNACIO LOPEZ RAYON"}, "type": "Feature"}, {"geometry": {"coordinates": [23.7384367, -99.1126268], "type": "Point"}, "properties": {"clave": "28DPR2239Z", "municipio": "CD. VICTORIA", "nombre": "LIC. LUIS DONALDO COLOSIO MURRIETA"}, "type": "Feature"}, {"geometry": {"coordinates": [23.75469306, -99.17129694], "type": "Point"}, "properties": {"clave": "28DPR2274F", "municipio": "CD. VICTORIA", "nombre": "ELVIRA SALDA\u00d1A MORALES"}, "type": "Feature"}, {"geometry": {"coordinates": [23.78428023, -99.1733297], "type": "Point"}, "properties": {"clave": "28DPR2463Y", "municipio": "CD. VICTORIA", "nombre": "DISTRIBUIDORES NISSAN NUM. 37"}, "type": "Feature"}, {"geometry": {"coordinates": [23.00002244, -99.70924656], "type": "Point"}, "properties": {"clave": "28DPR1045F", "municipio": "TULA", "nombre": "DR. NORBERTO TREVI\u00d1O ZAPATA"}, "type": "Feature"}, {"geometry": {"coordinates": [22.99773381, -99.70925208], "type": "Point"}, "properties": {"clave": "28DPR1340H", "municipio": "TULA", "nombre": "MIGUEL HIDALGO"}, "type": "Feature"}, {"geometry": {"coordinates": [22.99298302, -99.72418659], "type": "Point"}, "properties": {"clave": "28DPR1344D", "municipio": "TULA", "nombre": "NI\u00d1OS HEROES"}, "type": "Feature"}, {"geometry": {"coordinates": [23.77377263, -98.20234959], "type": "Point"}, "properties": {"clave": "28DPR1533W", "municipio": "SOTO LA MARINA", "nombre": "LAZARO CARDENAS"}, "type": "Feature"}, {"geometry": {"coordinates": [23.76458968, -98.20735675], "type": "Point"}, "properties": {"clave": "28DPR1663P", "municipio": "SOTO LA MARINA", "nombre": "GRAL. FELIPE DE LA GARZA"}, "type": "Feature"}, {"geometry": {"coordinates": [24.04848215, -98.90129189], "type": "Point"}, "properties": {"clave": "28DPR1748W", "municipio": "PADILLA", "nombre": "MIGUEL HIDALGO"}, "type": "Feature"}, {"geometry": {"coordinates": [22.31356155, -97.88339168], "type": "Point"}, "properties": {"clave": "28DPR1454J", "municipio": "TAMPICO", "nombre": "JUSTO SIERRA"}, "type": "Feature"}, {"geometry": {"coordinates": [22.29680335, -97.88945075], "type": "Point"}, "properties": {"clave": "28DPR1817B", "municipio": "TAMPICO", "nombre": "GRAL. CESAR LOPEZ DE LARA"}, "type": "Feature"}, {"geometry": {"coordinates": [22.31688547, -97.85958457], "type": "Point"}, "properties": {"clave": "28DPR2182P", "municipio": "TAMPICO", "nombre": "ARTEMIO VILLAFA\u00d1A PADILLA"}, "type": "Feature"}, {"geometry": {"coordinates": [25.98724265, -98.08665914], "type": "Point"}, "properties": {"clave": "28DPR0829Z", "municipio": "RIO BRAVO", "nombre": "MIGUEL HIDALGO"}, "type": "Feature"}, {"geometry": {"coordinates": [25.99007226, -98.11731267], "type": "Point"}, "properties": {"clave": "28DPR0979G", "municipio": "RIO BRAVO", "nombre": "MAGDALENO AGUILAR"}, "type": "Feature"}, {"geometry": {"coordinates": [25.99078661, -98.07852247], "type": "Point"}, "properties": {"clave": "28DPR1505Z", "municipio": "RIO BRAVO", "nombre": "MARGARITA MAZA DE JUAREZ"}, "type": "Feature"}, {"geometry": {"coordinates": [25.99271507, -98.06541701], "type": "Point"}, "properties": {"clave": "28DPR2064A", "municipio": "RIO BRAVO", "nombre": "ALBERTO CARRERA TORRES"}, "type": "Feature"}, {"geometry": {"coordinates": [27.49078715711538, -99.55702374848839], "type": "Point"}, "properties": {"clave": "28DPR0694B", "municipio": "NVO. LAREDO", "nombre": "PROF. SANTOS GUZMAN TREVI\u00d1O"}, "type": "Feature"}, {"geometry": {"coordinates": [27.490235306407293, -99.5275377503077], "type": "Point"}, "properties": {"clave": "28DPR0787R", "municipio": "NVO. LAREDO", "nombre": "PROF. COSME PEREZ NUM. 2"}, "type": "Feature"}, {"geometry": {"coordinates": [27.50395290450436, -99.55291807651616], "type": "Point"}, "properties": {"clave": "28DPR1360V", "municipio": "NVO. LAREDO", "nombre": "LEYES DE REFORMA"}, "type": "Feature"}, {"geometry": {"coordinates": [27.488140834908652, -99.53726837913511], "type": "Point"}, "properties": {"clave": "28DPR1372Z", "municipio": "NVO. LAREDO", "nombre": "CORLA MA. DE JESUS DE LA ROSA"}, "type": "Feature"}, {"geometry": {"coordinates": [27.444305939718774, -99.52432385399783], "type": "Point"}, "properties": {"clave": "28DPR1377V", "municipio": "NVO. LAREDO", "nombre": "NOGAL NUM. 1"}, "type": "Feature"}, {"geometry": {"coordinates": [27.50784662805317, -99.54388838656061], "type": "Point"}, "properties": {"clave": "28DPR1698E", "municipio": "NVO. LAREDO", "nombre": "EMILIANO ZAPATA"}, "type": "Feature"}, {"geometry": {"coordinates": [27.483394465769138, -99.51200577181751], "type": "Point"}, "properties": {"clave": "28DPR1826J", "municipio": "NVO. LAREDO", "nombre": "CARLOS A. CARRILLO"}, "type": "Feature"}, {"geometry": {"coordinates": [27.438476135669998, -99.51354787236426], "type": "Point"}, "properties": {"clave": "28DPR1892I", "municipio": "NVO. LAREDO", "nombre": "NACIONES UNIDAS"}, "type": "Feature"}, {"geometry": {"coordinates": [27.484608364821806, -99.56272055952006], "type": "Point"}, "properties": {"clave": "28DPR2174G", "municipio": "NVO. LAREDO", "nombre": "PEDRO JOSE MENDEZ"}, "type": "Feature"}, {"geometry": {"coordinates": [27.464741411157217, -99.55094182079071], "type": "Point"}, "properties": {"clave": "28DPR2298P", "municipio": "NVO. LAREDO", "nombre": "FELIPE DURON ROBLES"}, "type": "Feature"}, {"geometry": {"coordinates": [27.464830222174147, -99.5540638757164], "type": "Point"}, "properties": {"clave": "28DPR2363Z", "municipio": "NVO. LAREDO", "nombre": "PROF. ALONSO BRICE\u00d1O ROSALES"}, "type": "Feature"}, {"geometry": {"coordinates": [27.51093775469948, -99.59128861344416], "type": "Point"}, "properties": {"clave": "28DPR2415O", "municipio": "NVO. LAREDO", "nombre": "PROFA. EMMA PEREZ IBARRA"}, "type": "Feature"}, {"geometry": {"coordinates": [27.50887226874411, -99.60687072753736], "type": "Point"}, "properties": {"clave": "28DPR2431F", "municipio": "NVO. LAREDO", "nombre": "MAURICIO GONZALEZ DE LA GARZA"}, "type": "Feature"}, {"geometry": {"coordinates": [27.473026279758795, -99.62262565642212], "type": "Point"}, "properties": {"clave": "28DPR2439Y", "municipio": "NVO. LAREDO", "nombre": "PROF. CECILIO JESUS CASTILLO CASTILLO"}, "type": "Feature"}, {"geometry": {"coordinates": [27.459281900139853, -99.57770774719292], "type": "Point"}, "properties": {"clave": "28DPR2474D", "municipio": "NVO. LAREDO", "nombre": "EUTIMIO RODRIGUEZ CABALLERO"}, "type": "Feature"}, {"geometry": {"coordinates": [22.396771178616564, -97.93663107736035], "type": "Point"}, "properties": {"clave": "28DPR0834L", "municipio": "ALTAMIRA", "nombre": "MARTIRES DE LA REVOLUCION"}, "type": "Feature"}, {"geometry": {"coordinates": [22.39679814379965, -97.93662469575138], "type": "Point"}, "properties": {"clave": "28DPR1066S", "municipio": "ALTAMIRA", "nombre": "MARTIRES DE LA REVOLUCION"}, "type": "Feature"}, {"geometry": {"coordinates": [22.3560721163494, -97.88475570304878], "type": "Point"}, "properties": {"clave": "28DPR1094O", "municipio": "ALTAMIRA", "nombre": "FRANCISCO I. MADERO"}, "type": "Feature"}, {"geometry": {"coordinates": [22.327572661200087, -97.86524266009506], "type": "Point"}, "properties": {"clave": "28DPR2021C", "municipio": "ALTAMIRA", "nombre": "ALVARO OBREGON"}, "type": "Feature"}, {"geometry": {"coordinates": [22.325334736181603, -97.85770880489773], "type": "Point"}, "properties": {"clave": "28DPR2310U", "municipio": "ALTAMIRA", "nombre": "DIANA LAURA RIOJAS DE COLOSIO"}, "type": "Feature"}, {"geometry": {"coordinates": [22.363862753896022, -97.90415589202891], "type": "Point"}, "properties": {"clave": "28DPR2377B", "municipio": "ALTAMIRA", "nombre": "NUEVO SANTANDER"}, "type": "Feature"}, {"geometry": {"coordinates": [22.390743039307043, -97.9119321865067], "type": "Point"}, "properties": {"clave": "28DPR2422Y", "municipio": "ALTAMIRA", "nombre": "PROFA. MARIA GUADALUPE JAIME GARZA"}, "type": "Feature"}, {"geometry": {"coordinates": [22.395845399497734, -97.93695204662711], "type": "Point"}, "properties": {"clave": "28DPR2461Z", "municipio": "ALTAMIRA", "nombre": "PROF. CLEMENTE RIVERA MOCTEZUMA"}, "type": "Feature"}, {"geometry": {"coordinates": [22.368851323498344, -97.8712973157016], "type": "Point"}, "properties": {"clave": "28DPR2562Y", "municipio": "ALTAMIRA", "nombre": "20 DE NOVIEMBRE"}, "type": "Feature"}, {"geometry": {"coordinates": [22.329963750926982, -97.8793409914044], "type": "Point"}, "properties": {"clave": "28DPR1400F", "municipio": "ALTAMIRA", "nombre": "PROF. JUAN CAMACHO CERVANTES"}, "type": "Feature"}, {"geometry": {"coordinates": [25.88295323986773, -97.51014299696635], "type": "Point"}, "properties": {"clave": "28DPR0456A", "municipio": "MATAMOROS", "nombre": "FRANKLIN D. ROOSEVELT"}, "type": "Feature"}, {"geometry": {"coordinates": [25.836009656436072, -97.52818390674665], "type": "Point"}, "properties": {"clave": "28DPR0457Z", "municipio": "MATAMOROS", "nombre": "FIDEL VELAZQUEZ"}, "type": "Feature"}, {"geometry": {"coordinates": [25.85787194211958, -97.48079927976002], "type": "Point"}, "properties": {"clave": "28DPR0461M", "municipio": "MATAMOROS", "nombre": "CUAUHTEMOC"}, "type": "Feature"}, {"geometry": {"coordinates": [25.877318020649128, -97.49800214352872], "type": "Point"}, "properties": {"clave": "28DPR0477N", "municipio": "MATAMOROS", "nombre": "MODELO"}, "type": "Feature"}, {"geometry": {"coordinates": [25.878786338976013, -97.50322785399783], "type": "Point"}, "properties": {"clave": "28DPR0489S", "municipio": "MATAMOROS", "nombre": "JOSEFINA MENCHACA"}, "type": "Feature"}, {"geometry": {"coordinates": [25.834331646727932, -97.50239135452401], "type": "Point"}, "properties": {"clave": "28DPR0636L", "municipio": "MATAMOROS", "nombre": "TAMAULIPAS"}, "type": "Feature"}, {"geometry": {"coordinates": [25.814349203338427, -97.5182210637561], "type": "Point"}, "properties": {"clave": "28DPR1283G", "municipio": "MATAMOROS", "nombre": "GRAL. LAZARO CARDENAS DEL RIO"}, "type": "Feature"}, {"geometry": {"coordinates": [25.86888974732135, -97.48344238890638], "type": "Point"}, "properties": {"clave": "28DPR1492M", "municipio": "MATAMOROS", "nombre": "NI\u00d1OS HEROES"}, "type": "Feature"}, {"geometry": {"coordinates": [25.87559864141487, -97.52484938890636], "type": "Point"}, "properties": {"clave": "28DPR1807V", "municipio": "MATAMOROS", "nombre": "GRAL. LAZARO CARDENAS DEL RIO"}, "type": "Feature"}, {"geometry": {"coordinates": [25.83737103102983, -97.5192425079465], "type": "Point"}, "properties": {"clave": "28DPR1879O", "municipio": "MATAMOROS", "nombre": "NACIONES UNIDAS"}, "type": "Feature"}, {"geometry": {"coordinates": [25.838070296876257, -97.4605590085956], "type": "Point"}, "properties": {"clave": "28DPR2005L", "municipio": "MATAMOROS", "nombre": "PLUTARCO ELIAS CALLES"}, "type": "Feature"}, {"geometry": {"coordinates": [25.8503257934397, -97.53292783928009], "type": "Point"}, "properties": {"clave": "28DPR2160D", "municipio": "MATAMOROS", "nombre": "RAMON LOPEZ VELARDE"}, "type": "Feature"}, {"geometry": {"coordinates": [25.846322078869875, -97.48109615212432], "type": "Point"}, "properties": {"clave": "28DPR2173H", "municipio": "MATAMOROS", "nombre": "ORALIA GUERRA DE VILLARREAL"}, "type": "Feature"}, {"geometry": {"coordinates": [25.838134753860235, -97.4865520208399], "type": "Point"}, "properties": {"clave": "28DPR2271I", "municipio": "MATAMOROS", "nombre": "PROF. ERNESTO GUAJARDO SALINAS"}, "type": "Feature"}, {"geometry": {"coordinates": [25.820422812026333, -97.45577786011998], "type": "Point"}, "properties": {"clave": "28DPR2300N", "municipio": "MATAMOROS", "nombre": "PROF. CRUZ LINO MARQUEZ"}, "type": "Feature"}, {"geometry": {"coordinates": [25.85632413694574, -97.52659230424862], "type": "Point"}, "properties": {"clave": "28DPR2300N", "municipio": "MATAMOROS", "nombre": "PROFA. JULIA GARCIA ECHAVARRIA"}, "type": "Feature"}, {"geometry": {"coordinates": [25.82020825165025, -97.53781113623131], "type": "Point"}, "properties": {"clave": "28DPR2390W", "municipio": "MATAMOROS", "nombre": "PROF. Y LIC. SANTOS VALLE CARDONA"}, "type": "Feature"}, {"geometry": {"coordinates": [25.8567509763884, -97.53871542199057], "type": "Point"}, "properties": {"clave": "28DPR2391V", "municipio": "MATAMOROS", "nombre": "PROF. IGNACIO AGUILAR HERNANDEZ"}, "type": "Feature"}, {"geometry": {"coordinates": [25.827292757140075, -97.47809539385328], "type": "Point"}, "properties": {"clave": "28DPR2410T", "municipio": "MATAMOROS", "nombre": "CLUB ROTARIO MATAMOROS NUM. 84"}, "type": "Feature"}, {"geometry": {"coordinates": [25.84418134423308, -97.552720203688], "type": "Point"}, "properties": {"clave": "28DPR2587G", "municipio": "MATAMOROS", "nombre": "RODOLFO TORRE CANTU"}, "type": "Feature"}, {"geometry": {"coordinates": [22.26678127, -97.84670241], "type": "Point"}, "properties": {"clave": "28DPR0283Z", "municipio": "CD. MADERO", "nombre": "PROFA. MA. GUADALUPE GARCIA GARCIA"}, "type": "Feature"}, {"geometry": {"coordinates": [22.26627837, -97.81585622], "type": "Point"}, "properties": {"clave": "28DPR1332Z", "municipio": "CD. MADERO", "nombre": "PROFA. AURELIA GARCIA RODRIGUEZ"}, "type": "Feature"}, {"geometry": {"coordinates": [22.24839618, -97.83666052], "type": "Point"}, "properties": {"clave": "28DPR1343E", "municipio": "CD. MADERO", "nombre": "ARMANDO BARBA"}, "type": "Feature"}, {"geometry": {"coordinates": [22.27651719, -97.83812316], "type": "Point"}, "properties": {"clave": "28DPR1412K", "municipio": "CD. MADERO", "nombre": "EMILIANO ZAPATA"}, "type": "Feature"}, {"geometry": {"coordinates": [22.25935875, -97.84980481], "type": "Point"}, "properties": {"clave": "28DPR1414I", "municipio": "CD. MADERO", "nombre": "GERARDO GOMEZ CASTILLO"}, "type": "Feature"}, {"geometry": {"coordinates": [22.30321656, -97.84555324], "type": "Point"}, "properties": {"clave": "28DPR2045M", "municipio": "CD. MADERO", "nombre": "ARTICULO 3 CONSTITUCIONAL"}, "type": "Feature"}, {"geometry": {"coordinates": [22.29568885, -97.8216019], "type": "Point"}, "properties": {"clave": "28DPR2334D", "municipio": "CD. MADERO", "nombre": "PROFA. JUANA MARIA CABRERA SALINAS"}, "type": "Feature"}, {"geometry": {"coordinates": [26.07253259, -98.30021881], "type": "Point"}, "properties": {"clave": "28DPR0085Z", "municipio": "REYNOSA", "nombre": "ENRIQUE C. REBSAMEN"}, "type": "Feature"}, {"geometry": {"coordinates": [26.06222489, -98.28998255], "type": "Point"}, "properties": {"clave": "28DPR0754Z", "municipio": "REYNOSA", "nombre": "FORD NUM. 16"}, "type": "Feature"}, {"geometry": {"coordinates": [26.06245877, -98.3129181], "type": "Point"}, "properties": {"clave": "28DPR0770R", "municipio": "REYNOSA", "nombre": "PROF. FRANCISCO NICODEMO"}, "type": "Feature"}, {"geometry": {"coordinates": [26.090797, -98.27987153], "type": "Point"}, "properties": {"clave": "28DPR0774N", "municipio": "REYNOSA", "nombre": "MIGUEL HIDALGO"}, "type": "Feature"}, {"geometry": {"coordinates": [26.14604488, -98.34815524], "type": "Point"}, "properties": {"clave": "28DPR0806P", "municipio": "REYNOSA", "nombre": "ARTICULO 27 CONSTITUCIONAL"}, "type": "Feature"}, {"geometry": {"coordinates": [26.07051272, -98.32084586], "type": "Point"}, "properties": {"clave": "28DPR1403C", "municipio": "REYNOSA", "nombre": "FELIPE CARRILLO PUERTO"}, "type": "Feature"}, {"geometry": {"coordinates": [26.05310939, -98.37875574], "type": "Point"}, "properties": {"clave": "28DPR1427M", "municipio": "REYNOSA", "nombre": "EL CHAMIZAL"}, "type": "Feature"}, {"geometry": {"coordinates": [26.0509989, -98.29787957], "type": "Point"}, "properties": {"clave": "28DPR1433X", "municipio": "REYNOSA", "nombre": "GRAL. EMILIANO ZAPATA"}, "type": "Feature"}, {"geometry": {"coordinates": [26.06872585, -98.34598395], "type": "Point"}, "properties": {"clave": "28DPR1515G", "municipio": "REYNOSA", "nombre": "IGNACIO MANUEL ALTAMIRANO"}, "type": "Feature"}, {"geometry": {"coordinates": [26.05389537, -98.37802718], "type": "Point"}, "properties": {"clave": "28DPR2047K", "municipio": "REYNOSA", "nombre": "HEROES DE LA INDEPENDENCIA DE MEXICO"}, "type": "Feature"}, {"geometry": {"coordinates": [26.01716916, -98.26412805], "type": "Point"}, "properties": {"clave": "28DPR2081R", "municipio": "REYNOSA", "nombre": "FELIPE ANGELES"}, "type": "Feature"}, {"geometry": {"coordinates": [26.03747728, -98.35955164], "type": "Point"}, "properties": {"clave": "28DPR2381O", "municipio": "REYNOSA", "nombre": "RAUL FLORES GARCIA"}, "type": "Feature"}, {"geometry": {"coordinates": [26.007443, -98.244476], "type": "Point"}, "properties": {"clave": "28DPR2452S", "municipio": "REYNOSA", "nombre": "MOCTEZUMA"}, "type": "Feature"}, {"geometry": {"coordinates": [26.006122, -98.246341], "type": "Point"}, "properties": {"clave": "28DPR2481N", "municipio": "REYNOSA", "nombre": "ARQUIMEDES CABALLERO CABALLERO"}, "type": "Feature"}, {"geometry": {"coordinates": [26.0060771051489, -98.24654573812798], "type": "Point"}, "properties": {"clave": "28DPR2504H", "municipio": "REYNOSA", "nombre": "JULIAN ERNESTO ZAMORA RIVAS"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+            var greenIcon = L.icon({
+                iconUrl: 'verde.png',
+                iconSize: [35, 45]
+            });
+
+            var redIcon = L.icon({
+                iconUrl: 'rojo.png',
+                iconSize: [35, 45]
+            });
+
+            var blueIcon = L.icon({
+                iconUrl: 'azul.png',
+                iconSize: [35, 45]
+            });
+
+            var beigIcon = L.icon({
+                iconUrl: 'beige.png',
+                iconSize: [35, 45]
+            });
+
+            var blueBlackIcon = L.icon({
+                iconUrl: 'nazul.png',
+                iconSize: [35, 45]
+            });
+
+            var greenCIcon = L.icon({
+                iconUrl: 'cverde.png',
+                iconSize: [35, 45]
+            });
+
+            var banderaIcon = L.icon({
+                iconUrl: 'bandera.png',
+                iconSize: [35, 45]
+            });
+
+            var altamiraIcon = L.icon({
+                iconUrl: 'alta.png',
+                iconSize: [35, 45]
+            });
+
+            var matamorosIcon = L.icon({
+                iconUrl: 'matamoros.png',
+                iconSize: [35, 45]
+            });
+
+            var negroIcon = L.icon({
+                iconUrl: 'negro.png',
+                iconSize: [35, 45]
+            });
+
+            var reyIcon = L.icon({
+                iconUrl: 'reynosa.png',
+                iconSize: [35, 45]
+            });
+    
+            var marker_345fd7c7c77cd05ebad30f49e859f9d0 = L.marker(
+                [23.770388, -99.166567],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_345fd7c7c77cd05ebad30f49e859f9d0.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> SIMON BOLIVAR<br><strong>Clave:</strong> 28DPR0039O<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e4e8dfb5319c30f04e94861a32e90dde = L.marker(
+                [23.736474, -99.124508],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_e4e8dfb5319c30f04e94861a32e90dde.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. JOSE MARTINEZ Y MARTINEZ<br><strong>Clave:</strong> 28DPR0074U<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a4c7c44eee9a4a380ccdb83ee674d0eb = L.marker(
+                [23.70989, -99.183508],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_a4c7c44eee9a4a380ccdb83ee674d0eb.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. EUTIMIO MARTINEZ LARA<br><strong>Clave:</strong> 28DPR0513B<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_01ad63bebad2b6fa0ce27162864d781a = L.marker(
+                [23.718721, -99.166488],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_01ad63bebad2b6fa0ce27162864d781a.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ANTONIO ALVAREZ BERRONES<br><strong>Clave:</strong> 28DPR1121V<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_215882fd4df0ddf32fbe911e6e65423a = L.marker(
+                [23.731872453082364, -99.14007087731609],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_215882fd4df0ddf32fbe911e6e65423a.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> JUAN B. TIJERINA<br><strong>Clave:</strong> 28DPR1125R<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_07fb8720872c56212dac4188f34f6323 = L.marker(
+                [23.72704322, -99.14302198],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_07fb8720872c56212dac4188f34f6323.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> HIMNO NACIONAL<br><strong>Clave:</strong> 28DPR1130C<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eb0e796e1790342bda40057b23c86e66 = L.marker(
+                [23.72713374, -99.15116719],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_eb0e796e1790342bda40057b23c86e66.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ENRIQUE C. REBSAMEN<br><strong>Clave:</strong> 28DPR1139U<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1730726bd60cf608a271d162d3ea3a11 = L.marker(
+                [23.74179536, -99.1457142],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_1730726bd60cf608a271d162d3ea3a11.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> CLUB DE LEONES<br><strong>Clave:</strong> 28DPR1142H<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d650eb8e4efaf7ac81b0ba63f526c510 = L.marker(
+                [23.75039417, -99.15080548],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_d650eb8e4efaf7ac81b0ba63f526c510.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> CLUB ROTARIO<br><strong>Clave:</strong> 28DPR1143G<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c28dd0994868c2830eeb2aa05a4d1bee = L.marker(
+                [23.72918223, -99.14831858],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_c28dd0994868c2830eeb2aa05a4d1bee.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> LEONA VICARIO<br><strong>Clave:</strong> 28DPR1169O<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a407c0671fa7cd994f3e1e7223c79644 = L.marker(
+                [23.732596793569613, -99.14015939021311],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_a407c0671fa7cd994f3e1e7223c79644.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> LA CORREGIDORA<br><strong>Clave:</strong> 28DPR1173A<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e6104b196d9f561cb3c9f187c68550b3 = L.marker(
+                [23.7121682, -99.16121633],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_e6104b196d9f561cb3c9f187c68550b3.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> LIC. EMILIO PORTES GIL<br><strong>Clave:</strong> 28DPR1593K<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1c9191bdf9063c06fee54af95d8e530e = L.marker(
+                [23.73404, -99.12955037],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_1c9191bdf9063c06fee54af95d8e530e.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> VENUSTIANO CARRANZA<br><strong>Clave:</strong> 28DPR1686Z<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_11f187acab381d1e2af7418b2305309f = L.marker(
+                [23.75954203, -99.13413792],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_11f187acab381d1e2af7418b2305309f.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> JOSE VASCONCELOS<br><strong>Clave:</strong> 28DPR2098R<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eeadd36dae631cda4e3da2da2d302672 = L.marker(
+                [23.75040297, -99.13250601],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_eeadd36dae631cda4e3da2da2d302672.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> LAZARO CARDENAS DEL RIO<br><strong>Clave:</strong> 28DPR2143N<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b35e33b1d0cbb31a06753155481e4a23 = L.marker(
+                [23.768071830219885, -99.15758734722662],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_b35e33b1d0cbb31a06753155481e4a23.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> IGNACIO JOSE ALLENDE<br><strong>Clave:</strong> 28DPR2149H<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fd57ea5a56318bb2ce323cb2eea4e6ac = L.marker(
+                [23.728179923637672, -99.16756705522371],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_fd57ea5a56318bb2ce323cb2eea4e6ac.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> IGNACIO LOPEZ RAYON<br><strong>Clave:</strong> 28DPR2164Z<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_df55f23ec9b2130d559540c79d95936c = L.marker(
+                [23.7384367, -99.1126268],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_df55f23ec9b2130d559540c79d95936c.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> LIC. LUIS DONALDO COLOSIO MURRIETA<br><strong>Clave:</strong> 28DPR2239Z<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_680fc69c29fe8b0d1dfb41d6e5f28adf = L.marker(
+                [23.75469306, -99.17129694],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_680fc69c29fe8b0d1dfb41d6e5f28adf.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ELVIRA SALDAÑA MORALES<br><strong>Clave:</strong> 28DPR2274F<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0b8b9703026180068389fd77bff8364e = L.marker(
+                [23.78428023, -99.1733297],
+                { icon: greenIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_0b8b9703026180068389fd77bff8364e.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> DISTRIBUIDORES NISSAN NUM. 37<br><strong>Clave:</strong> 28DPR2463Y<br><strong>Municipio:</strong> CD. VICTORIA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+    
+            var marker_f346fdaba4a5ef380c48e391538e7ff2 = L.marker(
+                [23.00002244, -99.70924656],
+                { icon: redIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_f346fdaba4a5ef380c48e391538e7ff2.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> DR. NORBERTO TREVIÑO ZAPATA<br><strong>Clave:</strong> 28DPR1045F<br><strong>Municipio:</strong> TULA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b50741aa3bb97eb50769e41f9c43a005 = L.marker(
+                [22.99773381, -99.70925208],
+                { icon: redIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_b50741aa3bb97eb50769e41f9c43a005.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MIGUEL HIDALGO<br><strong>Clave:</strong> 28DPR1340H<br><strong>Municipio:</strong> TULA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d2da49b8998b765a008e96e654261348 = L.marker(
+                [22.99298302, -99.72418659],
+                { icon: redIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_d2da49b8998b765a008e96e654261348.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> NIÑOS HEROES<br><strong>Clave:</strong> 28DPR1344D<br><strong>Municipio:</strong> TULA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+
+            var marker_a34fe1ef63d4a031c1332e565b3a1a02 = L.marker(
+                [23.77377263, -98.20234959],
+                { icon: blueIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_a34fe1ef63d4a031c1332e565b3a1a02.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> LAZARO CARDENAS<br><strong>Clave:</strong> 28DPR1533W<br><strong>Municipio:</strong> SOTO LA MARINA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7a6f578c5245af8699e43d7acfbc2ae1 = L.marker(
+                [23.76458968, -98.20735675],
+                { icon: blueIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_7a6f578c5245af8699e43d7acfbc2ae1.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> GRAL. FELIPE DE LA GARZA<br><strong>Clave:</strong> 28DPR1663P<br><strong>Municipio:</strong> SOTO LA MARINA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+
+            var marker_32f8e2bf434ba87750bc214fbf852201 = L.marker(
+                [24.04848215, -98.90129189],
+                { icon: beigIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_32f8e2bf434ba87750bc214fbf852201.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MIGUEL HIDALGO<br><strong>Clave:</strong> 28DPR1748W<br><strong>Municipio:</strong> PADILLA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+
+            var marker_624c070de812e9d9ee4b914e6b11c8c7 = L.marker(
+                [22.31356155, -97.88339168],
+                { icon: blueBlackIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_624c070de812e9d9ee4b914e6b11c8c7.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> JUSTO SIERRA<br><strong>Clave:</strong> 28DPR1454J<br><strong>Municipio:</strong> TAMPICO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_36b34a16a70e68d74ce06c75468ba92a = L.marker(
+                [22.29680335, -97.88945075],
+                { icon: blueBlackIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_36b34a16a70e68d74ce06c75468ba92a.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> GRAL. CESAR LOPEZ DE LARA<br><strong>Clave:</strong> 28DPR1817B<br><strong>Municipio:</strong> TAMPICO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eaad76da905d6eceb103ad71e4771957 = L.marker(
+                [22.31688547, -97.85958457],
+                { icon: blueBlackIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_eaad76da905d6eceb103ad71e4771957.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ARTEMIO VILLAFAÑA PADILLA<br><strong>Clave:</strong> 28DPR2182P<br><strong>Municipio:</strong> TAMPICO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+
+            var marker_cf4bb85f3c15505dbcfdde5006082ce6 = L.marker(
+                [25.98724265, -98.08665914],
+                { icon: greenCIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_cf4bb85f3c15505dbcfdde5006082ce6.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MIGUEL HIDALGO<br><strong>Clave:</strong> 28DPR0829Z<br><strong>Municipio:</strong> RIO BRAVO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e01b6a9b181cf984c5421398a2bfb061 = L.marker(
+                [25.99007226, -98.11731267],
+                { icon: greenCIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_e01b6a9b181cf984c5421398a2bfb061.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MAGDALENO AGUILAR<br><strong>Clave:</strong> 28DPR0979G<br><strong>Municipio:</strong> RIO BRAVO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cb91a4b34bd2502806b97e4188ac1698 = L.marker(
+                [25.99078661, -98.07852247],
+                { icon: greenCIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_cb91a4b34bd2502806b97e4188ac1698.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MARGARITA MAZA DE JUAREZ<br><strong>Clave:</strong> 28DPR1505Z<br><strong>Municipio:</strong> RIO BRAVO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7cab39c3c9a6a51ecf4b376fd36bf0c3 = L.marker(
+                [25.99271507, -98.06541701],
+                { icon: greenCIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_7cab39c3c9a6a51ecf4b376fd36bf0c3.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ALBERTO CARRERA TORRES<br><strong>Clave:</strong> 28DPR2064A<br><strong>Municipio:</strong> RIO BRAVO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+
+            var marker_30c5ddac6b7eb804ea280ded5ca1310b = L.marker(
+                [27.49078715711538, -99.55702374848839],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_30c5ddac6b7eb804ea280ded5ca1310b.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. SANTOS GUZMAN TREVIÑO<br><strong>Clave:</strong> 28DPR0694B<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d4e8872c2443a1506eb246829a510a99 = L.marker(
+                [27.490235306407293, -99.5275377503077],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_d4e8872c2443a1506eb246829a510a99.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. COSME PEREZ NUM. 2<br><strong>Clave:</strong> 28DPR0787R<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_abd7f19da4424d9b2c8f2756ec070b72 = L.marker(
+                [27.50395290450436, -99.55291807651616],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_abd7f19da4424d9b2c8f2756ec070b72.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> LEYES DE REFORMA<br><strong>Clave:</strong> 28DPR1360V<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_360162e8dc3cf92ee6d435b73cc7bcbe = L.marker(
+                [27.488140834908652, -99.53726837913511],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_360162e8dc3cf92ee6d435b73cc7bcbe.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> CORLA MA. DE JESUS DE LA ROSA<br><strong>Clave:</strong> 28DPR1372Z<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2aa2f71e7492d7de1915ac687fb83a01 = L.marker(
+                [27.444305939718774, -99.52432385399783],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_2aa2f71e7492d7de1915ac687fb83a01.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> NOGAL NUM. 1<br><strong>Clave:</strong> 28DPR1377V<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2090ca6f7f6c3d6de0cbb6b425725041 = L.marker(
+                [27.50784662805317, -99.54388838656061],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_2090ca6f7f6c3d6de0cbb6b425725041.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> EMILIANO ZAPATA<br><strong>Clave:</strong> 28DPR1698E<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_508c76ad6b7eaf5e2d6a4d222a4f306b = L.marker(
+                [27.483394465769138, -99.51200577181751],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_508c76ad6b7eaf5e2d6a4d222a4f306b.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> CARLOS A. CARRILLO<br><strong>Clave:</strong> 28DPR1826J<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_df3ea5b778564322508ca0b820872fad = L.marker(
+                [27.438476135669998, -99.51354787236426],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_df3ea5b778564322508ca0b820872fad.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> NACIONES UNIDAS<br><strong>Clave:</strong> 28DPR1892I<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e8994c3e445aae2a462bb3bae265c5da = L.marker(
+                [27.484608364821806, -99.56272055952006],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_e8994c3e445aae2a462bb3bae265c5da.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PEDRO JOSE MENDEZ<br><strong>Clave:</strong> 28DPR2174G<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9757afcd471329ab84825bae480a45f6 = L.marker(
+                [27.464741411157217, -99.55094182079071],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_9757afcd471329ab84825bae480a45f6.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> FELIPE DURON ROBLES<br><strong>Clave:</strong> 28DPR2298P<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8deb5f5ad9d41f971b8e7e04f12fd00b = L.marker(
+                [27.464830222174147, -99.5540638757164],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_8deb5f5ad9d41f971b8e7e04f12fd00b.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. ALONSO BRICEÑO ROSALES<br><strong>Clave:</strong> 28DPR2363Z<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1ff702d632dfe3b2dc1abf7d32569358 = L.marker(
+                [27.51093775469948, -99.59128861344416],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_1ff702d632dfe3b2dc1abf7d32569358.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROFA. EMMA PEREZ IBARRA<br><strong>Clave:</strong> 28DPR2415O<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_16c584f83552ffd0be22e379d47826e2 = L.marker(
+                [27.50887226874411, -99.60687072753736],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_16c584f83552ffd0be22e379d47826e2.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MAURICIO GONZALEZ DE LA GARZA<br><strong>Clave:</strong> 28DPR2431F<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_554fd9ad38ac3442d06ece2214aa271c = L.marker(
+                [27.473026279758795, -99.62262565642212],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_554fd9ad38ac3442d06ece2214aa271c.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. CECILIO JESUS CASTILLO CASTILLO<br><strong>Clave:</strong> 28DPR2439Y<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7983c88db154da781bf4eee5c575d03c = L.marker(
+                [27.459281900139853, -99.57770774719292],
+                { icon: banderaIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_7983c88db154da781bf4eee5c575d03c.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> EUTIMIO RODRIGUEZ CABALLERO<br><strong>Clave:</strong> 28DPR2474D<br><strong>Municipio:</strong> NVO. LAREDO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_29ab80431186568091c0dbb4831b8c4b = L.marker(
+                [22.396771178616564, -97.93663107736035],
+                { icon: altamiraIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_29ab80431186568091c0dbb4831b8c4b.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MARTIRES DE LA REVOLUCION<br><strong>Clave:</strong> 28DPR0834L<br><strong>Municipio:</strong> ALTAMIRA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7b73b7380a87121f60c431338dbec57c = L.marker(
+                [22.39679814379965, -97.93662469575138],
+                { icon: altamiraIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_7b73b7380a87121f60c431338dbec57c.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MARTIRES DE LA REVOLUCION<br><strong>Clave:</strong> 28DPR1066S<br><strong>Municipio:</strong> ALTAMIRA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b3ee5235a48aa7e2b49e343e8962d2a9 = L.marker(
+                [22.3560721163494, -97.88475570304878],
+                { icon: altamiraIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_b3ee5235a48aa7e2b49e343e8962d2a9.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> FRANCISCO I. MADERO<br><strong>Clave:</strong> 28DPR1094O<br><strong>Municipio:</strong> ALTAMIRA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3296098a68d225df9c26e0f12de7c789 = L.marker(
+                [22.327572661200087, -97.86524266009506],
+                { icon: altamiraIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_3296098a68d225df9c26e0f12de7c789.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ALVARO OBREGON<br><strong>Clave:</strong> 28DPR2021C<br><strong>Municipio:</strong> ALTAMIRA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d6d7110fb9b57fe1b14fcce8d2ff02e1 = L.marker(
+                [22.325334736181603, -97.85770880489773],
+                { icon: altamiraIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_d6d7110fb9b57fe1b14fcce8d2ff02e1.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> DIANA LAURA RIOJAS DE COLOSIO<br><strong>Clave:</strong> 28DPR2310U<br><strong>Municipio:</strong> ALTAMIRA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_843748e4a34ccf224de70f2b9507d1f3 = L.marker(
+                [22.363862753896022, -97.90415589202891],
+                { icon: altamiraIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_843748e4a34ccf224de70f2b9507d1f3.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> NUEVO SANTANDER<br><strong>Clave:</strong> 28DPR2377B<br><strong>Municipio:</strong> ALTAMIRA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5b3f7487cf4396a11292ea8a198a582e = L.marker(
+                [22.390743039307043, -97.9119321865067],
+                { icon: altamiraIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_5b3f7487cf4396a11292ea8a198a582e.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROFA. MARIA GUADALUPE JAIME GARZA<br><strong>Clave:</strong> 28DPR2422Y<br><strong>Municipio:</strong> ALTAMIRA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4a829c99a5c04c47aee344e43c8a4825 = L.marker(
+                [22.395845399497734, -97.93695204662711],
+                { icon: altamiraIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_4a829c99a5c04c47aee344e43c8a4825.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. CLEMENTE RIVERA MOCTEZUMA<br><strong>Clave:</strong> 28DPR2461Z<br><strong>Municipio:</strong> ALTAMIRA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2048114af3fc25bae3f90b0ec34238a1 = L.marker(
+                [22.368851323498344, -97.8712973157016],
+                { icon: altamiraIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_2048114af3fc25bae3f90b0ec34238a1.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> 20 DE NOVIEMBRE<br><strong>Clave:</strong> 28DPR2562Y<br><strong>Municipio:</strong> ALTAMIRA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_df44493c4648952dc7af14c92107db39 = L.marker(
+                [22.329963750926982, -97.8793409914044],
+                { icon: altamiraIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_df44493c4648952dc7af14c92107db39.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. JUAN CAMACHO CERVANTES<br><strong>Clave:</strong> 28DPR1400F<br><strong>Municipio:</strong> ALTAMIRA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6b80490f156c67a0e8f36d08fe88ca1a = L.marker(
+                [25.88295323986773, -97.51014299696635],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_6b80490f156c67a0e8f36d08fe88ca1a.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> FRANKLIN D. ROOSEVELT<br><strong>Clave:</strong> 28DPR0456A<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2b1dc5a7e0c1fc17443a630009ff4e74 = L.marker(
+                [25.836009656436072, -97.52818390674665],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_2b1dc5a7e0c1fc17443a630009ff4e74.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> FIDEL VELAZQUEZ<br><strong>Clave:</strong> 28DPR0457Z<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_832285333cb747a75fe025ad8113ea91 = L.marker(
+                [25.85787194211958, -97.48079927976002],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_832285333cb747a75fe025ad8113ea91.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> CUAUHTEMOC<br><strong>Clave:</strong> 28DPR0461M<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5c8dd0f9c8e8b4abdae00df42bc9e685 = L.marker(
+                [25.877318020649128, -97.49800214352872],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_5c8dd0f9c8e8b4abdae00df42bc9e685.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MODELO<br><strong>Clave:</strong> 28DPR0477N<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_294b47d2c17c1555a823a86aa566faec = L.marker(
+                [25.878786338976013, -97.50322785399783],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_294b47d2c17c1555a823a86aa566faec.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> JOSEFINA MENCHACA<br><strong>Clave:</strong> 28DPR0489S<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_575991e7558ddbfb460c837b554a07f6 = L.marker(
+                [25.834331646727932, -97.50239135452401],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_575991e7558ddbfb460c837b554a07f6.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> TAMAULIPAS<br><strong>Clave:</strong> 28DPR0636L<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4d9130a66f6032cfb61ed58be665c6da = L.marker(
+                [25.814349203338427, -97.5182210637561],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_4d9130a66f6032cfb61ed58be665c6da.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> GRAL. LAZARO CARDENAS DEL RIO<br><strong>Clave:</strong> 28DPR1283G<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_59a099f3d206dd8c0d7fd16e9eb8a426 = L.marker(
+                [25.86888974732135, -97.48344238890638],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_59a099f3d206dd8c0d7fd16e9eb8a426.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> NIÑOS HEROES<br><strong>Clave:</strong> 28DPR1492M<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9e0fc2db1bf2eb4d3b317260fd92de5a = L.marker(
+                [25.87559864141487, -97.52484938890636],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_9e0fc2db1bf2eb4d3b317260fd92de5a.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> GRAL. LAZARO CARDENAS DEL RIO<br><strong>Clave:</strong> 28DPR1807V<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2c4288900a4abc2d58c81cb595845557 = L.marker(
+                [25.83737103102983, -97.5192425079465],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_2c4288900a4abc2d58c81cb595845557.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> NACIONES UNIDAS<br><strong>Clave:</strong> 28DPR1879O<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e9905e83c6d29dc827f9a4895a59410d = L.marker(
+                [25.838070296876257, -97.4605590085956],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_e9905e83c6d29dc827f9a4895a59410d.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PLUTARCO ELIAS CALLES<br><strong>Clave:</strong> 28DPR2005L<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_54c0021c6f191998fece13b21d567df5 = L.marker(
+                [25.8503257934397, -97.53292783928009],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_54c0021c6f191998fece13b21d567df5.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> RAMON LOPEZ VELARDE<br><strong>Clave:</strong> 28DPR2160D<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0fbd8e41a4ec77bef976fca27f3da0a4 = L.marker(
+                [25.846322078869875, -97.48109615212432],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_0fbd8e41a4ec77bef976fca27f3da0a4.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ORALIA GUERRA DE VILLARREAL<br><strong>Clave:</strong> 28DPR2173H<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7e865f8bf49c72a13cae31ddb9ae26b6 = L.marker(
+                [25.838134753860235, -97.4865520208399],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_7e865f8bf49c72a13cae31ddb9ae26b6.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. ERNESTO GUAJARDO SALINAS<br><strong>Clave:</strong> 28DPR2271I<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c43466b61cdea3c59a839f5728602d11 = L.marker(
+                [25.820422812026333, -97.45577786011998],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_c43466b61cdea3c59a839f5728602d11.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. CRUZ LINO MARQUEZ<br><strong>Clave:</strong> 28DPR2300N<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e2be7ee214b96ee62c97e3ceb49aa56 = L.marker(
+                [25.85632413694574, -97.52659230424862],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_0e2be7ee214b96ee62c97e3ceb49aa56.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROFA. JULIA GARCIA ECHAVARRIA<br><strong>Clave:</strong> 28DPR2300N<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_66eb38416941212831b81467a85fd436 = L.marker(
+                [25.82020825165025, -97.53781113623131],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_66eb38416941212831b81467a85fd436.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. Y LIC. SANTOS VALLE CARDONA<br><strong>Clave:</strong> 28DPR2390W<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_03588b938ed187fd74e1b8c651bfa346 = L.marker(
+                [25.8567509763884, -97.53871542199057],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_03588b938ed187fd74e1b8c651bfa346.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. IGNACIO AGUILAR HERNANDEZ<br><strong>Clave:</strong> 28DPR2391V<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a8cbc20029450660a9108091acf0c976 = L.marker(
+                [25.827292757140075, -97.47809539385328],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_a8cbc20029450660a9108091acf0c976.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> CLUB ROTARIO MATAMOROS NUM. 84<br><strong>Clave:</strong> 28DPR2410T<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_459ea1074f7a189e707121ddfb4adff3 = L.marker(
+                [25.84418134423308, -97.552720203688],
+                { icon: matamorosIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_459ea1074f7a189e707121ddfb4adff3.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> RODOLFO TORRE CANTU<br><strong>Clave:</strong> 28DPR2587G<br><strong>Municipio:</strong> MATAMOROS<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d003daaf797ce27094268c44ba75acf7 = L.marker(
+                [22.26678127, -97.84670241],
+                { icon: negroIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_d003daaf797ce27094268c44ba75acf7.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROFA. MA. GUADALUPE GARCIA GARCIA<br><strong>Clave:</strong> 28DPR0283Z<br><strong>Municipio:</strong> CD. MADERO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_aba79292d729c815f8a2e32e11959fd2 = L.marker(
+                [22.26627837, -97.81585622],
+                { icon: negroIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_aba79292d729c815f8a2e32e11959fd2.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROFA. AURELIA GARCIA RODRIGUEZ<br><strong>Clave:</strong> 28DPR1332Z<br><strong>Municipio:</strong> CD. MADERO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_de8b32ec02de5e66eea3c06a1c3686d3 = L.marker(
+                [22.24839618, -97.83666052],
+                { icon: negroIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_de8b32ec02de5e66eea3c06a1c3686d3.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ARMANDO BARBA<br><strong>Clave:</strong> 28DPR1343E<br><strong>Municipio:</strong> CD. MADERO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_22ff49646a6470432c68938df8ab3544 = L.marker(
+                [22.27651719, -97.83812316],
+                { icon: negroIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_22ff49646a6470432c68938df8ab3544.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> EMILIANO ZAPATA<br><strong>Clave:</strong> 28DPR1412K<br><strong>Municipio:</strong> CD. MADERO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1bae014cc4b2a17e8ed4481a4f16f321 = L.marker(
+                [22.25935875, -97.84980481],
+                { icon: negroIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_1bae014cc4b2a17e8ed4481a4f16f321.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> GERARDO GOMEZ CASTILLO<br><strong>Clave:</strong> 28DPR1414I<br><strong>Municipio:</strong> CD. MADERO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dbffc423fc66fed1f3151656742aca56 = L.marker(
+                [22.30321656, -97.84555324],
+                { icon: negroIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_dbffc423fc66fed1f3151656742aca56.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ARTICULO 3 CONSTITUCIONAL<br><strong>Clave:</strong> 28DPR2045M<br><strong>Municipio:</strong> CD. MADERO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3de25ef9644b4faad7d11015285a5709 = L.marker(
+                [22.29568885, -97.8216019],
+                { icon: negroIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_3de25ef9644b4faad7d11015285a5709.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROFA. JUANA MARIA CABRERA SALINAS<br><strong>Clave:</strong> 28DPR2334D<br><strong>Municipio:</strong> CD. MADERO<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_66c00f6717ade1287fa8ba0486e1da16 = L.marker(
+                [26.07253259, -98.30021881],
+                { icon: reyIcon } 
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_66c00f6717ade1287fa8ba0486e1da16.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ENRIQUE C. REBSAMEN<br><strong>Clave:</strong> 28DPR0085Z<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ef7d540516c6952791290c3a8ad6279 = L.marker(
+                [26.06222489, -98.28998255],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_5ef7d540516c6952791290c3a8ad6279.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> FORD NUM. 16<br><strong>Clave:</strong> 28DPR0754Z<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_97fd065374be0d4c6346a0ba18029061 = L.marker(
+                [26.06245877, -98.3129181],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_97fd065374be0d4c6346a0ba18029061.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> PROF. FRANCISCO NICODEMO<br><strong>Clave:</strong> 28DPR0770R<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5c6fbd65d302cf3ea507b5ae9ad2f4ed = L.marker(
+                [26.090797, -98.27987153],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_5c6fbd65d302cf3ea507b5ae9ad2f4ed.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MIGUEL HIDALGO<br><strong>Clave:</strong> 28DPR0774N<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5dca11002b257f0f7183fca912330c9a = L.marker(
+                [26.14604488, -98.34815524],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_5dca11002b257f0f7183fca912330c9a.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ARTICULO 27 CONSTITUCIONAL<br><strong>Clave:</strong> 28DPR0806P<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8662da0b072031c0ba2e696ef0effc03 = L.marker(
+                [26.07051272, -98.32084586],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_8662da0b072031c0ba2e696ef0effc03.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> FELIPE CARRILLO PUERTO<br><strong>Clave:</strong> 28DPR1403C<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_184ff0b3a58012295a3b92eb203ff1a3 = L.marker(
+                [26.05310939, -98.37875574],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_184ff0b3a58012295a3b92eb203ff1a3.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> EL CHAMIZAL<br><strong>Clave:</strong> 28DPR1427M<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7ef8a5701763562229c6395814acf298 = L.marker(
+                [26.0509989, -98.29787957],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_7ef8a5701763562229c6395814acf298.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> GRAL. EMILIANO ZAPATA<br><strong>Clave:</strong> 28DPR1433X<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0b625447761994a27123152d790c9dc1 = L.marker(
+                [26.06872585, -98.34598395],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_0b625447761994a27123152d790c9dc1.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> IGNACIO MANUEL ALTAMIRANO<br><strong>Clave:</strong> 28DPR1515G<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e3f7a73f2925fabceb0bcaa4e565d460 = L.marker(
+                [26.05389537, -98.37802718],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_e3f7a73f2925fabceb0bcaa4e565d460.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> HEROES DE LA INDEPENDENCIA DE MEXICO<br><strong>Clave:</strong> 28DPR2047K<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1c9b502c4ade78ac521e91f38d30bf13 = L.marker(
+                [26.01716916, -98.26412805],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_1c9b502c4ade78ac521e91f38d30bf13.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> FELIPE ANGELES<br><strong>Clave:</strong> 28DPR2081R<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1547f212d2ce058fbd1c73092793d0c4 = L.marker(
+                [26.03747728, -98.35955164],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_1547f212d2ce058fbd1c73092793d0c4.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> RAUL FLORES GARCIA<br><strong>Clave:</strong> 28DPR2381O<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5540932ea1cf4489f549629441aa2638 = L.marker(
+                [26.007443, -98.244476],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_5540932ea1cf4489f549629441aa2638.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> MOCTEZUMA<br><strong>Clave:</strong> 28DPR2452S<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_57d29ed7dffa3b2c2d0ff1896c557dcd = L.marker(
+                [26.006122, -98.246341],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_57d29ed7dffa3b2c2d0ff1896c557dcd.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> ARQUIMEDES CABALLERO CABALLERO<br><strong>Clave:</strong> 28DPR2481N<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eeefa2c29a775ad82952e37271ef1988 = L.marker(
+                [26.0060771051489, -98.24654573812798],
+                { icon: reyIcon }
+            ).addTo(map_071057efb0be9e6a6d9aaf9a13fba0bc);
+        
+    
+            marker_eeefa2c29a775ad82952e37271ef1988.bindTooltip(
+                `<div>
+                     <strong>Nombre:</strong> JULIAN ERNESTO ZAMORA RIVAS<br><strong>Clave:</strong> 28DPR2504H<br><strong>Municipio:</strong> REYNOSA<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
