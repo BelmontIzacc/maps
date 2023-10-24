@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devide-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-compatible" content="ie=edge">
+    <title>Map Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="/css/maps.css">
+    <link rel="stylesheet" href="/img">
+</head>
+
+<body>
+    <div id="map-template"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+        var map = L.map('map-template').setView([24.549206001525945, -98.5387627734083], 7);
+
+        const tileURL = 'https://b.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        const tileURL2 = 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png';
+
+        const tile = L.tileLayer(tileURL2);
+
+        // Marker
+        const escuelas = <%- JSON.stringify(marks) %>;
+
+        escuelas.forEach(esc => {
+            const configIcon = L.icon({
+                iconUrl: esc.iconUrl,
+                iconSize: esc.iconSize,
+                // iconAnchor: esc.iconAnchor,
+                popupAnchor: esc.popupAnchor
+            });
+            const marker = L.marker(esc.coordenadas, { icon: configIcon }); // [23.72713374, -99.15116719]
+            marker.bindPopup(esc.nombre + ' | ' + esc.municipio);
+            map.addLayer(marker);
+        });
+
+        // Geolocation
+        map.locate({ enableHighAccuracy: true })
+        map.on('locationfound', (e) => {
+            const coords = [e.latlng.lat, e.latlng.lng];
+            const newMarker = L.marker(coords);
+            newMarker.bindPopup('You are Here!');
+            map.addLayer(newMarker);
+            socket.emit('userCoordinates', e.latlng);
+        });
+
+        map.addLayer(tile);
+    </script>
+
+</body>
+
+</html>

@@ -7,6 +7,9 @@ const favicon = require('serve-favicon');
 
 const app = express();
 
+// Establece conexion a base de datos
+const { mongoose } = require('./database');
+
 // favicon
 const faviconPath = path.join(__dirname, '', 'favicon.ico');
 app.use(favicon(faviconPath)); 
