@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dos Columnas con Pie de Página Pegajoso</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        .columna {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        html, body {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="columna">
+            <!-- Contenido de la primera columna -->
+            <h2>Columna 1</h2>
+            <p>Contenido de la primera columna.</p>
+        </div>
+        <div class="columna">
+            <!-- Contenido de la segunda columna -->
+            <h2>Columna 2</h2>
+            <p>Contenido de la segunda columna.</p>
+            <img src="https://raw.githubusercontent.com/BelmontIzacc/rinkupay/main/rinkupay/src/assets/pay.JPG">
+        </div>
+    </div>
+    <footer>
+        <!-- Pie de página -->
+        <p>Derechos de autor © 2023 Tu Empresa</p>
+    </footer>
+</body>
+</html>

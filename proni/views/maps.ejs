@@ -37,7 +37,9 @@
                 popupAnchor: esc.popupAnchor
             });
             const marker = L.marker(esc.coordenadas, { icon: configIcon }); // [23.72713374, -99.15116719]
-            marker.bindPopup(esc.nombre + ' | ' + esc.municipio);
+            const detalle = '<h4 style="margin-bottom: initial; ">'+esc.nombre+'</h4> <small>'+esc.municipio+'</small> <ul> <li>Punto 1</li> <li>Punto 2</li> <li>Punto 3</li> <li>Punto 4</li> <li>Punto 5</li> </ul>' + '<br> <a href="/vsts/proni/' + esc.clave + '">Website</a> ';
+            // marker.bindPopup(esc.nombre + ' | ' + esc.municipio + '<br> <a href="/vsts/proni/' + esc.clave + '">Website</a> ');
+            marker.bindPopup(detalle);
             map.addLayer(marker);
         });
 
