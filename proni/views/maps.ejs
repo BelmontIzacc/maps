@@ -17,13 +17,13 @@
 <body>
 
     <nav class="navbar sticky-top navbar-dark bg-dark">
-        <a class="navbar-brand" href="/vsts/proni">Mapa educativo de evaluaciones de inglés en escuelas primarias</a>
-        <div class="dropleft">
+        <a class="navbar-brand" href="/vsts/proni" style="max-width: 100%; word-wrap: break-word; white-space: normal;">Mapa de evaluaciones de inglés en escuelas primarias</a>
+        <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                data-toggle="dropdown" aria-haspopup="true" data-display="static" aria-expanded="false">
                 <img src="/icon/map.svg" alt="Icono">
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu  dropdown-menu-left dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
                 <button class="dropdown-item btn btn-secondary" id="escuela">Escuelas</button>
                 <button class="dropdown-item btn btn-secondary" id="municipios">Municipios</button>
                 <button class="dropdown-item btn btn-secondary" id="zona">Zona</button>
@@ -34,7 +34,6 @@
     </nav>
 
     <div id="map-template"></div>
-
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
