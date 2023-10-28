@@ -6,7 +6,9 @@ let municipioShema = new Schema({
     'icon': { type: String, required: true },
     'iconSize': { type: Array },
     'iconAnchor': { type: Array },
-    'popupAnchor': { type: Array }
+    'popupAnchor': { type: Array },
+    'feature': {type: Object},
+    'oid': {type: String}
 });
 
 module.exports = mongoose.model('mun', municipioShema); // coleccion , esquema

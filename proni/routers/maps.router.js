@@ -11,6 +11,8 @@ const router = express.Router();
 // import de controlador
 const mapsCtrl = require('../controller/maps.controllers');
 
+// const cargarCtrl = require('../controller/cargardb.controller');
+
 // import de exceptions
 const StandarException = require('../exception/StandarException');
 
@@ -25,8 +27,10 @@ router.get('/proni', async (req, res, next) => {
         next(resultado);
         return;
     }
-    res.render('maps.ejs', { marks: resultado });
+    res.render('maps.ejs', { marks: resultado.karma, statesData: resultado.statesData, zonaData: resultado.zonaData, municipios: resultado.municipios });
 });
+
+// router.get('/init', cargarCtrl.iniciar);
 
 router.get('/proni/:id', async (req, res, next) => {
     const id = req.params.id;

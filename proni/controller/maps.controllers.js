@@ -3,6 +3,7 @@ const mapsCtrl = {};
 // models
 const escuelaModel = require("../model/escuela");
 const municipioModel = require("../model/municipio");
+const zonaModel = require("../model/zona");
 
 // import de exceptions
 const StandarException = require('../exception/StandarException');
@@ -29,6 +30,7 @@ mapsCtrl.home = async (req, res) => {
 mapsCtrl.renderMap = async () => {
     const municipios = await municipioModel.find();
     const escuelas = await escuelaModel.find();
+    const zonas = await zonaModel.find();
 
     if (municipios === undefined || municipios === null || municipios.length === 0) {
         return new StandarException('No existen municipios', codigos.validacionIncorrecta);
@@ -38,9 +40,18 @@ mapsCtrl.renderMap = async () => {
         return new StandarException('No existen escuelas', codigos.validacionIncorrecta);
     }
 
+    const statesData = {
+        "type": "FeatureCollection",
+        "features": []
+    }
+    const zonaData = {
+        "type": "FeatureCollection",
+        "features": []
+    }
     const proni = [];
+
     for (let esc of escuelas) {
-        let mun = municipios.find(data => data._id == esc.MUN);
+        let mun = municipios.find(data => data.oid == esc.oid);
         if (mun !== undefined) {
             proni.push({
                 nombre: esc.nombre,
@@ -50,16 +61,21 @@ mapsCtrl.renderMap = async () => {
                 iconUrl: mun.icon,
                 iconSize: mun.iconSize,
                 iconAnchor: mun.iconAnchor,
-                popupAnchor: mun.popupAnchor
+                popupAnchor: mun.popupAnchor,
+                oid: esc.oid
             });
+            statesData.features.push(mun.feature);
         }
     }
-    return proni;
+    for(let zo of zonas){
+        zonaData.features.push(zo.feature);
+    }
+
+    return { karma: proni, statesData: statesData, zonaData: zonaData, municipios:  municipios};
 }
 
 mapsCtrl.obtenerInforme = async (clave) => {
-    // https://drive.google.com/file/d/1--c_KXOvjKGyasM4Jg9x6gS1Einrvh51/view?usp=sharing
-    const csvURL = 'https://drive.google.com/file/d/1--c_KXOvjKGyasM4Jg9x6gS1Einrvh51';
+    const csvURL = 'https://raw.githubusercontent.com/BelmontIzacc/maps/master/Tula.csv';
 
     // Realiza una solicitud HTTP para obtener el contenido del archivo .csv
     const response = await axios.get(csvURL);
@@ -67,6 +83,7 @@ mapsCtrl.obtenerInforme = async (clave) => {
     if (response.status === 200) {
         // Convierte el contenido del .csv a un array de objetos JSON
         const jsonData = await csv().fromString(response.data);
+        console.log(jsonData);
         return jsonData
     }
     return true;
