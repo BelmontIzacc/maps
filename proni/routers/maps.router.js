@@ -19,9 +19,9 @@ const StandarException = require('../exception/StandarException');
 // rutas
 
 // mapas
-router.get('/', mapsCtrl.home);
+// router.get('/', mapsCtrl.home);
 
-router.get('/proni', async (req, res, next) => {
+router.get('/vaneSoftecSolutions', async (req, res, next) => {
     const resultado = await mapsCtrl.renderMap();
     if (resultado instanceof StandarException) {
         next(resultado);
