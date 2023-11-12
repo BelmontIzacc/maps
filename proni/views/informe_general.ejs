@@ -61,89 +61,27 @@
 </head>
 
 <body>
-    <div class="pos-f-t sticky-top">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4" style="color: white;">
-                <h7 class="text-white h4"><%- detalle %></h7>
-                <div class="cTop">
-                    <div class="coltop">
-                        <h6><%- top.name %></h6>
-                        <% if (tipo == 'escuela') { %>
-                            <b><%- top.zona %></b>
-                        <% } %>
-
-                        <% if (tipo == 'municipio') { %>
-                            Mejor escuela de la zona<br /> <b><%- top.mejorEscuela %></b>
-                        <% } %>
-                    </div>
-
-                    <div class="coltop">
-                        Detalles
-                        <br />
-                        Escuelas: <b><%- top.noEscuelas %></b><br />
-                        Alumnos: <b><%- top.noAlumnos %></b><br />
-                        Niñas: <b><%- top.generos.girls %></b><br />
-                        Niños: <b><%- top.generos.boys %></b>
-                    </div>
-                
-                    <div class="coltop">
-                        <br> Secciones <br />
-                        Mejor: <b><%- top.topSeccion.mejor %></b><br />
-                        Peor: <b><%- top.topSeccion.peor %></b>
-                    </div>
-                </div>
-
-                <% if (topMunicipio != 0 ) { %> 
-                    <h7 class="text-white h4">Detalle del municipio</h7>
-                    <div class="cTop">
-                        <div class="coltop">
-                            <h6><%- topMunicipio.name %></h6>
-                        </div>
-
-                        <div class="coltop">
-                            Detalles
-                            <br />
-                            Escuelas: <b><%- topMunicipio.noEscuelas %></b><br />
-                            Alumnos: <b><%- topMunicipio.noAlumnos %></b><br />
-                            Niñas: <b><%- topMunicipio.generos.girls %></b><br />
-                            Niños: <b><%- topMunicipio.generos.boys %></b>
-                        </div>
-                    
-                        <div class="coltop">
-                            <br> Secciones <br />
-                            Mejor: <b><%- topMunicipio.topSeccion.mejor %></b><br />
-                            Peor: <b><%- topMunicipio.topSeccion.peor %></b>
-                        </div>
-                    </div>
-                <% } %>
-
-            </div>
-        </div>
-        <nav class="navbar navbar-dark bg-dark">
-            <span class="navbar-text">
-                <% if (tipo == 'municipio') { %>
-                    Municipio: <%- titulo %>
-                <% } %>
-
-                <% if (tipo == 'escuela') { %>
-                    Escuela: <%- titulo %>
-                <% } %>
-
-                <% if (tipo == 'zona') { %>
-                    <%- titulo %>
-                <% } %>
-            </span>
-            <a href="/vsts/vaneSoftecSolutions" class="btn btn-secondary" type="button"
+    <nav class="navbar sticky-top navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="/vsts/vaneSoftecSolutions" style="max-width: 100%; word-wrap: break-word; white-space: normal;"><%= titulo %></a>
+        <div>
+            <button class="btn btn-secondary" type="button"
                aria-haspopup="true" data-display="static">
-                <img src="/icon/left.svg" alt="Icono">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <img src="/icon/search.svg" alt="Buscar" width="25px"> Buscar
             </button>
-        </nav>
-    </div>
+            <button class="btn btn-secondary" type="button"
+               aria-haspopup="true" data-display="static" onclick="general('detalles')">
+                <img src="/icon/general.svg" alt="Buscar" width="25px"> General
+            </button>
+            <button class="btn btn-secondary" type="button"
+                aria-haspopup="true" data-display="static" onclick="general('zona')">
+                    <img src="/icon/zona.svg" alt="Zona" width="25px"> Zona
+            </button> 
+            <button class="btn btn-secondary" type="button"
+                aria-haspopup="true" data-display="static" onclick="general('municipio')">
+                    <img src="/icon/municipio.svg" alt="Municipio" width="25px"> Municipio
+            </button>
+        </div>
+    </nav>
 
     <div class="container">
         <div class="columna">
@@ -152,39 +90,38 @@
             <p>Las tablas presentan los datos que sirvieron como base para la creación de las gráficas. 
                 Estas tablas actúan como la fuente primaria de información cuantitativa, proporcionando detalles específicos sobre cada variable medida. Cada celda en las tablas representa un punto de datos específico. 
                 Mientras que las gráficas ofrecen una visualización más intuitiva, las tablas respaldan y detallan los valores cuantitativos que respaldan las representaciones visuales.</p>
-            <div class="contenido" style="text-align: -webkit-center;">
-                <% tablas.forEach(function(tlb, indexTlb){ %>
-                    <section>
-                        <h6 style="text-align: left;">Tabla <%= indexTlb + 1%> : <a class="enlace-descarga" onclick="descargarCSV('<%= linkTablas[indexTlb] %>', <%= indexTlb %>)">Ver CSV</a>
-                        </h6> 
+                <div class="contenido" style="text-align: -webkit-center;">
+                    <% tablas.forEach(function(tlb, indexTlb){ %>
+                      <section>
+                        <h6 style="text-align: left;">Tabla <%= indexTlb + 1%> : <a class="enlace-descarga" onclick="descargarCSV('<%= linkTablas[indexTlb] %>', <%= indexTlb %>)">Ver CSV</a></h6> 
                         <div style="overflow-x: auto; max-width: 400px;"> <!-- Establece un ancho máximo para la tabla y permite el desplazamiento horizontal -->
-                            <table border="1" style="width: 100%;"> <!-- Hace que la tabla ocupe el 100% del ancho del contenedor -->
-                              <thead>
+                          <table border="1" style="width: 100%;"> <!-- Hace que la tabla ocupe el 100% del ancho del contenedor -->
+                            <thead>
+                              <tr>
+                                <% cabezeras[indexTlb].forEach(function(cbz) { %>
+                                  <th style="width: auto;"> <!-- Puedes ajustar el ancho de las columnas según sea necesario -->
+                                    <%= cbz %>
+                                  </th>
+                                <% }); %>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% tlb.forEach(function(dato) { %>
                                 <tr>
                                   <% cabezeras[indexTlb].forEach(function(cbz) { %>
-                                    <th style="width: auto;"> <!-- Puedes ajustar el ancho de las columnas según sea necesario -->
-                                      <%= cbz %>
-                                    </th>
+                                    <td>
+                                      <%= dato[cbz] || '0' %>
+                                    </td>
                                   <% }); %>
                                 </tr>
-                              </thead>
-                              <tbody>
-                                <% tlb.forEach(function(dato) { %>
-                                  <tr>
-                                    <% cabezeras[indexTlb].forEach(function(cbz) { %>
-                                      <td>
-                                        <%= dato[cbz] || '0' %>
-                                      </td>
-                                    <% }); %>
-                                  </tr>
-                                <% }); %>
-                              </tbody>
-                            </table>
-                          </div>
-                    </section>
-                    <br>
+                              <% }); %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                      <br>
                     <% }); %>
-            </div>
+                  </div>                  
         </div>
 
         <div class="columna">
@@ -246,6 +183,19 @@
             enlaceTemporal.click();
             document.body.removeChild(enlaceTemporal);
         }
+        </script>
+        <script>
+            function general(area) {
+                let url = '/vsts/proni/general/'+area
+                // Crear un enlace temporal
+                let enlaceTemporal = document.createElement('a');
+                enlaceTemporal.href = url;
+    
+                // Simular clic en el enlace para iniciar la descarga
+                document.body.appendChild(enlaceTemporal);
+                enlaceTemporal.click();
+                document.body.removeChild(enlaceTemporal);
+            }
         </script>
 </body>
 

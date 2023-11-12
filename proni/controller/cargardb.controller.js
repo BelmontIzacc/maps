@@ -5,16 +5,37 @@ const escuelaModel = require("../model/escuela");
 const municipioModel = require("../model/municipio");
 const zonaModel = require("../model/zona");
 
+// import para manejo de archivos
+const csv = require('csvtojson');
+
+// import para peticion http
+const axios = require('axios');
+
 estanciarCtrl.iniciar = async (req, res) => {
     await iniciarMunicipio();
     await iniciarEscuelas();
     await iniciarZona();
-    res.json({status: true});
+    res.json({ status: true });
+}
+
+estanciarCtrl.features = async (req, res) => {
+    const escuelas = await escuelaModel.find();
+    const csvEscuela = 'https://raw.githubusercontent.com/BelmontIzacc/maps_datos/master/Informacion_general/escuelas.csv';
+    const csvMun = 'https://raw.githubusercontent.com/BelmontIzacc/maps_datos/master/Informacion_general/municipios.csv';
+
+    const response = await axios.get(csvEscuela);
+    if (response.status === 200) {
+        const jsonData = await csv().fromString(response.data);
+        // console.log(jsonData);
+        /*for (let esc of escuelas) {
+            
+        }*/
+    }
 }
 
 iniciarMunicipio = async () => {
     let mun = new municipioModel();
-    mun.nombre = "CD. VICTORIA";
+    mun.nombre = "Cd. Victoria";
     mun.icon = "/img/verde.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -23,6 +44,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "1",
             "name": "CD. VICTORIA",
             "zona": "Zona B",
             "noEscuelas": 100,
@@ -59,7 +81,7 @@ iniciarMunicipio = async () => {
     await mun.save();
 
     mun = new municipioModel();
-    mun.nombre = "TULA";
+    mun.nombre = "Tula";
     mun.icon = "/img/rojo.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -68,6 +90,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "2",
             "name": "TULA",
             "zona": "Zona C",
             "noEscuelas": 50,
@@ -103,7 +126,7 @@ iniciarMunicipio = async () => {
     await mun.save();
 
     mun = new municipioModel();
-    mun.nombre = "SOTO LA MARINA";
+    mun.nombre = "Soto La Marina";
     mun.icon = "/img/azul.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -112,6 +135,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "3",
             "name": "SOTO LA MARINA",
             "zona": "Zona B",
             "noEscuelas": 10,
@@ -146,7 +170,7 @@ iniciarMunicipio = async () => {
     await mun.save();
 
     mun = new municipioModel();
-    mun.nombre = "PADILLA";
+    mun.nombre = "Padilla";
     mun.icon = "/img/beige.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -155,6 +179,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "4",
             "name": "PADILLA",
             "zona": "Zona B",
             "noEscuelas": 600,
@@ -195,7 +220,7 @@ iniciarMunicipio = async () => {
     await mun.save();
 
     mun = new municipioModel();
-    mun.nombre = "TAMPICO";
+    mun.nombre = "Tampico";
     mun.icon = "/img/nazul.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -204,6 +229,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "5",
             "name": "TAMPICO",
             "zona": "Zona C",
             "noEscuelas": 120,
@@ -234,7 +260,7 @@ iniciarMunicipio = async () => {
     await mun.save();
 
     mun = new municipioModel();
-    mun.nombre = "RIO BRAVO";
+    mun.nombre = "Rio Bravo";
     mun.icon = "/img/cverde.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -243,6 +269,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "6",
             "name": "RIO BRAVO",
             "zona": "Zona A",
             "noEscuelas": 999,
@@ -282,7 +309,7 @@ iniciarMunicipio = async () => {
     await mun.save();
 
     mun = new municipioModel();
-    mun.nombre = "NVO. LAREDO";
+    mun.nombre = "Nvo. Laredo";
     mun.icon = "/img/bandera.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -291,6 +318,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "7",
             "name": "NVO. LAREDO",
             "zona": "Zona A",
             "noEscuelas": 1000,
@@ -324,7 +352,7 @@ iniciarMunicipio = async () => {
     await mun.save();
 
     mun = new municipioModel();
-    mun.nombre = "ALTAMIRA";
+    mun.nombre = "Altamira";
     mun.icon = "/img/alta.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -333,6 +361,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "8",
             "name": "ALTAMIRA",
             "zona": "Zona C",
             "noEscuelas": 100,
@@ -375,7 +404,7 @@ iniciarMunicipio = async () => {
     await mun.save();
 
     mun = new municipioModel();
-    mun.nombre = "MATAMOROS";
+    mun.nombre = "Matamoros";
     mun.icon = "/img/matamoros.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -384,6 +413,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "9",
             "name": "MATAMOROS",
             "zona": "Zona A",
             "noEscuelas": 99,
@@ -420,7 +450,7 @@ iniciarMunicipio = async () => {
     await mun.save();
 
     mun = new municipioModel();
-    mun.nombre = "CD. MADERO";
+    mun.nombre = "Cd. Madero";
     mun.icon = "/img/negro.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -429,6 +459,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "10",
             "name": "CD. MADERO",
             "zona": "Zona C",
             "noEscuelas": 11,
@@ -459,7 +490,7 @@ iniciarMunicipio = async () => {
     await mun.save();
 
     mun = new municipioModel();
-    mun.nombre = "REYNOSA";
+    mun.nombre = "Reynosa";
     mun.icon = "/img/reynosa.png";
     mun.iconSize = [35, 45];
     mun.iconAnchor = [22, 94];
@@ -468,6 +499,7 @@ iniciarMunicipio = async () => {
     mun.feature = {
         "type": "Feature",
         "properties": {
+            "oid": "11",
             "name": "REYNOSA",
             "zona": "Zona A",
             "noEscuelas": 890,
@@ -1152,7 +1184,7 @@ iniciarZona = async () => {
     zona.nombre = "Zona A";
     zona.oid = [
         7, 11, 6, 9
-    ]
+    ];
     zona.feature = {
         "type": "Feature",
         "properties": {
@@ -1168,7 +1200,10 @@ iniciarZona = async () => {
             "generos": {
                 "girls": 5010,
                 "boys": 3510
-            }
+            },
+            "oid": [
+                7, 11, 6, 9
+            ]
         },
         "geometry": {
             "type": "Polygon",
@@ -1192,7 +1227,7 @@ iniciarZona = async () => {
     zona.nombre = "Zona B";
     zona.oid = [
         4, 1, 3
-    ]
+    ];
     zona.feature = {
         "type": "Feature",
         "properties": {
@@ -1208,7 +1243,10 @@ iniciarZona = async () => {
             "generos": {
                 "girls": 5510,
                 "boys": 3510
-            }
+            },
+            "oid": [
+                4, 1, 3
+            ]
         },
         "geometry": {
             "type": "Polygon",
@@ -1230,7 +1268,7 @@ iniciarZona = async () => {
     zona.nombre = "Zona C";
     zona.oid = [
         2, 10, 5, 8
-    ]
+    ];
     zona.feature = {
         "type": "Feature",
         "properties": {
@@ -1246,7 +1284,10 @@ iniciarZona = async () => {
             "generos": {
                 "girls": 510,
                 "boys": 3510
-            }
+            },
+            "oid": [
+                2, 10, 5, 8
+            ]
         },
         "geometry": {
             "type": "Polygon",

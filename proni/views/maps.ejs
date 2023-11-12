@@ -17,7 +17,25 @@
 <body>
 
     <nav class="navbar sticky-top navbar-dark bg-dark">
-        <a class="navbar-brand" href="/vsts/proni" style="max-width: 100%; word-wrap: break-word; white-space: normal;">Mapa de evaluaciones de inglés en escuelas primarias</a>
+        <a class="navbar-brand" href="/vsts/vaneSoftecSolutions" style="max-width: 100%; word-wrap: break-word; white-space: normal;">Mapa de evaluaciones de inglés en escuelas primarias</a>
+        <div>
+            <button class="btn btn-secondary" type="button"
+               aria-haspopup="true" data-display="static">
+                <img src="/icon/search.svg" alt="Buscar" width="25px"> Buscar
+            </button>
+            <button class="btn btn-secondary" type="button"
+               aria-haspopup="true" data-display="static" onclick="general('detalles')">
+                <img src="/icon/general.svg" alt="Buscar" width="25px"> General
+            </button>
+            <button class="btn btn-secondary" type="button"
+                aria-haspopup="true" data-display="static" onclick="general('zona')">
+                    <img src="/icon/zona.svg" alt="Zona" width="25px"> Zona
+            </button> 
+            <button class="btn btn-secondary" type="button"
+                aria-haspopup="true" data-display="static" onclick="general('municipio')">
+                    <img src="/icon/municipio.svg" alt="Municipio" width="25px"> Municipio
+            </button>
+        </div>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" data-display="static" aria-expanded="false">
@@ -79,7 +97,7 @@
                         popupAnchor: esc.popupAnchor
                     });
                     const marker = L.marker(esc.coordenadas, { icon: configIcon }); // [23.72713374, -99.15116719]
-                    const detalle = '<h5 style="margin-bottom: initial; ">' + esc.nombre + '</h5> <small>' + esc.municipio + '</small> <ul> <li>Punto 1</li> <li>Punto 2</li> <li>Punto 3</li> <li>Punto 4</li> <li>Punto 5</li> </ul>' + '<br> <a href="/vsts/proni/' + esc.clave + '">Website</a> ';
+                    const detalle = '<h5 style="margin-bottom: initial; ">' + esc.nombre + '</h5> <small>' + esc.municipio + '</small> <ul> <li>Punto 1</li> <li>Punto 2</li> <li>Punto 3</li> <li>Punto 4</li> <li>Punto 5</li> </ul>' + '<br> <a href="/vsts/proni/escuela/' + esc.oid + '/' + esc.clave + '">Detalles</a> ';
                     // marker.bindPopup(esc.nombre + ' | ' + esc.municipio + '<br> <a href="/vsts/proni/' + esc.clave + '">Website</a> ');
                     marker.bindPopup(detalle);
                     marker.on('click', function() {
@@ -129,7 +147,7 @@
                     "<br> Secciones " + ' <br />' +
                     "Mejor: <b>"+ props.topSeccion.mejor + '</b><br />' + 
                     "Peor: <b>"+ props.topSeccion.peor + '</b> <br>' +
-                    '<br> <a href="/vsts/proni/' + "#" + '">Website</a> ';
+                    '<br> <a href="/vsts/proni/municipio/' + props.oid + '/0">Detalles</a> ';
                 } else {
                     this._div.innerHTML = '<h4>' + "Zona &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + '</h4>' +
                     '<b>' + props.name + '</b><br /><br />' + 
@@ -143,7 +161,7 @@
                     "<br> Secciones " + ' <br />' +
                     "Mejor: <b>"+ props.topSeccion.mejor + '</b><br />' + 
                     "Peor: <b>"+ props.topSeccion.peor+ '</b> <br>' +
-                    '<br> <a href="/vsts/proni/' + "#" + '">Website</a> ';
+                    '<br> <a href="/vsts/proni/zona/' + props.name + '/0">Detalles</a> ';
                 }
             } else {
                 this._div.innerHTML = 'Coloca el cursor sobre una zona o municipio';
@@ -278,6 +296,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <script>
+        function general(area) {
+            let url = 'proni/general/'+area
+            // Crear un enlace temporal
+            let enlaceTemporal = document.createElement('a');
+            enlaceTemporal.href = url;
+
+            // Simular clic en el enlace para iniciar la descarga
+            document.body.appendChild(enlaceTemporal);
+            enlaceTemporal.click();
+            document.body.removeChild(enlaceTemporal);
+        }
+        </script>
 </body>
 
 </html>
