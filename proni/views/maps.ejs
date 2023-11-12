@@ -12,6 +12,24 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/maps.css">
     <link rel="stylesheet" href="/img">
+
+    <style>
+        /* Estilo para el cuerpo de la tabla con desbordamiento y altura máxima */
+        #tablaResultados {
+            max-height: 300px; /* Ajusta el valor según tus necesidades */
+            overflow-y: auto;  /* Agrega la barra de desplazamiento vertical si es necesario */
+        }
+
+        /* Otras reglas de estilo para la tabla si las necesitas */
+        table {
+            width: 100%;
+            /* Agrega otros estilos según tus necesidades */
+        }
+        .list-group-item:hover {
+            background-color: #3b3838; /* Cambia el color al pasar el mouse */
+            color: #fff; /* Cambia el color del texto al pasar el mouse */
+        }
+    </style>
 </head>
 
 <body>
@@ -20,7 +38,7 @@
         <a class="navbar-brand" href="/vsts/vaneSoftecSolutions" style="max-width: 100%; word-wrap: break-word; white-space: normal;">Mapa de evaluaciones de inglés en escuelas primarias</a>
         <div>
             <button class="btn btn-secondary" type="button"
-               aria-haspopup="true" data-display="static">
+               aria-haspopup="true" data-display="static" data-toggle="modal" data-target="#exampleModalCenter">
                 <img src="/icon/search.svg" alt="Buscar" width="25px"> Buscar
             </button>
             <button class="btn btn-secondary" type="button"
@@ -52,6 +70,43 @@
     </nav>
 
     <div id="map-template"></div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Buscar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body table-responsive">
+                <form class="form-inline">
+                    <label class="sr-only" for="inlineFormInputName2">Name</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Cd. Victoria">
+                </form>
+                <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">
+                            
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <div class="list-group" id="tablaResultados">
+
+                        </div>
+                    </tbody>
+                  </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -309,7 +364,98 @@
             enlaceTemporal.click();
             document.body.removeChild(enlaceTemporal);
         }
-        </script>
+    </script>
+
+    <script>
+        // Espera a que el DOM esté listo
+        $(document).ready(function () {
+            // Selecciona el elemento de entrada por su ID
+            var tablaResultados = $('#tablaResultados');
+            var inputElement = $('#inlineFormInputName2');
+            const elementos = <%- JSON.stringify(buscar) %>;
+
+            // Agrega un controlador de eventos para el evento 'input'
+            inputElement.on('input', function () {
+                // Obtiene el valor actual del input
+                var inputValue = $(this).val();
+
+                console.log(inputValue);
+                const inputValueLower = inputValue.toLowerCase();
+                const filtrado = elementos.filter(data => data.nombre.toLowerCase().includes(inputValueLower));
+                console.log(filtrado);
+                
+                tablaResultados.empty();
+
+                // Muestra los resultados en la tabla
+                mostrarResultadosEnTabla(filtrado);
+            });
+
+            function mostrarResultadosEnTabla(filtrado) {
+                // Itera sobre los resultados y agrega filas a la tabla
+                filtrado.forEach(function (item) {
+                    var fila = $('<tr>');
+                    var celda = $('<td>');
+
+                    // Contenido del enlace
+                    var contenidoEnlace = $('<div>')
+                        .addClass('d-flex w-100 justify-content-between')
+                        .append($('<h6>').addClass('mb-1').text(''+item.nombre));
+                        // .append($('<small>').text('3 days ago'));
+
+                    // Crea el enlace y otros elementos dentro de la celda
+                    var enlace = $('<a>')
+                        .attr('href', '')
+                        .addClass('list-group-item list-group-item-action')
+                        .css({
+                            'width': '100%'
+                        });
+                    // Agrega el contenido del enlace a la celda
+                    enlace.append(contenidoEnlace);
+
+                    // Más contenido del enlace
+                    if(item.tipo == 0){
+                        // municipio
+                        enlace.attr('href', "/vsts/proni/municipio/"+ item.oid + "/0");
+                        enlace.append($('<p>').addClass('mb-1').html('<strong>Zona:</strong> ' + item.zona));
+                        enlace.append($('<p>').addClass('mb-1').html('<strong>Numero de escuelas:</strong> ' + item.noEscuelas));
+                        enlace.append($('<p>').addClass('mb-1').html('<strong>Numero total de alumnos:</strong> ' + item.noAlumnos));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Niñas:</strong> ' + item.generoM));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Niños:</strong> ' + item.generoH));
+
+                        enlace.append($('<p>').addClass('mb-1').html('<strong>Seccion</strong>'));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Mejor:</strong> ' + item.topSeccionM));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Peor:</strong> ' + item.topSeccionP));
+                    }
+                    if(item.tipo == 2){
+                        // zona
+                        enlace.attr('href', "/vsts/proni/zona/"+ item.name + "/0");
+                        enlace.append($('<p>').addClass('mb-1').html('<strong>Mejor escuela de la zona:</strong> ' + item.mejorEscuela));
+                        enlace.append($('<p>').addClass('mb-1').html('<strong>Numero de municipios:</strong> ' + item.noMunicipios));
+                        enlace.append($('<p>').addClass('mb-1').html('<strong>Numero de escuelas:</strong> ' + item.noEscuelas));
+                        enlace.append($('<p>').addClass('mb-1').html('<strong>Numero total de alumnos:</strong> ' + item.noAlumnos));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Niñas:</strong> ' + item.generoM));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Niños:</strong> ' + item.generoH));
+
+                        enlace.append($('<p>').addClass('mb-1').html('<strong>Seccion</strong>'));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Mejor:</strong> ' + item.topSeccionM));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Peor:</strong> ' + item.topSeccionP));
+                    }
+                    if(item.clave != ""){
+                        enlace.attr('href', "/vsts/proni/escuela/" + item.oid + "/" + item.clave + "");
+                        enlace.append($('<small>').text(''+ item.clave));
+                    }
+
+                    // Agrega el enlace a la celda
+                    celda.append(enlace);
+
+                    // Agrega la celda a la fila y la fila a la tabla
+                    fila.append(celda);
+                    tablaResultados.append(fila);
+                });
+            }
+
+        });
+    </script>
 </body>
 
 </html>

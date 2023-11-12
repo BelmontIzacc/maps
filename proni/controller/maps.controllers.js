@@ -74,7 +74,53 @@ mapsCtrl.renderMap = async () => {
         zonaData.features.push(zo.feature);
     }
 
-    return { karma: proni, statesData: statesData, zonaData: zonaData, municipios: municipios };
+    let buscar = [];
+    for(let mun of municipios){
+        buscar.push({
+            nombre: mun.nombre,
+            oid: mun.oid,
+            clave: "",
+            tipo: 0,
+            zona: mun.feature.properties.zona,
+            noEscuelas: mun.feature.properties.noEscuelas,
+            noAlumnos: mun.feature.properties.noAlumnos,
+            topSeccionM: mun.feature.properties.topSeccion.mejor,
+            topSeccionP: mun.feature.properties.topSeccion.peor,
+            generoM: mun.feature.properties.generos.girls,
+            generoH: mun.feature.properties.generos.boys,
+        });
+    }
+
+    for(let esc of escuelas){
+        buscar.push({
+            nombre: esc.nombre,
+            oid: esc.oid,
+            clave: esc.clave,
+            tipo: 1
+        });
+    }
+
+    for(let zon of zonas){
+        buscar.push({
+            nombre: zon.nombre,
+            name: zon.feature.properties.name,
+            oid: zon.oid,
+            clave: "",
+            tipo: 2,
+            noEscuelas: zon.feature.properties.noEscuelas,
+            noAlumnos: zon.feature.properties.noAlumnos,
+            topSeccionM: zon.feature.properties.topSeccion.mejor,
+            topSeccionP: zon.feature.properties.topSeccion.peor,
+            generoM: zon.feature.properties.generos.girls,
+            generoH: zon.feature.properties.generos.boys,
+            mejorEscuela: zon.feature.properties.mejorEscuela,
+            noMunicipios: zon.feature.properties.noMunicipios
+        });
+    }
+
+    buscar = buscar.sort(compararPorNombre);
+
+    return { karma: proni, statesData: statesData, zonaData: zonaData, municipios: municipios, buscar: buscar };
 }
 
 mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
@@ -215,7 +261,7 @@ mapsCtrl.obtenerInformeGeneral = async (tipo) => {
         tablas = elementos.tablas;
         cabezeras = elementos.cabezeras;
         linkTablas = elementos.linkTablas;
-        titulo = "Detalles generales de municipios";
+        titulo = "Detalles generales de zonas";
     } else if(tipo == 'detalles'){
         const buscarImg = ["_1.png", "_2.png", "_3.png", "_4.png"];
         const buscarCsv = ["_1.csv", "_2.csv", "_3.csv", "_4.csv"];
@@ -289,6 +335,20 @@ recuperarElementos = async (buscarImg, buscarCsv, tipo, nombre) => {
     }
 
     return { imagenes, tablas, cabezeras, linkTablas }
+}
+
+// Función de comparación para ordenar por el campo "nombre"
+compararPorNombre = (a, b) => {
+    const nombreA = a.nombre.toUpperCase(); // Convierte a mayúsculas para ordenar sin distinguir mayúsculas de minúsculas
+    const nombreB = b.nombre.toUpperCase();
+
+    if (nombreA < nombreB) {
+        return -1;
+    }
+    if (nombreA > nombreB) {
+        return 1;
+    }
+    return 0; // Nombres son iguales
 }
 
 module.exports = mapsCtrl;

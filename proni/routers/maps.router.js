@@ -27,7 +27,7 @@ router.get('/vaneSoftecSolutions', async (req, res, next) => {
         next(resultado);
         return;
     }
-    res.render('maps.ejs', { marks: resultado.karma, statesData: resultado.statesData, zonaData: resultado.zonaData, municipios: resultado.municipios });
+    res.render('maps.ejs', { marks: resultado.karma, statesData: resultado.statesData, zonaData: resultado.zonaData, municipios: resultado.municipios, buscar: resultado.buscar });
 });
 
 router.get('/init', cargarCtrl.features);
