@@ -152,7 +152,15 @@
                         popupAnchor: esc.popupAnchor
                     });
                     const marker = L.marker(esc.coordenadas, { icon: configIcon }); // [23.72713374, -99.15116719]
-                    const detalle = '<h5 style="margin-bottom: initial; ">' + esc.nombre + '</h5> <small>' + esc.municipio + '</small> <ul> <li>Punto 1</li> <li>Punto 2</li> <li>Punto 3</li> <li>Punto 4</li> <li>Punto 5</li> </ul>' + '<br> <a href="/vsts/proni/escuela/' + esc.oid + '/' + esc.clave + '">Detalles</a> ';
+                    const detalle = '<h5 style="margin-bottom: initial; ">' + esc.nombre + 
+                        '</h5> <small>' + esc.municipio + 
+                            '</small> <br> Detalles <ul> <li>Estudiantes: ' + esc.noEstudiantes +
+                                '</li> <li>Mejor sección: ' + esc.mejorSeccion + 
+                                    '</li> <li>Peor sección: ' + esc.peorSeccion + 
+                                        '</li></ul>' + 'Promedio de calificaciónes<br>' + '<ul> <li>Reading/Writing: ' + esc.reading + 
+                                            '</li> <li>Speaking: ' + esc.speaking +
+                                                '</li> <li>listening: ' + esc.listen + '</li> </ul>' +
+                            '<br> <a href="/vsts/proni/escuela/' + esc.oid + '/' + esc.clave + '">Detalles</a> ';
                     // marker.bindPopup(esc.nombre + ' | ' + esc.municipio + '<br> <a href="/vsts/proni/' + esc.clave + '">Website</a> ');
                     marker.bindPopup(detalle);
                     marker.on('click', function() {
@@ -194,28 +202,39 @@
                 if (props.zona) {
                     this._div.innerHTML = '<h4>' + props.name + '</h4>' +
                     '<b>' + props.zona + '</b><br /><br />' +
-                    "Cantidad " + '<br />' +
-                    "Escuelas: <b>"+ props.noEscuelas + '</b><br />' + 
-                    "Alumnos: <b>"+ props.noAlumnos + '</b><br />' + 
-                    "Niñas: <b>"+ props.generos.girls + '</b><br />' + 
-                    "Niños: <b>"+ props.generos.boys + '</b><br />' + 
+                    "Mejor escuela <br><b>" + props.best_school + "</b>" +
+                    "<br><br>Peor escuela <br><b>" + props.worst_school + "</b>" +
+                    "<br><br>Detalles " + '<br />' +
+                    " - Escuelas: <b>"+ props.noEscuelas + '</b><br />' + 
+                    " - Alumnos: <b>"+ props.noAlumnos + '</b><br />' + 
+                    " - Niñas: <b>"+ props.generos.girls + '</b><br />' + 
+                    " - Niños: <b>"+ props.generos.boys + '</b><br />' + 
                     "<br> Secciones " + ' <br />' +
-                    "Mejor: <b>"+ props.topSeccion.mejor + '</b><br />' + 
-                    "Peor: <b>"+ props.topSeccion.peor + '</b> <br>' +
+                    " - Mejor: <b>"+ props.topSeccion.mejor + '</b><br />' + 
+                    " - Peor: <b>"+ props.topSeccion.peor + '</b> <br>' +
+                    "<br> Promedio de calificaciónes " + ' <br />' +
+                    " - Reading/Writing: <b>"+ props.qualification_reading + '</b><br />' + 
+                    " - Speaking: <b>"+ props.qualification_speaking + '</b> <br>' +
+                    " - listening: <b>" + props.qualification_listening + '</b> <br>' +
                     '<br> <a href="/vsts/proni/municipio/' + props.oid + '/0">Detalles</a> ';
                 } else {
                     this._div.innerHTML = '<h4>' + "Zona &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + '</h4>' +
                     '<b>' + props.name + '</b><br /><br />' + 
-                    "Mejor escuela <br /><b>"+ props.mejorEscuela + '</b><br />' +
-                    "<br> Cantidad " + ' <br />' +
-                    "Escuelas: <b>"+ props.noEscuelas + '</b><br />' + 
-                    "Alumnos: <b>"+ props.noAlumnos + '</b><br />' + 
-                    "Municipios: <b>"+ props.noMunicipios + '</b><br />' +
-                    "Niñas: <b>"+ props.generos.girls + '</b><br />' + 
-                    "Niños: <b>"+ props.generos.boys + '</b><br />' + 
+                    "Mejor escuela <br><b>" + props.best_school + "</b>" +
+                    "<br><br>Peor escuela <br><b>" + props.worst_school + "</b>" +
+                    "<br><br>Detalles " + '<br />' +
+                    " - Escuelas: <b>"+ props.noEscuelas + '</b><br />' + 
+                    " - Alumnos: <b>"+ props.noAlumnos + '</b><br />' + 
+                    " - Municipios: <b>"+ props.noMunicipios + '</b><br />' +
+                    " - Niñas: <b>"+ props.generos.girls + '</b><br />' + 
+                    " - Niños: <b>"+ props.generos.boys + '</b><br />' + 
                     "<br> Secciones " + ' <br />' +
-                    "Mejor: <b>"+ props.topSeccion.mejor + '</b><br />' + 
-                    "Peor: <b>"+ props.topSeccion.peor+ '</b> <br>' +
+                    " - Mejor: <b>"+ props.topSeccion.mejor + '</b><br />' + 
+                    " - Peor: <b>"+ props.topSeccion.peor+ '</b> <br>' +
+                    "<br> Promedio de calificaciónes " + ' <br />' +
+                    " - Reading/Writing: <b>"+ props.qualification_reading + '</b><br />' + 
+                    " - Speaking: <b>"+ props.qualification_speaking + '</b> <br>' +
+                    " - listening: <b>" + props.qualification_listening + '</b> <br>' +
                     '<br> <a href="/vsts/proni/zona/' + props.name + '/0">Detalles</a> ';
                 }
             } else {
@@ -226,17 +245,17 @@
         info.addTo(map);
 
         function getColor(d) {
-            return d == 'CD. VICTORIA' ? '#1976D2' :
-                d == 'TULA' ? '#3F51B5' :
-                    d == 'PADILLA' ? '#FF5722' :
-                        d == 'SOTO LA MARINA' ? '#009688' :
-                            d == 'ALTAMIRA' ? '#60D394' :
-                                d == 'TAMPICO' ? '#45CCB3' :
-                                    d == 'CD. MADERO' ? '#33FF57' :
-                                        d == 'MATAMOROS' ? '#FFFF00' :
-                                            d == 'RIO BRAVO' ? '#333333' :
-                                                d == 'REYNOSA' ? '#E74C3C' :
-                                                    d == 'NVO. LAREDO' ? '#7E349D' :
+            return d == 'Cd. Victoria' ? '#1976D2' :
+                d == 'Tula' ? '#3F51B5' :
+                    d == 'Padilla' ? '#FF5722' :
+                        d == 'Soto La Marina' ? '#009688' :
+                            d == 'Altamira' ? '#60D394' :
+                                d == 'Tampico' ? '#45CCB3' :
+                                    d == 'Cd. Madero' ? '#33FF57' :
+                                        d == 'Matamoros' ? '#FFFF00' :
+                                            d == 'Rio Bravo' ? '#333333' :
+                                                d == 'Reynosa' ? '#E74C3C' :
+                                                    d == 'Nvo. Laredo' ? '#7E349D' :
                                                         d == 'Zona A' ? '#00AFAF' :
                                                             d == 'Zona B' ? '#00AF89' :
                                                                 d == 'Zona C' ? '#00AF66' :

@@ -65,7 +65,14 @@ mapsCtrl.renderMap = async () => {
                 iconSize: mun.iconSize,
                 iconAnchor: mun.iconAnchor,
                 popupAnchor: mun.popupAnchor,
-                oid: esc.oid
+                oid: esc.oid,
+
+                noEstudiantes: esc.feature.students_number,
+                mejorSeccion: esc.feature.best_section,
+                peorSeccion: esc.feature.worst_section,
+                listen: esc.feature.qualification_listening,
+                reading: esc.feature.qualification_reading,
+                speaking: esc.feature.qualification_speaking
             });
             statesData.features.push(mun.feature);
         }
@@ -92,12 +99,14 @@ mapsCtrl.renderMap = async () => {
     }
 
     for(let esc of escuelas){
-        buscar.push({
-            nombre: esc.nombre,
-            oid: esc.oid,
-            clave: esc.clave,
-            tipo: 1
-        });
+        if(esc.nombre != undefined){
+            buscar.push({
+                nombre: esc.nombre,
+                oid: esc.oid,
+                clave: esc.clave,
+                tipo: 1
+            });
+        }
     }
 
     for(let zon of zonas){

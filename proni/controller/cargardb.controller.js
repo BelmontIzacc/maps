@@ -18,19 +18,158 @@ estanciarCtrl.iniciar = async (req, res) => {
     res.json({ status: true });
 }
 
-estanciarCtrl.features = async (req, res) => {
+estanciarCtrl.features = async () => {
     const escuelas = await escuelaModel.find();
+    const municipios = await municipioModel.find();
+    const zonas = await zonaModel.find();
+
     const csvEscuela = 'https://raw.githubusercontent.com/BelmontIzacc/maps_datos/master/Informacion_general/escuelas.csv';
     const csvMun = 'https://raw.githubusercontent.com/BelmontIzacc/maps_datos/master/Informacion_general/municipios.csv';
+    const csvZona = 'https://raw.githubusercontent.com/BelmontIzacc/maps_datos/master/Informacion_general/zonas.csv';
 
-    const response = await axios.get(csvEscuela);
+    let response = await axios.get(csvEscuela);
     if (response.status === 200) {
         const jsonData = await csv().fromString(response.data);
-        // console.log(jsonData);
-        /*for (let esc of escuelas) {
-            
-        }*/
+        for (let esc of escuelas) {
+            const clave = esc.clave;
+            const data = jsonData.find(data => data.CCT == clave);
+            if (data != undefined && data !== null) {
+                const encontrado = await escuelaModel.findOne({ 'clave': clave });
+                if (encontrado) {
+                    await encontrado.updateOne({
+                        feature: {
+                            reviewer_answers_speaking_part_1: data.reviewer_answers_speaking_part_1,
+                            reviewer_answers_speaking_part_2: data.reviewer_answers_speaking_part_2,
+                            reviewer_answers_listening: data.reviewer_answers_listening,
+                            reviewer_answers_reading_writing: data.reviewer_answers_reading_writing,
+                            correct_answers_listening: data.correct_answers_listening,
+                            correct_answers_reading_writing: data.correct_answers_reading_writing,
+                            correct_answers_speaking_part_1: data.correct_answers_speaking_part_1,
+                            correct_answers_speaking_part_2: data.correct_answers_speaking_part_2,
+                            qualification_speaking_part_1: data.qualification_speaking_part_1,
+                            qualification_speaking_part_2: data.qualification_speaking_part_2,
+                            qualification_listening: data.qualification_listening,
+                            qualification_reading: data.qualification_reading,
+                            correct_answers_speaking: data.correct_answers_speaking,
+                            qualification_speaking: data.qualification_speaking,
+                            best_section: data.best_section,
+                            worst_section: data.worst_section,
+                            students_number: data.students_number,
+                            girl: data.girl,
+                            boy: data.boy,
+                            group_number: data.group_number,
+                            best_group: data.best_group
+                        }
+                    });
+                }
+            }
+        }
     }
+
+    response = await axios.get(csvMun);
+    if (response.status === 200) {
+        const jsonData = await csv().fromString(response.data);
+        for (let mun of municipios) {
+            const nombre = mun.nombre;
+            const data = jsonData.find(data => data.municipality == nombre);
+            if(data != undefined && data != null){
+                const encontrado = await municipioModel.findOne({ 'nombre': nombre });
+                if (encontrado) {
+                    await encontrado.updateOne({
+                        feature: {
+                            type: encontrado.feature.type,
+                            geometry: encontrado.feature.geometry,
+                            properties: {
+                                oid: encontrado.feature.properties.oid,
+                                name: nombre,
+                                zona: "Zona " + data.zone,
+                                noEscuelas: data.school_number,
+                                noAlumnos: data.students_number,
+                                topSeccion: {
+                                    mejor: data.best_section,
+                                    peor: data.worst_section
+                                },
+                                generos: {
+                                    girls: data.girl,
+                                    boys: data.boy
+                                },
+                                worst_school: data.worst_school,
+                                best_school: data.best_school,
+                                qualification_speaking: data.qualification_speaking,
+                                correct_answers_speaking: data.correct_answers_speaking,
+                                qualification_reading: data.qualification_reading,
+                                qualification_listening: data.qualification_listening,
+                                qualification_speaking_part_2: data.qualification_speaking_part_2,
+                                qualification_speaking_part_1: data.qualification_speaking_part_1,
+                                correct_answers_speaking_part_2: data.correct_answers_speaking_part_2,
+                                correct_answers_speaking_part_1: data.correct_answers_speaking_part_1,
+                                correct_answers_reading_writing: data.correct_answers_reading_writing,
+                                correct_answers_listening: data.correct_answers_listening,
+                                reviewer_answers_reading_writing: data.reviewer_answers_reading_writing,
+                                reviewer_answers_listening: data.reviewer_answers_listening,
+                                reviewer_answers_speaking_part_2: data.reviewer_answers_speaking_part_2,
+                                reviewer_answers_speaking_part_1: data.reviewer_answers_speaking_part_1
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    response = await axios.get(csvZona);
+    if (response.status === 200) { 
+        const jsonData = await csv().fromString(response.data);
+        for (let zo of zonas) {
+            const nombre = zo.nombre;
+            const data = jsonData.find(data => 'Zona ' + data.zone == nombre);
+            if(data != undefined && data != null){
+                const encontrado = await zonaModel.findOne({ 'nombre': nombre });
+                if (encontrado) {
+                    await encontrado.updateOne({
+                        feature: {
+                            type: encontrado.feature.type,
+                            geometry: encontrado.feature.geometry,
+                            properties: {
+                                oid: encontrado.feature.properties.oid,
+                                name: nombre,
+                                mejorEscuela: data.best_school,
+                                noEscuelas: data.schools_number,
+                                noAlumnos: data.students_number,
+                                noMunicipios: data.municipalities_number,
+                                topSeccion: {
+                                    mejor: data.best_section,
+                                    peor: data.worst_section
+                                },
+                                generos: {
+                                    girls: data.girl,
+                                    boys: data.boy
+                                },
+                                worst_school: data.worst_school,
+                                best_school: data.best_school,
+                                qualification_speaking: data.qualification_speaking,
+                                correct_answers_speaking: data.correct_answers_speaking,
+                                qualification_reading: data.qualification_reading,
+                                qualification_listening: data.qualification_listening,
+                                qualification_speaking_part_2: data.qualification_speaking_part_2,
+                                qualification_speaking_part_1: data.qualification_speaking_part_1,
+                                correct_answers_speaking_part_2: data.correct_answers_speaking_part_2,
+                                correct_answers_speaking_part_1: data.correct_answers_speaking_part_1,
+                                correct_answers_reading_writing: data.correct_answers_reading_writing,
+                                correct_answers_listening: data.correct_answers_listening,
+                                reviewer_answers_reading_writing: data.reviewer_answers_reading_writing,
+                                reviewer_answers_listening: data.reviewer_answers_listening,
+                                reviewer_answers_speaking_part_2: data.reviewer_answers_speaking_part_2,
+                                reviewer_answers_speaking_part_1: data.reviewer_answers_speaking_part_1
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    return true;
 }
 
 iniciarMunicipio = async () => {

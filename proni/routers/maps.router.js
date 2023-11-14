@@ -30,7 +30,15 @@ router.get('/vaneSoftecSolutions', async (req, res, next) => {
     res.render('maps.ejs', { marks: resultado.karma, statesData: resultado.statesData, zonaData: resultado.zonaData, municipios: resultado.municipios, buscar: resultado.buscar });
 });
 
-router.get('/init', cargarCtrl.features);
+router.get('/init/:clave', async (req, res, next) => {
+    const clave = req.params.clave;
+    if (clave == 'vsts') {
+        const resultado = await cargarCtrl.features();
+        res.json({ status: resultado });
+    } else {
+        res.json({ status: false });
+    }
+});
 
 router.get('/proni/general/:tipo', async (req, res, next) => {
     const tipo = req.params.tipo;
@@ -39,8 +47,10 @@ router.get('/proni/general/:tipo', async (req, res, next) => {
         next(resultado);
         return;
     }
-    res.render('informe_general.ejs', { imagenes: resultado.imagenes, tablas: resultado.tablas, cabezeras: resultado.cabezeras, 
-        titulo: resultado.titulo, tipo: resultado.tipo, linkTablas: resultado.linkTablas });
+    res.render('informe_general.ejs', {
+        imagenes: resultado.imagenes, tablas: resultado.tablas, cabezeras: resultado.cabezeras,
+        titulo: resultado.titulo, tipo: resultado.tipo, linkTablas: resultado.linkTablas
+    });
 });
 
 router.get('/proni/:tipo/:oid/:id', async (req, res, next) => {
@@ -54,9 +64,11 @@ router.get('/proni/:tipo/:oid/:id', async (req, res, next) => {
         return;
     }
 
-    res.render('informe.ejs', { imagenes: resultado.imagenes, tablas: resultado.tablas, cabezeras: resultado.cabezeras, 
-        top: resultado.top, titulo: resultado.titulo, detalle: resultado.detalle, tipo: resultado.tipo, topMunicipio: resultado.topMunicipio, 
-        linkTablas: resultado.linkTablas });
+    res.render('informe.ejs', {
+        imagenes: resultado.imagenes, tablas: resultado.tablas, cabezeras: resultado.cabezeras,
+        top: resultado.top, titulo: resultado.titulo, detalle: resultado.detalle, tipo: resultado.tipo, topMunicipio: resultado.topMunicipio,
+        linkTablas: resultado.linkTablas
+    });
 });
 
 // Esta ruta será una vista por defecto para rutas no definidas
