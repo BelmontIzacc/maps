@@ -38,7 +38,7 @@
         }
 
         .cTop {
-            column-count: 5;
+            column-count: 3;
             column-gap: 20px;
             max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
             margin: 0 auto; /* Centra el contenedor */
@@ -67,37 +67,50 @@
                 <h7 class="text-white h4"><%- detalle %></h7>
                 <div class="cTop">
                     <div class="coltop">
-                        <h6><%- top.name %></h6>
+                        <h5><%- top.name %></h5>
                         <% if (tipo == 'escuela') { %>
                             <b><%- top.zona %></b>
-                        <% } %>
-
-                        <% if (tipo == 'municipio') { %>
-                            Mejor escuela de la zona<br /> <b><%- top.mejorEscuela %></b>
                         <% } %>
                     </div>
 
                     <div class="coltop">
                         Detalles
                         <br />
+                        <% if (typeof top.noMunicipios == 'string') { %>
+                            Municipios: <b><%- top.noMunicipios %></b><br />    
+                        <% } %>
                         Escuelas: <b><%- top.noEscuelas %></b><br />
                         Alumnos: <b><%- top.noAlumnos %></b><br />
-                        Niñas: <b><%- top.generos.girls %></b><br />
-                        Niños: <b><%- top.generos.boys %></b>
+                        - Niñas: <b><%- top.generos.girls %></b><br />
+                        - Niños: <b><%- top.generos.boys %></b>
                     </div>
                 
                     <div class="coltop">
-                        <br> Secciones <br />
+                        <br>Mejor escuela<br />
+                        <b><%- top.best_school %></b><br />
+                        <br>Peor escuela<br />
+                        <b><%- top.worst_school %></b><br />
+                    </div>
+
+                    <div class="coltop">
+                        <br>Top sección <br />
                         Mejor: <b><%- top.topSeccion.mejor %></b><br />
                         Peor: <b><%- top.topSeccion.peor %></b>
+                    </div>
+
+                    <div class="coltop">
+                        <br>Promedio de calificaciónes<br />
+                        Reading/Writing: <b><%- top.qualification_reading %></b><br />
+                        Speaking: <b><%- top.qualification_speaking %></b><br>
+                        listening: <b><%- top.qualification_listening %></b>
                     </div>
                 </div>
 
                 <% if (topMunicipio != 0 ) { %> 
-                    <h7 class="text-white h4">Detalle del municipio</h7>
+                    <h7 class="text-white h4">Detalles del municipio</h7>
                     <div class="cTop">
                         <div class="coltop">
-                            <h6><%- topMunicipio.name %></h6>
+                            <h5><%- topMunicipio.name %></h5>
                         </div>
 
                         <div class="coltop">
@@ -105,14 +118,62 @@
                             <br />
                             Escuelas: <b><%- topMunicipio.noEscuelas %></b><br />
                             Alumnos: <b><%- topMunicipio.noAlumnos %></b><br />
-                            Niñas: <b><%- topMunicipio.generos.girls %></b><br />
-                            Niños: <b><%- topMunicipio.generos.boys %></b>
+                            - Niñas: <b><%- topMunicipio.generos.girls %></b><br />
+                            - Niños: <b><%- topMunicipio.generos.boys %></b>
+                        </div>
+
+                        <div class="coltop">
+                            <br>Mejor escuela<br />
+                            <b><%- topMunicipio.best_school %></b><br />
+                            <br>Peor escuela<br />
+                            <b><%- topMunicipio.worst_school %></b><br />
                         </div>
                     
                         <div class="coltop">
                             <br> Secciones <br />
                             Mejor: <b><%- topMunicipio.topSeccion.mejor %></b><br />
                             Peor: <b><%- topMunicipio.topSeccion.peor %></b>
+                        </div>
+
+                        <div class="coltop">
+                            <br>Promedio de calificaciónes<br />
+                            Reading/Writing: <b><%- topMunicipio.qualification_reading %></b><br />
+                            Speaking: <b><%- topMunicipio.qualification_speaking %></b><br>
+                            listening: <b><%- topMunicipio.qualification_listening %></b>
+                        </div>
+                    </div>
+                <% } %>
+
+
+                <% if (topEscuela != 0 ) { %> 
+                    <h7 class="text-white h4">Detalles de la escuela</h7>
+                    <div class="cTop">
+                        <div class="coltop">
+                            <h5><%- titulo %></h5>
+                        </div>
+
+                        <div class="coltop">
+                            Detalles
+                            <br />
+                            Alumnos: <b><%- topEscuela.students_number %></b><br />
+                            - Niñas: <b><%- topEscuela.girl %></b><br />
+                            - Niños: <b><%- topEscuela.boy %></b>
+                        </div>
+                    
+                        <div class="coltop">
+                            <br> Secciones <br />
+                            Mejor: <b><%- topEscuela.best_section %></b><br />
+                            Peor: <b><%- topEscuela.worst_section %></b>
+
+                            <br /><br> Grupo <br />
+                            Mejor: <b><%- topEscuela.best_group %></b><br />
+                        </div>
+
+                        <div class="coltop">
+                            <br>Promedio de calificaciónes<br />
+                            Reading/Writing: <b><%- topEscuela.qualification_reading %></b><br />
+                            Speaking: <b><%- topEscuela.qualification_speaking %></b><br>
+                            listening: <b><%- topEscuela.qualification_listening %></b>
                         </div>
                     </div>
                 <% } %>

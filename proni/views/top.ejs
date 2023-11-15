@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Detalles generales</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        .columna {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2px;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .cTop {
+            column-count: 5;
+            column-gap: 20px;
+            max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+            margin: 0 auto; /* Centra el contenedor */
+        }
+
+        .coltop {
+            break-inside: avoid; /* Evita que se divida dentro de la columna */
+            margin-bottom: 20px; /* Espaciado entre las columnas */
+        }
+        .enlace-descarga {
+            color: rgb(69, 69, 77);
+            /* Otros estilos que desees aplicar */
+        }
+        .enlace-descarga:hover {
+            color: rgb(43, 63, 151);
+            text-decoration: underline;
+        /* Estilos adicionales cuando el cursor está sobre el enlace */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="/vsts/vaneSoftecSolutions" style="max-width: 100%; word-wrap: break-word; white-space: normal;">Clasificación</a>
+        <a href="/vsts/vaneSoftecSolutions" class="btn btn-secondary" type="button"
+               aria-haspopup="true" data-display="static">
+                <img src="/icon/left.svg" alt="Icono">
+        </a>
+        <div>
+            <button class="btn btn-secondary" type="button"
+               aria-haspopup="true" data-display="static" onclick="general('detalles')">
+                <img src="/icon/general.svg" alt="Buscar" width="25px"> General
+            </button>
+            <button class="btn btn-secondary" type="button"
+                aria-haspopup="true" data-display="static" onclick="general('zona')">
+                    <img src="/icon/zona.svg" alt="Zona" width="25px"> Zona
+            </button> 
+            <button class="btn btn-secondary" type="button"
+                aria-haspopup="true" data-display="static" onclick="general('municipio')">
+                    <img src="/icon/municipio.svg" alt="Municipio" width="25px"> Municipio
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="columna">
+            <h2>Filtro</h2>
+
+            <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Sección</th>
+                    <th scope="col">Orden</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Escuela</td>
+                    <td>-</td>
+                    <td>+</td>
+                    <td>Ascendente</td>
+                  </tr>
+                  <tr>
+                    <td>Municipio</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>Descendente</td>
+                  </tr>
+                  <tr>
+                    <td>Zona</td>
+                    <td>@twitter</td>
+                    <td colspan="2">@twitter</td>
+                  </tr>
+                </tbody>
+            </table>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+              </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <!-- Pie de página -->
+        <p>Vanessa Melenciano Llamas, Isaul Ibarra Belmonte, Ezra federico Parra Gonzalez © 2023 VSTS</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    
+    <script>
+        function general(area) {
+            let url = '/vsts/proni/general/'+area
+            // Crear un enlace temporal
+            let enlaceTemporal = document.createElement('a');
+            enlaceTemporal.href = url;
+
+            // Simular clic en el enlace para iniciar la descarga
+            document.body.appendChild(enlaceTemporal);
+            enlaceTemporal.click();
+            document.body.removeChild(enlaceTemporal);
+        }
+    </script>
+</body>
+
+</html>

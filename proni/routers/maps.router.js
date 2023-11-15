@@ -40,6 +40,11 @@ router.get('/init/:clave', async (req, res, next) => {
     }
 });
 
+router.get('/proni/top', async (req, res, next) => {
+
+    res.render('top.ejs');
+});
+
 router.get('/proni/general/:tipo', async (req, res, next) => {
     const tipo = req.params.tipo;
     const resultado = await mapsCtrl.obtenerInformeGeneral(tipo);
@@ -67,7 +72,7 @@ router.get('/proni/:tipo/:oid/:id', async (req, res, next) => {
     res.render('informe.ejs', {
         imagenes: resultado.imagenes, tablas: resultado.tablas, cabezeras: resultado.cabezeras,
         top: resultado.top, titulo: resultado.titulo, detalle: resultado.detalle, tipo: resultado.tipo, topMunicipio: resultado.topMunicipio,
-        linkTablas: resultado.linkTablas
+        linkTablas: resultado.linkTablas, topEscuela: resultado.topEscuela
     });
 });
 

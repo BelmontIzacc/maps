@@ -104,7 +104,14 @@ mapsCtrl.renderMap = async () => {
                 nombre: esc.nombre,
                 oid: esc.oid,
                 clave: esc.clave,
-                tipo: 1
+                tipo: 1,
+
+                noEstudiantes: esc.feature.students_number,
+                mejorSeccion: esc.feature.best_section,
+                peorSeccion: esc.feature.worst_section,
+                listen: esc.feature.qualification_listening,
+                reading: esc.feature.qualification_reading,
+                speaking: esc.feature.qualification_speaking
             });
         }
     }
@@ -143,6 +150,7 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
     let titulo = "";
     let detalle = "";
     let topMunicipio = 0;
+    let topEscuela = 0;
     let linkTablas = [];
 
     if (tipo === 'escuela') {
@@ -161,6 +169,7 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
         }
         titulo = escuela.nombre;
         detalle = "Detalles del municipio";
+        topEscuela = escuela.feature;
 
         const municipio = await municipioModel.findOne({ 'oid': oid });
         if (!municipio) {
@@ -241,7 +250,7 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
     if (tablas.length === 0) {
         return new StandarException('No existe el objeto', codigos.datoNoEncontrado);
     }
-    return { titulo, detalle, imagenes, tablas, cabezeras, top, tipo, topMunicipio, linkTablas };
+    return { titulo, detalle, imagenes, tablas, cabezeras, top, tipo, topMunicipio, linkTablas, topEscuela };
 }
 
 mapsCtrl.obtenerInformeGeneral = async (tipo) => {
