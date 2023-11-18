@@ -315,6 +315,16 @@ mapsCtrl.obtenerInformeGeneral = async (tipo) => {
         linkTablas = linkTablas.concat(elementos.linkTablas);
 
         titulo = "Detalles generales";
+    } else if (tipo === 'general'){
+        const buscarImg = ["_1.png", "_2.png", "_3.png", "_4.png"];
+        const buscarCsv = ["_1.csv", "_2.csv", "_3.csv", "_4.csv"];
+
+        const elementos = await recuperarElementos(buscarImg, buscarCsv, "General", "Promedio de todos los registros");
+        imagenes = elementos.imagenes;
+        tablas = elementos.tablas;
+        cabezeras = elementos.cabezeras;
+        linkTablas = elementos.linkTablas;
+        titulo = "Detalles generales de los registros";
     }
 
     if (tablas.length === 0) {
@@ -370,7 +380,9 @@ recuperarDatosGenerales = async (csvUrl, dataBase = [], tipo) => {
             if (data.municipality !== undefined && data.municipality !== null && data.municipality !== ''){
                 titulo = data.municipality;
                 const dtable = dataBase.find(db => db.nombre === data.municipality);
-                oid = dtable.oid;
+                if (dtable !== undefined){
+                    oid = dtable.oid;
+                }
             } else if (data.school_name !== undefined && data.school_name !== null && data.school_name !== ''){
                 titulo = data.school_name;
                 const dtable = dataBase.find(db => db.clave == data.CCT);
