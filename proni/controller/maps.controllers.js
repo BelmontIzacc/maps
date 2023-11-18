@@ -323,6 +323,98 @@ mapsCtrl.obtenerInformeGeneral = async (tipo) => {
     return { titulo, imagenes, tablas, cabezeras, tipo, linkTablas };
 }
 
+mapsCtrl.filtrarRegistros = async () => {
+    const csvEscuela = csvURL + 'Informacion_general/escuelas.csv';
+    const csvMun = csvURL + 'Informacion_general/municipios.csv';
+    const csvZona = csvURL + 'Informacion_general/zonas.csv';
+
+    const munData = await municipioModel.find();
+    const escData = await escuelaModel.find();
+
+    let escuela = await recuperarDatosGenerales(csvEscuela, escData, 1);
+    let municipio = await recuperarDatosGenerales(csvMun, munData, 2);
+    let zona = await recuperarDatosGenerales(csvZona, [], 3);
+
+    escuela = escuela.map(convertirAEntero);
+    municipio = municipio.map(convertirAEntero);
+    zona = zona.map(convertirAEntero);
+
+    return { escuela, municipio, zona};
+}
+
+// Función para convertir ciertos valores a números
+convertirAEntero = (objeto) => {
+    return {
+        ...objeto,
+        correct_answers_reading_writing: parseInt(objeto.correct_answers_reading_writing, 10),
+        correct_answers_listening: parseInt(objeto.correct_answers_listening, 10),
+        correct_answers_speaking: parseInt(objeto.correct_answers_speaking, 10),
+        correct_answers_speaking_part_1: parseInt(objeto.correct_answers_speaking_part_1, 10),
+        correct_answers_speaking_part_2: parseInt(objeto.correct_answers_speaking_part_2, 10),
+
+        students_number: parseInt(objeto.students_number, 10),
+        girl: parseInt(objeto.girl, 10),
+        boy: parseInt(objeto.boy, 10),
+    };
+}
+
+recuperarDatosGenerales = async (csvUrl, dataBase = [], tipo) => {
+    let response = await axios.get(csvUrl);
+    const datosGenerales = [];
+    if (response.status === 200) {
+        const jsonData = await csv().fromString(response.data);
+        for (let data of jsonData) {
+            let titulo = "";
+            let oid = "";
+            let clave = ""
+            if (data.municipality !== undefined && data.municipality !== null && data.municipality !== ''){
+                titulo = data.municipality;
+                const dtable = dataBase.find(db => db.nombre === data.municipality);
+                oid = dtable.oid;
+            } else if (data.school_name !== undefined && data.school_name !== null && data.school_name !== ''){
+                titulo = data.school_name;
+                const dtable = dataBase.find(db => db.clave == data.CCT);
+                if(dtable !== undefined){
+                    oid = dtable.oid;
+                    clave = data.CCT;
+                }
+            } else if (data.zone !== undefined && data.zone !== null && data.zone !== ''){
+                titulo = "Zona " + data.zone;
+                oid = "";
+            }
+            datosGenerales.push(
+                {
+                    reviewer_answers_speaking_part_1: data.reviewer_answers_speaking_part_1,
+                    reviewer_answers_speaking_part_2: data.reviewer_answers_speaking_part_2,
+                    reviewer_answers_listening: data.reviewer_answers_listening,
+                    reviewer_answers_reading_writing: data.reviewer_answers_reading_writing,
+                    correct_answers_listening: data.correct_answers_listening,
+                    correct_answers_reading_writing: data.correct_answers_reading_writing,
+                    correct_answers_speaking_part_1: data.correct_answers_speaking_part_1,
+                    correct_answers_speaking_part_2: data.correct_answers_speaking_part_2,
+                    qualification_speaking_part_1: data.qualification_speaking_part_1,
+                    qualification_speaking_part_2: data.qualification_speaking_part_2,
+                    qualification_listening: data.qualification_listening,
+                    qualification_reading: data.qualification_reading,
+                    correct_answers_speaking: data.correct_answers_speaking,
+                    qualification_speaking: data.qualification_speaking,
+                    best_section: data.best_section,
+                    worst_section: data.worst_section,
+                    students_number: data.students_number,
+                    girl: data.girl,
+                    boy: data.boy,
+                    titulo: titulo,
+                    oid: oid,
+                    tipo: "" + tipo,
+                    clave: clave
+                }
+            );
+        }
+        return datosGenerales;
+    }
+    return datosGenerales;
+}
+
 recuperarElementos = async (buscarImg, buscarCsv, tipo, nombre) => {
     let imagenes = [];
     let tablas = [];

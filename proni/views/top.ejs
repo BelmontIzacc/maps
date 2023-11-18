@@ -40,45 +40,63 @@
         .cTop {
             column-count: 5;
             column-gap: 20px;
-            max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
-            margin: 0 auto; /* Centra el contenedor */
+            max-width: 800px;
+            /* Ajusta el ancho máximo según tus necesidades */
+            margin: 0 auto;
+            /* Centra el contenedor */
         }
 
         .coltop {
-            break-inside: avoid; /* Evita que se divida dentro de la columna */
-            margin-bottom: 20px; /* Espaciado entre las columnas */
+            break-inside: avoid;
+            /* Evita que se divida dentro de la columna */
+            margin-bottom: 20px;
+            /* Espaciado entre las columnas */
         }
+
         .enlace-descarga {
             color: rgb(69, 69, 77);
             /* Otros estilos que desees aplicar */
         }
+
         .enlace-descarga:hover {
             color: rgb(43, 63, 151);
             text-decoration: underline;
-        /* Estilos adicionales cuando el cursor está sobre el enlace */
+            /* Estilos adicionales cuando el cursor está sobre el enlace */
+        }
+
+        #tablaResultados {
+            max-height: 100px; /* Ajusta el valor según tus necesidades */
+            overflow-y: auto;  /* Agrega la barra de desplazamiento vertical si es necesario */
+        }
+
+        /* Otras reglas de estilo para la tabla si las necesitas */
+        table {
+            width: 100%;
+            /* Agrega otros estilos según tus necesidades */
         }
     </style>
 </head>
 
 <body>
     <nav class="navbar sticky-top navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="/vsts/vaneSoftecSolutions" style="max-width: 100%; word-wrap: break-word; white-space: normal;">Clasificación</a>
-        <a href="/vsts/vaneSoftecSolutions" class="btn btn-secondary" type="button"
-               aria-haspopup="true" data-display="static">
-                <img src="/icon/left.svg" alt="Icono">
+        <a class="navbar-brand" href="/vsts/vaneSoftecSolutions"
+            style="max-width: 100%; word-wrap: break-word; white-space: normal;">Clasificación</a>
+        <a href="/vsts/vaneSoftecSolutions" class="btn btn-secondary" type="button" aria-haspopup="true"
+            data-display="static">
+            <img src="/icon/left.svg" alt="Icono">
         </a>
         <div>
-            <button class="btn btn-secondary" type="button"
-               aria-haspopup="true" data-display="static" onclick="general('detalles')">
+            <button class="btn btn-secondary" type="button" aria-haspopup="true" data-display="static"
+                onclick="general('detalles')">
                 <img src="/icon/general.svg" alt="Buscar" width="25px"> General
             </button>
-            <button class="btn btn-secondary" type="button"
-                aria-haspopup="true" data-display="static" onclick="general('zona')">
-                    <img src="/icon/zona.svg" alt="Zona" width="25px"> Zona
-            </button> 
-            <button class="btn btn-secondary" type="button"
-                aria-haspopup="true" data-display="static" onclick="general('municipio')">
-                    <img src="/icon/municipio.svg" alt="Municipio" width="25px"> Municipio
+            <button class="btn btn-secondary" type="button" aria-haspopup="true" data-display="static"
+                onclick="general('zona')">
+                <img src="/icon/zona.svg" alt="Zona" width="25px"> Zona
+            </button>
+            <button class="btn btn-secondary" type="button" aria-haspopup="true" data-display="static"
+                onclick="general('municipio')">
+                <img src="/icon/municipio.svg" alt="Municipio" width="25px"> Municipio
             </button>
         </div>
     </nav>
@@ -86,59 +104,153 @@
     <div class="container">
 
         <div class="columna">
-            <h2>Filtro</h2>
 
             <table class="table table-borderless">
                 <thead>
-                  <tr>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Sección</th>
-                    <th scope="col">Orden</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Sección</th>
+                        <th scope="col">Inscritos</th>
+                        <th scope="col">Orden</th>
+                    </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Escuela</td>
-                    <td>-</td>
-                    <td>+</td>
-                    <td>Ascendente</td>
-                  </tr>
-                  <tr>
-                    <td>Municipio</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>Descendente</td>
-                  </tr>
-                  <tr>
-                    <td>Zona</td>
-                    <td>@twitter</td>
-                    <td colspan="2">@twitter</td>
-                  </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="esc" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="esc">Escuela</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="customCheck" id="redWri">
+                                <label class="custom-control-label" for="redWri">Reading/Writing</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="customCheckIns" id="alum">
+                                <label class="custom-control-label" for="alum">Alumnos</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="asc" name="customRadioOrd" class="custom-control-input">
+                                <label class="custom-control-label" for="asc">Ascendente</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="mun" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="mun">Municipio</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="customCheck" id="lis">
+                                <label class="custom-control-label" for="lis">Listening</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="customCheckIns" id="girl">
+                                <label class="custom-control-label" for="girl">Niñas</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="des" name="customRadioOrd" class="custom-control-input" checked>
+                                <label class="custom-control-label" for="des">Descendente</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="zon" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="zon">Zona</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="customCheck" id="speak">
+                                <label class="custom-control-label" for="speak">Speaking</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="customCheckIns" id="boy">
+                                <label class="custom-control-label" for="boy">Niños</label>
+                            </div>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td colspan="3">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"  name="customCheck" id="speak1">
+                                <label class="custom-control-label" for="speak1">Speaking part 1</label>
+                            </div>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td colspan="3">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"  name="customCheck" id="speak2">
+                                <label class="custom-control-label" for="speak2">Speaking part 2</label>
+                            </div>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+            <div class="table-responsive-md">
+                <div class="table-responsive table-container">
+                    <table class="table table-borderless table-hover">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Reading/Writing</th>
+                            <th scope="col">Listening</th>
+                            <th scope="col">Speaking</th>
+                            <th scope="col">Speaking part1</th>
+                            <th scope="col">Speaking part2</th>
+                            <th scope="col">Alumnos</th>
+                            <th scope="col">Niñas</th>
+                            <th scope="col">Niños</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tablaResultados">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
-              </div>
         </div>
 
     </div>
@@ -157,10 +269,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    
+
     <script>
         function general(area) {
-            let url = '/vsts/proni/general/'+area
+            let url = '/vsts/proni/general/' + area
             // Crear un enlace temporal
             let enlaceTemporal = document.createElement('a');
             enlaceTemporal.href = url;
@@ -171,6 +283,184 @@
             document.body.removeChild(enlaceTemporal);
         }
     </script>
+
+    <script>
+        function obtenerIdsMarcados(grupo) {
+            // Seleccionar todos los inputs marcados en el grupo indicado
+            var inputsMarcados = $('input[name="' + grupo + '"]:checked');
+
+            // Obtener los IDs de los inputs marcados
+            var idsMarcados = inputsMarcados.map(function () {
+                return this.id;
+            }).get();
+
+            return idsMarcados;
+        }
+
+        // Ejemplo de uso
+        $(document).ready(function () {
+            const escuela = <%- JSON.stringify(escuela) %>;
+            const municipio = <%- JSON.stringify(municipio) %>;
+            const zona = <%- JSON.stringify(zona) %>;
+
+            let data = [];
+            let secciones = "";
+            let alumnos = "";
+            let orden = "des";
+
+            // Escuela, municipio, zona
+            $('input[name="customRadio"]').change(function () {
+                var idsGrupo1 = obtenerIdsMarcados('customRadio')[0];
+                if(idsGrupo1 === 'esc'){
+                    data = escuela;
+                } else if(idsGrupo1 === 'mun'){
+                    data = municipio;
+                } else if(idsGrupo1 === 'zon'){
+                    data = zona;
+                }
+                const mostrar = filtrarDatos(data, secciones, alumnos, orden);
+                imprimirTabla(mostrar);
+            });
+
+            // Seccion
+            $('input[name="customCheck"]').change(function () {
+                var idsGrupo2 = obtenerIdsMarcados('customCheck');
+                secciones = idsGrupo2;
+                const mostrar = filtrarDatos(data, secciones, alumnos, orden);
+                imprimirTabla(mostrar);
+            });
+
+            // Alumnos, niñas, niños
+            $('input[name="customCheckIns"]').change(function () {
+                var idsGrupo2 = obtenerIdsMarcados('customCheckIns');
+                alumnos = idsGrupo2;
+                const mostrar = filtrarDatos(data, secciones, alumnos, orden);
+                imprimirTabla(mostrar);
+            });
+
+            // orden
+            $('input[name="customRadioOrd"]').change(function () {
+                var idsGrupo2 = obtenerIdsMarcados('customRadioOrd')[0];
+                orden = idsGrupo2;
+                const mostrar = filtrarDatos(data, secciones, alumnos, orden);
+                imprimirTabla(mostrar);
+            });
+
+            function imprimirTabla(filtrado) {
+                let tablaResultados = $('#tablaResultados');
+
+                // Limpiar el contenido existente
+                tablaResultados.empty();
+
+                const newFiltro = filtrado.slice(0, 10);
+
+                newFiltro.forEach(function (objeto, index) {
+                    var fila = $('<tr>'); // Crear una fila
+
+                    fila.append($('<td>').text(index + 1));
+                    if(objeto.tipo === "1"){
+                        var enlace = $('<a>').attr('href', "/vsts/proni/escuela/" + objeto.oid + "/" + objeto.clave + ""); // Reemplaza 'URL_DEL_ENLACE' con la URL deseada
+                        enlace.text('' + objeto.titulo); // Reemplaza 'Texto del enlace' con el texto que deseas mostrar
+                        fila.append($('<td>').append(enlace));
+                    } else if (objeto.tipo === "2"){
+                        var enlace = $('<a>').attr('href', "/vsts/proni/municipio/"+ objeto.oid + "/0"); // Reemplaza 'URL_DEL_ENLACE' con la URL deseada
+                        enlace.text('' + objeto.titulo); // Reemplaza 'Texto del enlace' con el texto que deseas mostrar
+                        fila.append($('<td>').append(enlace));
+                    } else if (objeto.tipo === "3"){
+                        var enlace = $('<a>').attr('href', "/vsts/proni/zona/"+ objeto.titulo + "/0"); // Reemplaza 'URL_DEL_ENLACE' con la URL deseada
+                        enlace.text('' + objeto.titulo); // Reemplaza 'Texto del enlace' con el texto que deseas mostrar
+                        fila.append($('<td>').append(enlace));
+                    }
+
+                    // Agregar celdas con la información correspondiente a cada columna
+                    // fila.append($('<td>').text(objeto.titulo));
+                    fila.append($('<td>').text(objeto.qualification_reading));
+                    fila.append($('<td>').text(objeto.qualification_listening));
+                    fila.append($('<td>').text(objeto.qualification_speaking));
+                    fila.append($('<td>').text(objeto.qualification_speaking_part_1));
+                    fila.append($('<td>').text(objeto.qualification_speaking_part_2));
+                    fila.append($('<td>').text(objeto.students_number));
+                    fila.append($('<td>').text(objeto.girl));
+                    fila.append($('<td>').text(objeto.boy));
+
+                    // Agregar la fila a la tabla
+                    tablaResultados.append(fila);
+                });
+
+            }
+
+            
+            function filtrarDatos(datos, secciones, alumnos, orden) {
+                // transformar filtros a columnas
+                const filtrar = convertirDatos(secciones, alumnos);
+
+                // aplicar filtro
+                if(datos.length !== 0 && filtrar.length !== 0){
+                    let resultado = [];
+                    let direccion = -1; // dirección es 1, significa orden ascendente, si es -1, significa orden descendente.
+                    if(orden === 'des'){
+                        direccion = 1;
+                    }
+                    const nuevosDatos = datos.sort(compararPorCampos(filtrar, direccion));
+                    return nuevosDatos
+                } else {
+                    return datos;
+                }
+            }
+
+            function convertirDatos (filtroSeccion = [], filtroAlumnos = []) {
+                let filtros = [];
+                if(filtroSeccion.length !== 0){
+                    // redWri,lis,speak,speak1, sepak2
+                    for (let filtro of filtroSeccion){
+                        if(filtro === 'redWri'){
+                            filtros.push("correct_answers_reading_writing");
+                        } else if(filtro === 'lis'){
+                            filtros.push("correct_answers_listening");
+                        }  else if(filtro === 'speak'){
+                            filtros.push("correct_answers_speaking");
+                        }  else if(filtro === 'speak1'){
+                            filtros.push("correct_answers_speaking_part_1");
+                        }  else if(filtro === 'speak2'){
+                            filtros.push("correct_answers_speaking_part_2");
+                        }
+                    }
+                }
+
+                if(filtroAlumnos.length !== 0){
+                    // alum,girl,boy
+                    for (let filtro of filtroAlumnos){
+                        if(filtro === 'alum'){
+                            filtros.push("students_number");
+                        } else if(filtro === 'girl'){
+                            filtros.push("girl");
+                        }  else if(filtro === 'boy'){
+                            filtros.push("boy");
+                        }
+                    }
+                }
+
+                return filtros;
+            }
+
+            // Función de comparación para sort con dirección
+            function compararPorCampos(campos, direccion) {
+                return function(objetoA, objetoB) {
+                    for (let i = 0; i < campos.length; i++) {
+                        const campo = campos[i];
+                        const comparacion = (objetoA[campo] > objetoB[campo]) ? -1 : (objetoA[campo] < objetoB[campo]) ? 1 : 0;
+                        if (comparacion !== 0) {
+                            return comparacion * direccion;
+                        }
+                    // Si los valores son iguales en este campo, pasa al siguiente
+                    }
+                    return 0; // Si todos los campos son iguales
+                };
+            }
+
+        });
+    </script>
+
 </body>
 
 </html>

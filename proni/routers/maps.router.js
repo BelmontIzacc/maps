@@ -40,9 +40,9 @@ router.get('/init/:clave', async (req, res, next) => {
     }
 });
 
-router.get('/proni/top', async (req, res, next) => {
-
-    res.render('top.ejs');
+router.get('/proni/general/top', async (req, res, next) => {
+    const resultado = await mapsCtrl.filtrarRegistros();
+    res.render('top.ejs', { escuela: resultado.escuela, municipio: resultado.municipio, zona: resultado.zona});
 });
 
 router.get('/proni/general/:tipo', async (req, res, next) => {
