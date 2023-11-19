@@ -52,7 +52,6 @@ router.get('/proni/general/:tipo', async (req, res, next) => {
         next(resultado);
         return;
     }
-    console.log(resultado.titulo);
     res.render('informe_general.ejs', {
         imagenes: resultado.imagenes, tablas: resultado.tablas, cabezeras: resultado.cabezeras,
         titulo: resultado.titulo, tipo: resultado.tipo, linkTablas: resultado.linkTablas
