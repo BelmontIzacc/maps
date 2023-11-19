@@ -67,6 +67,10 @@
                aria-haspopup="true" data-display="static">
                 <img src="/icon/left.svg" alt="Icono">
         </a>
+        <button type="button" class="btn btn-secondary"  aria-haspopup="true" data-display="static" 
+            data-toggle="modal" data-target="#exampleModalScrollable">
+            <img src="/icon/info.svg" alt="Icono">
+        </button>
         <div>
             <button class="btn btn-secondary" type="button"
                aria-haspopup="true" data-display="static" onclick="general('detalles')">
@@ -157,6 +161,111 @@
                     <br>
                     <% }); %>
             </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+          <div class="modal-content" style="text-align: justify;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalScrollableTitle">Información</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+                <p>
+                    Se describen varias columnas que ofrecen información sobre la evaluación académica. 
+                    Desde el rendimiento promedio en diferentes secciones hasta las calificaciones asignadas por revisores y detalles demográficos, 
+                    cada columna proporciona datos para comprender el panorama educativo.
+                </p>
+
+                <% if (titulo == 'Detalles generales de los registros' || titulo == 'Detalles generales') { %>
+                    <ul>
+                        <li><strong>Sección:</strong> La categoría o división específica bajo la cual se evalúan las habilidades lingüísticas de los estudiantes, como Listening, Reading/Writing, o Speaking.</li>
+                        
+                        <li><strong>Aciertos promedio:</strong> La cantidad promedio de respuestas correctas obtenidas en una sección particular, indicando el rendimiento general en esa área.</li>
+                        
+                        <li><strong>Calificación:</strong> La evaluación asignada a una sección específica, expresada en términos de letras (A-, A, A+) para reflejar el nivel de competencia alcanzado.</li>
+                        
+                        <li><strong>Número de estudiantes con esa calificación por sección:</strong> La cantidad de estudiantes que obtuvieron una calificación específica en una sección determinada, proporcionando una visión de las calificaciones.</li>
+                        
+                        <li><strong>Promedio de aciertos asignada por revisores:</strong> La media de respuestas correctas dadas por los revisores para evaluar el desempeño general de los estudiantes.</li>
+                        
+                        <li><strong>Calificación promedio:</strong> La evaluación promedio otorgada a los estudiantes, considerando todas las secciones evaluadas.</li>
+                        
+                        <li><strong>Cantidad:</strong> La cantidad total de elementos, ya sea estudiantes, respuestas correctas, etc., dependiendo del contexto de la columna.</li>
+                        
+                        <li><strong>Género:</strong> La clasificación de los estudiantes en categorías como niño o niña, proporcionando información sobre la distribución de género en el grupo evaluado.</li>
+                        
+                        <li><strong>Edad:</strong> La edad de los estudiantes evaluados en la muestra, brindando información sobre la demografía del grupo.</li>
+                        
+                        <li><strong>Correct Answers Listening:</strong> La cantidad promedio de respuestas correctas asignadas a la sección de Listening.</li>
+                        
+                        <li><strong>Correct Answers Reading/Writing:</strong> El promedio de respuestas correctas asignadas a la sección de Reading/Writing, indicando el nivel de competencia en habilidades de lectura y escritura.</li>
+                        
+                        <li><strong>Correct Answers Speaking Part 1 y Part 2:</strong> La cantidad promedio de respuestas correctas asignadas a cada una de las secciones de Speaking Part 1 y Part 2, respectivamente.</li>
+                        
+                        <li><strong>Correct Answers Speaking:</strong> La cantidad promedio de respuestas correctas asignadas a la sección de Speaking en su conjunto, combinando las partes 1 y 2.</li>
+                        
+                        <li><strong>Reviewer Answers Listening, Reading/Writing, Speaking Part 1 y Part 2:</strong> La cantidad promedio de respuestas proporcionadas por los revisores en cada una de las secciones mencionadas, reflejando la evaluación de los revisores en las habilidades específicas de los estudiantes.</li>
+                        
+                        <li><strong>Qualification Speaking Part 1, Part 2 y Speaking:</strong> La calificación promedio otorgada a las secciones de Speaking Part 1, Part 2 y la sección de Speaking.</li>
+                        
+                        <li><strong>Qualification Listening, Reading/Writing:</strong> La calificación promedio asignada a las secciones de Listening y Reading/Writing, respectivamente.</li>
+                        
+                        <li><strong>Percentage Correct Listening, Reading/Writing, Speaking Part 1 y Part 2:</strong> El porcentaje promedio de respuestas correctas en cada una de las secciones mencionadas, proporcionando una perspectiva de la precisión en cada área.</li>
+                        
+                        <li><strong>Percentage Correct Speaking:</strong> El porcentaje promedio de respuestas correctas en la sección de Speaking, combinando las partes 1 y 2.</li>
+                        
+                        <li><strong>Percentage Correct:</strong> El porcentaje promedio de respuestas correctas en general, considerando todas las secciones evaluadas.</li>
+                        
+                        <li><strong>Top:</strong> Una etiqueta que podría indicar una clasificación superior o un nivel destacado en el desempeño, dependiendo del contexto de la columna.</li>
+                    
+                        <li><strong>CCT:</strong> Clave de la escuela.</li>
+                    </ul>
+                <% } %>
+
+                <% if (titulo != 'Detalles generales de los registros' &&  titulo != 'Detalles generales') { %>
+                    <ul>
+                        <li><strong>Municipio:</strong> El nombre del área geográfica evaluada en el informe.</li>
+                        
+                        <li><strong>Zona:</strong> La ubicación geográfica o división específica a la que pertenece el municipio.</li>
+                        
+                        <li><strong>Promedio de aciertos en el examen para la sección Listening:</strong> La media de respuestas correctas en la sección de Listening, reflejando el desempeño general de los estudiantes en esta área.</li>
+                        
+                        <li><strong>Calificación promedio en los exámenes para la sección Listening:</strong> La calificación promedio asignada a los estudiantes en la sección de Listening.</li>
+                        
+                        <li><strong>Promedio de aciertos en la sección de Listening asignada por revisores:</strong> La media de respuestas correctas otorgadas por revisores en la sección de Listening, proporcionando una evaluación del desempeño.</li>
+                        
+                        <li><strong>Calificación promedio en los exámenes para la sección Reading/Writing:</strong> La calificación promedio asignada a los estudiantes en la sección de Reading/Writing, indicando el nivel general de competencia en estas habilidades.</li>
+                        
+                        <li><strong>Promedio de aciertos en la sección de Reading/Writing asignada por revisores:</strong> La media de respuestas correctas otorgadas por revisores en la sección de Reading/Writing, brindando una evaluación adicional de desempeño en estas habilidades.</li>
+                        
+                        <li><strong>Promedio de aciertos en los exámenes para la sección Speaking parte 1:</strong> La media de respuestas correctas en la sección de Speaking parte 1, reflejando el desempeño general en esta área específica.</li>
+                        
+                        <li><strong>Calificación promedio en los exámenes para la sección Speaking parte 1:</strong> La calificación promedio asignada a los estudiantes en la sección de Speaking parte 1.</li>
+                        
+                        <li><strong>Promedio de aciertos en la sección de Speaking parte 1 asignada por revisores:</strong> La media de respuestas correctas otorgadas por revisores en la sección de Speaking parte 1.</li>
+                        
+                        <li><strong>Promedio de aciertos en los exámenes para la sección Speaking parte 2:</strong> La media de respuestas correctas en la sección de Speaking parte 2, reflejando el desempeño general en esta área específica.</li>
+                        
+                        <li><strong>Calificación promedio en los exámenes para la sección Speaking parte 2:</strong> La calificación promedio asignada a los estudiantes en la sección de Speaking parte 2.</li>
+                        
+                        <li><strong>Promedio de aciertos en la sección de Speaking parte 2 asignada por revisores:</strong> La media de respuestas correctas otorgadas por revisores en la sección de Speaking parte 2.</li>
+                        
+                        <li><strong>Promedio de aciertos en los exámenes para la sección Speaking:</strong> La media de respuestas correctas en la sección de Speaking, combinando las partes 1 y 2.</li>
+                        
+                        <li><strong>Calificación promedio en los exámenes para la sección Speaking:</strong> La calificación promedio asignada a los estudiantes en la sección de Speaking, combinando las partes 1 y 2.</li>
+                    </ul>
+                <% } %>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
         </div>
     </div>
 

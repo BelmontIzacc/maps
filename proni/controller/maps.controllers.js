@@ -154,8 +154,8 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
     let linkTablas = [];
 
     if (tipo === 'escuela') {
-        const buscarImg = ["_1.png", "_2.png", "_3.png", "_4.png", "_5.png"];
-        const buscarCsv = ["_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv"];
+        const buscarImg = ["_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_6.png"];
+        const buscarCsv = ["_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_6.csv"];
 
         const elementos = await recuperarElementos(buscarImg, buscarCsv, "Escuelas", clave)
         imagenes = elementos.imagenes;
@@ -178,8 +178,8 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
         const mun = municipio.feature.properties; // { name, zona, noEscuelas, noAlumnos, topSeccion['mejor','peor'], generos['girls', 'boys']}
         top = mun;
     } else if (tipo === 'municipio') {
-        const buscarImg = ["_1.png", "_2.png", "_3.png", "_4.png", "_5.png"];
-        const buscarCsv = ["_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv"];
+        const buscarImg = ["_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_6.png"];
+        const buscarCsv = ["_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_6.csv"];
 
         const municipio = await municipioModel.findOne({ 'oid': oid });
         if (!municipio) {
@@ -205,8 +205,8 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
         const valores = zona.feature.properties; // { name, mejorEscuela, noEscuelas, noAlumnos, noMunicipios, topSeccion['mejor','peor'], generos['girls', 'boys']}
         top = valores;
     } else if (tipo === 'zona'){
-        const buscarImg = ["_1.png", "_2.png", "_3.png", "_4.png", "_5.png"];
-        const buscarCsv = ["_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv"];
+        const buscarImg = ["_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_6.png", "_7.png"];
+        const buscarCsv = ["_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_6.csv", "_7.csv"];
         // oid -> Zona A
         const refZona = await zonaModel.find({ nombre: oid });
         if (!refZona) {
@@ -231,7 +231,7 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
 
         const buscarImgDetalle = ["Listening.png", "Reading.png", "Speaking parte 1.png", "Speaking parte 2.png", "Speaking.png"];
         const buscarCsvDetalle = ["Listening.csv", "Reading.csv", "Speaking parte 1.csv", "Speaking parte 2.csv", "Speaking.csv"];
-        const dElementos = await recuperarElementos(buscarImgDetalle, buscarCsvDetalle, "Zona", "Calificación promedio por municipio de la zona A para sección ");
+        const dElementos = await recuperarElementos(buscarImgDetalle, buscarCsvDetalle, "Zona", "Calificación promedio por municipio de la zona " + file + " para sección ");
         const imgElm = dElementos.imagenes;
         const tblElm = dElementos.tablas;
         const cbzElm = dElementos.cabezeras;
@@ -316,14 +316,24 @@ mapsCtrl.obtenerInformeGeneral = async (tipo) => {
 
         titulo = "Detalles generales";
     } else if (tipo === 'general'){
-        const buscarImg = ["_1.png", "_2.png", "_3.png", "_4.png", "_5.png"];
-        const buscarCsv = ["_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv"];
+        let buscarImg = ["_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_6.png"];
+        let buscarCsv = ["_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_6.csv"];
 
         const elementos = await recuperarElementos(buscarImg, buscarCsv, "General", "Promedio de todos los registros");
         imagenes = elementos.imagenes;
         tablas = elementos.tablas;
         cabezeras = elementos.cabezeras;
         linkTablas = elementos.linkTablas;
+
+        buscarImg = ["mayor índice de aciertos en todos los registros.png", "menor índice de aciertos en todos los registros.png"];
+        buscarCsv = ["mayor índice de aciertos en todos los registros.csv", "menor índice de aciertos en todos los registros.csv"];
+
+        const preguntas = await recuperarElementos(buscarImg, buscarCsv, "General", "Preguntas con ");
+        imagenes = imagenes.concat(preguntas.imagenes);
+        tablas = tablas.concat(preguntas.tablas);
+        cabezeras = cabezeras.concat(preguntas.cabezeras);
+        linkTablas = linkTablas.concat(preguntas.linkTablas);
+
         titulo = "Detalles generales de los registros";
     }
 
