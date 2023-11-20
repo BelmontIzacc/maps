@@ -19,7 +19,6 @@ const StandarException = require('../exception/StandarException');
 // rutas
 
 // mapas
-// router.get('/', mapsCtrl.home);
 
 router.get('/vaneSoftecSolutions', async (req, res, next) => {
     const resultado = await mapsCtrl.renderMap();
@@ -29,6 +28,8 @@ router.get('/vaneSoftecSolutions', async (req, res, next) => {
     }
     res.render('maps.ejs', { marks: resultado.karma, statesData: resultado.statesData, zonaData: resultado.zonaData, municipios: resultado.municipios, buscar: resultado.buscar });
 });
+
+router.get('/cargar', cargarCtrl.iniciar);
 
 router.get('/init/:clave', async (req, res, next) => {
     const clave = req.params.clave;

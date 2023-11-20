@@ -82,7 +82,7 @@ estanciarCtrl.features = async () => {
                             properties: {
                                 oid: encontrado.feature.properties.oid,
                                 name: nombre,
-                                zona: "Zona " + data.zone,
+                                zona: data.zona,
                                 noEscuelas: data.school_number,
                                 noAlumnos: data.students_number,
                                 topSeccion: {
@@ -122,7 +122,7 @@ estanciarCtrl.features = async () => {
         const jsonData = await csv().fromString(response.data);
         for (let zo of zonas) {
             const nombre = zo.nombre;
-            const data = jsonData.find(data => 'Zona ' + data.zone == nombre);
+            const data = jsonData.find(data => '' + data.zona == nombre);
             if(data != undefined && data != null){
                 const encontrado = await zonaModel.findOne({ 'nombre': nombre });
                 if (encontrado) {
@@ -184,17 +184,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "1",
-            "name": "CD. VICTORIA",
-            "zona": "Zona B",
-            "noEscuelas": 100,
-            "noAlumnos": 500,
+            "name": "Cd. Victoria",
+            "zona": "Centro",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 500,
-                "boys": 350
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -230,17 +230,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "2",
-            "name": "TULA",
-            "zona": "Zona C",
-            "noEscuelas": 50,
-            "noAlumnos": 100,
+            "name": "Tula",
+            "zona": "Sur",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 50,
-                "boys": 30
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -275,17 +275,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "3",
-            "name": "SOTO LA MARINA",
-            "zona": "Zona B",
-            "noEscuelas": 10,
-            "noAlumnos": 10,
+            "name": "Soto La Marina",
+            "zona": "Centro",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 90,
-                "boys": 30
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -319,17 +319,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "4",
-            "name": "PADILLA",
-            "zona": "Zona B",
-            "noEscuelas": 600,
-            "noAlumnos": 100,
+            "name": "Padilla",
+            "zona": "Centro",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 200,
-                "boys": 150
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -369,17 +369,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "5",
-            "name": "TAMPICO",
-            "zona": "Zona C",
-            "noEscuelas": 120,
-            "noAlumnos": 501,
+            "name": "Tampico",
+            "zona": "Sur",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 501,
-                "boys": 352
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -409,17 +409,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "6",
-            "name": "RIO BRAVO",
-            "zona": "Zona A",
-            "noEscuelas": 999,
-            "noAlumnos": 999,
+            "name": "Rio Bravo",
+            "zona": "Norte",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 253,
-                "boys": 254
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -458,17 +458,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "7",
-            "name": "NVO. LAREDO",
-            "zona": "Zona A",
-            "noEscuelas": 1000,
-            "noAlumnos": 5000,
+            "name": "Nvo. Laredo",
+            "zona": "Norte",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 5000,
-                "boys": 3500
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -501,17 +501,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "8",
-            "name": "ALTAMIRA",
-            "zona": "Zona C",
-            "noEscuelas": 100,
-            "noAlumnos": 50,
+            "name": "Altamira",
+            "zona": "Sur",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 10,
-                "boys": 30
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -553,17 +553,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "9",
-            "name": "MATAMOROS",
-            "zona": "Zona A",
-            "noEscuelas": 99,
-            "noAlumnos": 60,
+            "name": "Matamoros",
+            "zona": "Norte",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 30,
-                "boys": 30
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -599,17 +599,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "10",
-            "name": "CD. MADERO",
-            "zona": "Zona C",
-            "noEscuelas": 11,
-            "noAlumnos": 55,
+            "name": "Cd. Madero",
+            "zona": "Sur",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 5220,
-                "boys": 3502
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -639,17 +639,17 @@ iniciarMunicipio = async () => {
         "type": "Feature",
         "properties": {
             "oid": "11",
-            "name": "REYNOSA",
-            "zona": "Zona A",
-            "noEscuelas": 890,
-            "noAlumnos": 567,
+            "name": "Reynosa",
+            "zona": "Norte",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 890,
-                "boys": 120
+                "girls": 0,
+                "boys": 0
             }
         },
         "geometry": {
@@ -1320,25 +1320,25 @@ iniciarEscuelas = async () => {
 
 iniciarZona = async () => {
     let zona = new zonaModel();
-    zona.nombre = "Zona A";
+    zona.nombre = "Norte";
     zona.oid = [
         7, 11, 6, 9
     ];
     zona.feature = {
         "type": "Feature",
         "properties": {
-            "name": "Zona A",
-            "mejorEscuela": "Belmont state",
-            "noEscuelas": 5000,
-            "noAlumnos": 8000,
-            "noMunicipios": 4,
+            "name": "Norte",
+            "mejorEscuela": "Sin datos",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
+            "noMunicipios": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 5010,
-                "boys": 3510
+                "girls": 0,
+                "boys": 0
             },
             "oid": [
                 7, 11, 6, 9
@@ -1363,25 +1363,25 @@ iniciarZona = async () => {
     await zona.save();
 
     zona = new zonaModel();
-    zona.nombre = "Zona B";
+    zona.nombre = "Centro";
     zona.oid = [
         4, 1, 3
     ];
     zona.feature = {
         "type": "Feature",
         "properties": {
-            "name": "Zona B",
-            "mejorEscuela": "Belmont state x2",
-            "noEscuelas": 5100,
-            "noAlumnos": 8200,
-            "noMunicipios": 3,
+            "name": "Centro",
+            "mejorEscuela": "Sin datos",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
+            "noMunicipios": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 5510,
-                "boys": 3510
+                "girls": 0,
+                "boys": 0
             },
             "oid": [
                 4, 1, 3
@@ -1404,25 +1404,25 @@ iniciarZona = async () => {
     await zona.save();
 
     zona = new zonaModel();
-    zona.nombre = "Zona C";
+    zona.nombre = "Sur";
     zona.oid = [
         2, 10, 5, 8
     ];
     zona.feature = {
         "type": "Feature",
         "properties": {
-            "name": "Zona C",
-            "mejorEscuela": "Belmont state x3",
-            "noEscuelas": 8000,
-            "noAlumnos": 8000,
-            "noMunicipios": 4,
+            "name": "Sur",
+            "mejorEscuela": "Sin datos",
+            "noEscuelas": 0,
+            "noAlumnos": 0,
+            "noMunicipios": 0,
             "topSeccion": {
-                "mejor": "Reading",
-                "peor": "Listening"
+                "mejor": "Sin datos",
+                "peor": "Sin datos"
             },
             "generos": {
-                "girls": 510,
-                "boys": 3510
+                "girls": 0,
+                "boys": 0
             },
             "oid": [
                 2, 10, 5, 8

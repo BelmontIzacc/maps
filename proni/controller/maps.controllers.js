@@ -56,6 +56,24 @@ mapsCtrl.renderMap = async () => {
     for (let esc of escuelas) {
         let mun = municipios.find(data => data.oid == esc.oid);
         if (mun !== undefined) {
+            
+            const feature = esc.feature === undefined ? null: esc.feature;
+            let students_number = "Sin datos";
+            let best_section = "Sin datos";
+            let worst_section = "Sin datos";
+            let qualification_listening = "Sin datos";
+            let qualification_reading = "Sin datos";
+            let qualification_speaking = "Sin datos";
+
+            if(feature !== null){
+                students_number = esc.feature.students_number;
+                best_section = esc.feature.best_section;
+                worst_section = esc.feature.worst_section;
+                qualification_listening = esc.feature.qualification_listening;
+                qualification_reading = esc.feature.qualification_reading;
+                qualification_speaking = esc.feature.qualification_speaking;
+            }
+
             proni.push({
                 nombre: esc.nombre,
                 clave: esc.clave,
@@ -67,12 +85,12 @@ mapsCtrl.renderMap = async () => {
                 popupAnchor: mun.popupAnchor,
                 oid: esc.oid,
 
-                noEstudiantes: esc.feature.students_number,
-                mejorSeccion: esc.feature.best_section,
-                peorSeccion: esc.feature.worst_section,
-                listen: esc.feature.qualification_listening,
-                reading: esc.feature.qualification_reading,
-                speaking: esc.feature.qualification_speaking
+                noEstudiantes: students_number,
+                mejorSeccion: best_section,
+                peorSeccion: worst_section,
+                listen: qualification_listening,
+                reading: qualification_reading,
+                speaking: qualification_speaking
             });
             statesData.features.push(mun.feature);
         }
@@ -100,18 +118,36 @@ mapsCtrl.renderMap = async () => {
 
     for(let esc of escuelas){
         if(esc.nombre != undefined){
+
+            const feature = esc.feature === undefined ? null: esc.feature;
+            let students_number = "Sin datos";
+            let best_section = "Sin datos";
+            let worst_section = "Sin datos";
+            let qualification_listening = "Sin datos";
+            let qualification_reading = "Sin datos";
+            let qualification_speaking = "Sin datos";
+
+            if(feature !== null){
+                students_number = esc.feature.students_number;
+                best_section = esc.feature.best_section;
+                worst_section = esc.feature.worst_section;
+                qualification_listening = esc.feature.qualification_listening;
+                qualification_reading = esc.feature.qualification_reading;
+                qualification_speaking = esc.feature.qualification_speaking;
+            }
+
             buscar.push({
                 nombre: esc.nombre,
                 oid: esc.oid,
                 clave: esc.clave,
                 tipo: 1,
 
-                noEstudiantes: esc.feature.students_number,
-                mejorSeccion: esc.feature.best_section,
-                peorSeccion: esc.feature.worst_section,
-                listen: esc.feature.qualification_listening,
-                reading: esc.feature.qualification_reading,
-                speaking: esc.feature.qualification_speaking
+                noEstudiantes: students_number,
+                mejorSeccion: best_section,
+                peorSeccion: worst_section,
+                listen: qualification_listening,
+                reading: qualification_reading,
+                speaking: qualification_speaking
             });
         }
     }
@@ -216,14 +252,7 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
         const claveName = zona.nombre;
         titulo = claveName;
 
-        let file = "A";
-        if(claveName == 'Zona B'){
-            file = "B";
-        } else if (claveName == 'Zona C'){
-            file = "C";
-        }
-
-        const elementos = await recuperarElementos(buscarImg, buscarCsv, "Zona", file);
+        const elementos = await recuperarElementos(buscarImg, buscarCsv, "Zona", claveName);
         imagenes = elementos.imagenes;
         tablas = elementos.tablas;
         cabezeras = elementos.cabezeras;
@@ -231,7 +260,7 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
 
         const buscarImgDetalle = ["Listening.png", "Reading.png", "Speaking parte 1.png", "Speaking parte 2.png", "Speaking.png"];
         const buscarCsvDetalle = ["Listening.csv", "Reading.csv", "Speaking parte 1.csv", "Speaking parte 2.csv", "Speaking.csv"];
-        const dElementos = await recuperarElementos(buscarImgDetalle, buscarCsvDetalle, "Zona", "Calificación promedio por municipio de la zona " + file + " para sección ");
+        const dElementos = await recuperarElementos(buscarImgDetalle, buscarCsvDetalle, "Zona", "Calificación promedio por municipio de la zona " + claveName + " para sección ");
         const imgElm = dElementos.imagenes;
         const tblElm = dElementos.tablas;
         const cbzElm = dElementos.cabezeras;
@@ -394,8 +423,8 @@ recuperarDatosGenerales = async (csvUrl, dataBase = [], tipo) => {
                     oid = dtable.oid;
                     clave = data.CCT;
                 }
-            } else if (data.zone !== undefined && data.zone !== null && data.zone !== ''){
-                titulo = "Zona " + data.zone;
+            } else if (data.zona !== undefined && data.zona !== null && data.zona !== ''){
+                titulo = data.zona;
                 oid = "";
             }
             datosGenerales.push(
