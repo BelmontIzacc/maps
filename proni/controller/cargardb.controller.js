@@ -11,11 +11,11 @@ const csv = require('csvtojson');
 // import para peticion http
 const axios = require('axios');
 
-estanciarCtrl.iniciar = async (req, res) => {
+estanciarCtrl.iniciar = async () => {
     await iniciarMunicipio();
     await iniciarEscuelas();
     await iniciarZona();
-    res.json({ status: true });
+    return true;
 }
 
 estanciarCtrl.features = async () => {
@@ -58,7 +58,11 @@ estanciarCtrl.features = async () => {
                             girl: data.girl,
                             boy: data.boy,
                             group_number: data.group_number,
-                            best_group: data.best_group
+                            best_group: data.best_group,
+                            age_10: data.age_10,
+                            age_11: data.age_11,
+                            age_12: data.age_12,
+                            age_13: data.age_13
                         }
                     });
                 }
@@ -75,6 +79,12 @@ estanciarCtrl.features = async () => {
             if(data != undefined && data != null){
                 const encontrado = await municipioModel.findOne({ 'nombre': nombre });
                 if (encontrado) {
+                    let zonaNombre = "Norte";
+                    if(data.zone == "1.0"){
+                        zonaNombre = "Centro"
+                    } else if(data.zone == "2.0"){
+                        zonaNombre = "Sur"
+                    }
                     await encontrado.updateOne({
                         feature: {
                             type: encontrado.feature.type,
@@ -82,8 +92,8 @@ estanciarCtrl.features = async () => {
                             properties: {
                                 oid: encontrado.feature.properties.oid,
                                 name: nombre,
-                                zona: data.zona,
-                                noEscuelas: data.school_number,
+                                zona: zonaNombre,
+                                noEscuelas: data.schools_number,
                                 noAlumnos: data.students_number,
                                 topSeccion: {
                                     mejor: data.best_section,
@@ -108,7 +118,11 @@ estanciarCtrl.features = async () => {
                                 reviewer_answers_reading_writing: data.reviewer_answers_reading_writing,
                                 reviewer_answers_listening: data.reviewer_answers_listening,
                                 reviewer_answers_speaking_part_2: data.reviewer_answers_speaking_part_2,
-                                reviewer_answers_speaking_part_1: data.reviewer_answers_speaking_part_1
+                                reviewer_answers_speaking_part_1: data.reviewer_answers_speaking_part_1,
+                                age_10: data.age_10,
+                                age_11: data.age_11,
+                                age_12: data.age_12,
+                                age_13: data.age_13
                             }
                         }
                     });
@@ -122,7 +136,7 @@ estanciarCtrl.features = async () => {
         const jsonData = await csv().fromString(response.data);
         for (let zo of zonas) {
             const nombre = zo.nombre;
-            const data = jsonData.find(data => '' + data.zona == nombre);
+            const data = jsonData.find(data => data.zone == nombre);
             if(data != undefined && data != null){
                 const encontrado = await zonaModel.findOne({ 'nombre': nombre });
                 if (encontrado) {
@@ -160,7 +174,11 @@ estanciarCtrl.features = async () => {
                                 reviewer_answers_reading_writing: data.reviewer_answers_reading_writing,
                                 reviewer_answers_listening: data.reviewer_answers_listening,
                                 reviewer_answers_speaking_part_2: data.reviewer_answers_speaking_part_2,
-                                reviewer_answers_speaking_part_1: data.reviewer_answers_speaking_part_1
+                                reviewer_answers_speaking_part_1: data.reviewer_answers_speaking_part_1,
+                                age_10: data.age_10,
+                                age_11: data.age_11,
+                                age_12: data.age_12,
+                                age_13: data.age_13
                             }
                         }
                     });

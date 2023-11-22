@@ -29,7 +29,15 @@ router.get('/vaneSoftecSolutions', async (req, res, next) => {
     res.render('maps.ejs', { marks: resultado.karma, statesData: resultado.statesData, zonaData: resultado.zonaData, municipios: resultado.municipios, buscar: resultado.buscar });
 });
 
-router.get('/cargar', cargarCtrl.iniciar);
+router.get('/cargar/:clave', async (req, res, next) => {
+    const clave = req.params.clave;
+    if(clave == 'belmont'){
+        const resultado = await cargarCtrl.iniciar();
+        res.json({ status: resultado });
+    } else {
+        res.json({ status: false });
+    }
+});
 
 router.get('/init/:clave', async (req, res, next) => {
     const clave = req.params.clave;
@@ -73,7 +81,8 @@ router.get('/proni/:tipo/:oid/:id', async (req, res, next) => {
     res.render('informe.ejs', {
         imagenes: resultado.imagenes, tablas: resultado.tablas, cabezeras: resultado.cabezeras,
         top: resultado.top, titulo: resultado.titulo, detalle: resultado.detalle, tipo: resultado.tipo, topMunicipio: resultado.topMunicipio,
-        linkTablas: resultado.linkTablas, topEscuela: resultado.topEscuela
+        linkTablas: resultado.linkTablas, topEscuela: resultado.topEscuela,
+        defGeneral: resultado.defGeneral
     });
 });
 

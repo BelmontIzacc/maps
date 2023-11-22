@@ -17,6 +17,8 @@
         .container {
             display: flex;
             flex: 1;
+            padding-right: 5px;
+            padding-left: 5px;
         }
 
         .columna {
@@ -122,6 +124,10 @@
                         Alumnos: <b><%- top.noAlumnos %></b><br />
                         - Niñas: <b><%- top.generos.girls %></b><br />
                         - Niños: <b><%- top.generos.boys %></b>
+
+                        <br>Edades<br>
+                        10 años: <b><%- top.age_10 %></b><br />
+                        11 años: <b><%- top.age_11 %></b><br />
                     </div>
                 
                     <div class="coltop">
@@ -129,6 +135,9 @@
                         <b><%- top.best_school %></b><br />
                         <br>Peor escuela<br />
                         <b><%- top.worst_school %></b><br />
+                        <br><br>
+                        12 años: <b><%- top.age_12 %></b><br />
+                        13 años: <b><%- top.age_13 %></b>
                     </div>
 
                     <div class="coltop">
@@ -159,6 +168,10 @@
                             Alumnos: <b><%- topMunicipio.noAlumnos %></b><br />
                             - Niñas: <b><%- topMunicipio.generos.girls %></b><br />
                             - Niños: <b><%- topMunicipio.generos.boys %></b>
+
+                            <br><br>Edades<br>
+                            10 años: <b><%- topMunicipio.age_10 %></b><br />
+                            11 años: <b><%- topMunicipio.age_11 %></b><br />
                         </div>
 
                         <div class="coltop">
@@ -166,6 +179,10 @@
                             <b><%- topMunicipio.best_school %></b><br />
                             <br>Peor escuela<br />
                             <b><%- topMunicipio.worst_school %></b><br />
+
+                            <br>
+                            12 años: <b><%- topMunicipio.age_12 %></b><br />
+                            13 años: <b><%- topMunicipio.age_13 %></b>
                         </div>
                     
                         <div class="coltop">
@@ -197,6 +214,10 @@
                             Alumnos: <b><%- topEscuela.students_number %></b><br />
                             - Niñas: <b><%- topEscuela.girl %></b><br />
                             - Niños: <b><%- topEscuela.boy %></b>
+
+                            <br><br>Edades<br>
+                            10 años: <b><%- topEscuela.age_10 %></b><br />
+                            11 años: <b><%- topEscuela.age_11 %></b><br />
                         </div>
                     
                         <div class="coltop">
@@ -206,6 +227,10 @@
 
                             <br /><br> Grupo <br />
                             Mejor: <b><%- topEscuela.best_group %></b><br />
+
+                            <br>
+                            12 años: <b><%- topEscuela.age_12 %></b><br />
+                            13 años: <b><%- topEscuela.age_13 %></b>
                         </div>
 
                         <div class="coltop">
@@ -276,7 +301,7 @@
                             <td>
                                 <h6 style="text-align: left;">Tabla <%= indexTlb + 1%> : <a class="enlace-descarga" onclick="descargarCSV('<%= linkTablas[indexTlb] %>', <%= indexTlb %>)">Ver CSV</a>
                                 </h6> 
-                                <div style="overflow-x: auto; max-width: 500px;"> <!-- Establece un ancho máximo para la tabla y permite el desplazamiento horizontal -->
+                                <div style="overflow-x: auto; max-width: 500px; max-height: 400px;"> <!-- Establece un ancho máximo para la tabla y permite el desplazamiento horizontal -->
                                     
                                     <table class="table table-bordered" style="width: 100%;"> <!-- Hace que la tabla ocupe el 100% del ancho del contenedor -->
                                         <thead>
@@ -311,7 +336,9 @@
                                 <table>
                                     <thead>
                                         <tr>
-
+                                            <th>
+                                                <p></p>
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -444,7 +471,7 @@
             enlaceTemporal.click();
             document.body.removeChild(enlaceTemporal);
         }
-        </script>
+    </script>
 </body>
 
 </html>
