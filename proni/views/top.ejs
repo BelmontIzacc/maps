@@ -17,6 +17,10 @@
         .container {
             display: flex;
             flex: 1;
+            padding-right: 5px;
+            padding-left: 5px;
+            margin-right: 0px;
+            margin-left: 70px;
         }
 
         .columna {
@@ -162,7 +166,8 @@
                     <tr>
                         <th scope="col">Tipo</th>
                         <th scope="col">Sección</th>
-                        <th scope="col">Inscritos</th>
+                        <th scope="col"></th>
+                        <!-- <th scope="col">Inscritos</th> -->
                         <th scope="col">Orden</th>
                     </tr>
                 </thead>
@@ -182,9 +187,15 @@
                         </td>
                         <td>
                             <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"  name="customCheck" id="speak1">
+                                <label class="custom-control-label" for="speak1">Speaking part 1</label>
+                            </div>
+                            <!--
+                            <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="customCheckIns" id="alum">
                                 <label class="custom-control-label" for="alum">Alumnos</label>
                             </div>
+                            -->
                         </td>
                         <td>
                             <div class="custom-control custom-radio">
@@ -208,9 +219,15 @@
                         </td>
                         <td>
                             <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"  name="customCheck" id="speak2">
+                                <label class="custom-control-label" for="speak2">Speaking part 2</label>
+                            </div>
+                            <!--
+                            <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="customCheckIns" id="girl">
                                 <label class="custom-control-label" for="girl">Niñas</label>
                             </div>
+                            -->
                         </td>
                         <td>
                             <div class="custom-control custom-radio">
@@ -233,10 +250,12 @@
                             </div>
                         </td>
                         <td>
+                            <!--
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="customCheckIns" id="boy">
                                 <label class="custom-control-label" for="boy">Niños</label>
                             </div>
+                            -->
                         </td>
                         <td>
                             
@@ -247,10 +266,12 @@
 
                         </td>
                         <td colspan="3">
+                            <!--
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input"  name="customCheck" id="speak1">
                                 <label class="custom-control-label" for="speak1">Speaking part 1</label>
                             </div>
+                            -->
                         </td>
                         <td>
 
@@ -264,10 +285,12 @@
 
                         </td>
                         <td colspan="3">
+                            <!--
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input"  name="customCheck" id="speak2">
                                 <label class="custom-control-label" for="speak2">Speaking part 2</label>
                             </div>
+                            -->
                         </td>
                         <td>
 
@@ -280,20 +303,34 @@
             </table>
 
             <div class="table-responsive-md">
-                <div class="table-responsive table-container">
-                    <table class="table table-borderless table-hover">
+                <div style="overflow-x: auto; max-width: 100%; max-height: 400px;" class="table-responsive table-container">
+                    <table class="table table-borderless table-hover" style="width: 100%;">
                         <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Reading/Writing</th>
+
+                            <th scope="col">P. Aciertos. Reading/Writing</th>
+
                             <th scope="col">Listening</th>
+
+                            <th scope="col">P. Aciertos. Listening</th>
+                            
                             <th scope="col">Speaking</th>
+
+                            <th scope="col">P. Aciertos. Speaking</th>
+
                             <th scope="col">Speaking part1</th>
+
+                            <th scope="col">P. Aciertos. Speaking part 1</th>
+
                             <th scope="col">Speaking part2</th>
+                            
+                            <th scope="col">P. Aciertos. Speaking part 2</th>
+
                             <th scope="col">Alumnos</th>
-                            <th scope="col">Niñas</th>
-                            <th scope="col">Niños</th>
+                            
                         </tr>
                         </thead>
                         <tbody id="tablaResultados">
@@ -383,12 +420,14 @@
             });
 
             // Alumnos, niñas, niños
+            /*
             $('input[name="customCheckIns"]').change(function () {
                 var idsGrupo2 = obtenerIdsMarcados('customCheckIns');
                 alumnos = idsGrupo2;
                 const mostrar = filtrarDatos(data, secciones, alumnos, orden);
                 imprimirTabla(mostrar);
             });
+            */
 
             // orden
             $('input[name="customRadioOrd"]').change(function () {
@@ -426,14 +465,29 @@
 
                     // Agregar celdas con la información correspondiente a cada columna
                     // fila.append($('<td>').text(objeto.titulo));
+                    console.log(objeto);
                     fila.append($('<td>').text(objeto.qualification_reading));
+                    fila.append($('<td>').text(objeto.correct_answers_reading_writing));
+
                     fila.append($('<td>').text(objeto.qualification_listening));
+                    fila.append($('<td>').text(objeto.correct_answers_listening));
+
                     fila.append($('<td>').text(objeto.qualification_speaking));
+                    fila.append($('<td>').text(objeto.correct_answers_speaking));
+                    
                     fila.append($('<td>').text(objeto.qualification_speaking_part_1));
+                    fila.append($('<td>').text(objeto.correct_answers_speaking_part_1));
+
                     fila.append($('<td>').text(objeto.qualification_speaking_part_2));
+                    fila.append($('<td>').text(objeto.correct_answers_speaking_part_2));
+
                     fila.append($('<td>').text(objeto.students_number));
+
+                    /*
                     fila.append($('<td>').text(objeto.girl));
                     fila.append($('<td>').text(objeto.boy));
+                    */
+                    console.log(objeto);
 
                     // Agregar la fila a la tabla
                     tablaResultados.append(fila);
@@ -479,6 +533,7 @@
                     }
                 }
 
+                /*
                 if(filtroAlumnos.length !== 0){
                     // alum,girl,boy
                     for (let filtro of filtroAlumnos){
@@ -490,7 +545,7 @@
                             filtros.push("boy");
                         }
                     }
-                }
+                } */
 
                 return filtros;
             }

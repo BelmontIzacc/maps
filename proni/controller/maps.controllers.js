@@ -439,8 +439,8 @@ recuperarDatosGenerales = async (csvUrl, dataBase = [], tipo) => {
                     oid = dtable.oid;
                     clave = data.CCT;
                 }
-            } else if (data.zona !== undefined && data.zona !== null && data.zona !== ''){
-                titulo = data.zona;
+            } else if (data.zone !== undefined && data.zone !== null && data.zone !== ''){
+                titulo = data.zone;
                 oid = "";
             }
             datosGenerales.push(
@@ -528,7 +528,7 @@ definicionGraficas = async (imagenes = [], tipo = "", busqueda = 0) => {
     const explicacion = [];
     for(let img of imagenes){
         // img = https://raw.githubusercontent.com/BelmontIzacc/maps_datos/master/Escuelas/28DPR0513B_10.png
-        if( ( tipo == 'zona' || tipo == 'municipio' || tipo == 'escuela' ) && busqueda == 0){
+        if( ( tipo == 'zona' || tipo == 'municipio' || tipo == 'escuela' ) && busqueda === 0){
             let detalle = definiciones.find( dato => ( dato.Carpeta == 'area' || dato.Carpeta == 'Zona' || dato.Carpeta == 'Municipios' || dato.Carpeta == 'Escuela')  && img.includes(dato.Archivo));
             if(detalle !== undefined){
                 explicacion.push({
@@ -541,7 +541,7 @@ definicionGraficas = async (imagenes = [], tipo = "", busqueda = 0) => {
                     definicion: ""
                 });
             }
-        }else if( ( tipo == 'zona' || tipo == 'municipio' || tipo == 'general' ) && busqueda == 1){
+        }else if( ( tipo == 'zona' || tipo == 'municipio' || tipo == 'general' ) && busqueda === 1){
             let detalle = definiciones.find( dato => ( dato.Carpeta == 'General' || dato.Carpeta == 'Zona' || dato.Carpeta == 'Municipios')  && img.includes(dato.Archivo));
             if(detalle !== undefined){
                 explicacion.push({
@@ -554,6 +554,11 @@ definicionGraficas = async (imagenes = [], tipo = "", busqueda = 0) => {
                     definicion: ""
                 });
             }
+        } else {
+            explicacion.push({
+                archivo: "",
+                definicion: ""
+            });
         }
     }
     return explicacion;
