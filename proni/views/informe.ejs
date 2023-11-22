@@ -57,11 +57,50 @@
             text-decoration: underline;
         /* Estilos adicionales cuando el cursor está sobre el enlace */
         }
+
+        .scrollable-container {
+            max-height: 400px; /* Establece la altura máxima para que aparezca la barra de desplazamiento */
+            overflow-y: auto;  /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+        }
+
+        /* barra nav */
+        .bg-dark {
+            background-color: #941f3e!important;
+        }
+        .btn-secondary {
+            color: #fff;
+            background-color: #741734;
+            border-color: #6C0424;
+        }
+        .btn-secondary:hover {
+            color: #fff;
+            background-color: #941C3C;
+            border-color: #6C0424;
+        }
+        .dropdown-menu {
+            background-color: #741734;
+        }
+        .dropdown-divider{
+            border-color: #6C0424;
+        }
+        .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+            color: #fff;
+            background-color: #941C3C;
+            border-color: #6C0424;
+        }
+        /* footer */
+        footer {
+            background-color: #941f3e;
+            color: white;
+            text-align: center;
+            padding: 2px;
+        }
+        
     </style>
 </head>
 
 <body>
-    <div class="pos-f-t sticky-top">
+    <div class="pos-f-t sticky-top bg-dark">
         <div class="collapse" id="navbarToggleExternalContent">
             <div class="bg-dark p-4" style="color: white;">
                 <h7 class="text-white h4"><%- detalle %></h7>
@@ -212,70 +251,80 @@
 
     <div class="container">
         <div class="columna">
+            <img src="/img/logo.png" width="350">
             <!-- Contenido de la primera columna -->
             <h2>Tablas</h2>
-            <p>Las tablas presentan los datos que sirvieron como base para la creación de las gráficas. 
+            <p style="text-align: justify;">Las tablas presentan los datos que sirvieron como base para la creación de las gráficas. 
                 Estas tablas actúan como la fuente primaria de información cuantitativa, proporcionando detalles específicos sobre cada variable medida. Cada celda en las tablas representa un punto de datos específico. 
                 Mientras que las gráficas ofrecen una visualización más intuitiva, las tablas respaldan y detallan los valores cuantitativos que respaldan las representaciones visuales.</p>
-            <div class="contenido" style="text-align: -webkit-center;">
-                <% tablas.forEach(function(tlb, indexTlb){ %>
-                    <section>
-                        <h6 style="text-align: left;">Tabla <%= indexTlb + 1%> : <a class="enlace-descarga" onclick="descargarCSV('<%= linkTablas[indexTlb] %>', <%= indexTlb %>)">Ver CSV</a>
-                        </h6> 
-                        <div style="overflow-x: auto; max-width: 400px;"> <!-- Establece un ancho máximo para la tabla y permite el desplazamiento horizontal -->
-                            <table border="1" style="width: 100%;"> <!-- Hace que la tabla ocupe el 100% del ancho del contenedor -->
-                              <thead>
-                                <tr>
-                                  <% cabezeras[indexTlb].forEach(function(cbz) { %>
-                                    <th style="width: auto;"> <!-- Puedes ajustar el ancho de las columnas según sea necesario -->
-                                      <%= cbz %>
-                                    </th>
-                                  <% }); %>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <% tlb.forEach(function(dato) { %>
-                                  <tr>
-                                    <% cabezeras[indexTlb].forEach(function(cbz) { %>
-                                      <td>
-                                        <%= dato[cbz] || '0' %>
-                                      </td>
-                                    <% }); %>
-                                  </tr>
-                                <% }); %>
-                              </tbody>
-                            </table>
-                          </div>
-                    </section>
-                    <br>
-                    <% }); %>
-            </div>
-        </div>
-
-        <div class="columna">
-            <!-- Contenido de la segunda columna -->
+            
             <h2>Imagenes</h2>
-            <p> Las imágenes de las gráficas capturan visualmente los resultados obtenidos a través del formulario de recopilación de datos. 
+            <p style="text-align: justify;"> Las imágenes de las gráficas capturan visualmente los resultados obtenidos a través del formulario de recopilación de datos. 
                 Estas representaciones gráficas no solo ofrecen una presentación de los resultados, sino que también proporcionan una visión detallada del análisis cuantitativo empleado en el estudio.</p>
-            <div class="contenido" style="text-align: -webkit-center;">
-                <% imagenes.forEach(function(img, index){ %>
-                    <section>
-                        <table border="0">
-                            <thead>
-                                <tr>
-                                    <th style="text-align: left;">Imagen <%= index + 1%> : <a class="enlace-descarga" href="<%- img %>" target="_blank">Abrir Imagen</a>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><img src="<%- img %>" width="500"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-                    <br>
-                    <% }); %>
+            <div class="contenido scrollable-container" style="text-align: -webkit-center;">
+
+                <table class="table">
+                    <thead>
+                      <tr>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% tablas.forEach(function(tlb, indexTlb){ %>
+                        <tr>
+                            <!-- Tabla -->
+                            <td>
+                                <h6 style="text-align: left;">Tabla <%= indexTlb + 1%> : <a class="enlace-descarga" onclick="descargarCSV('<%= linkTablas[indexTlb] %>', <%= indexTlb %>)">Ver CSV</a>
+                                </h6> 
+                                <div style="overflow-x: auto; max-width: 500px;"> <!-- Establece un ancho máximo para la tabla y permite el desplazamiento horizontal -->
+                                    
+                                    <table class="table table-bordered" style="width: 100%;"> <!-- Hace que la tabla ocupe el 100% del ancho del contenedor -->
+                                        <thead>
+                                          <tr>
+                                            <% cabezeras[indexTlb].forEach(function(cbz) { %>
+                                              <th style="width: auto; vertical-align: middle;"> <!-- Puedes ajustar el ancho de las columnas según sea necesario -->
+                                                <%= cbz %>
+                                              </th>
+                                            <% }); %>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <% tlb.forEach(function(dato) { %>
+                                            <tr>
+                                              <% cabezeras[indexTlb].forEach(function(cbz) { %>
+                                                <td>
+                                                  <%= dato[cbz] || '0' %>
+                                                </td>
+                                              <% }); %>
+                                            </tr>
+                                          <% }); %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <!-- Imagen -->
+                            <td>
+                                <% img = imagenes[indexTlb] %>
+                                <h6 style="text-align: left;">Imagen <%= indexTlb + 1%> : <a class="enlace-descarga" href="<%- img %>" target="_blank">Abrir Imagen</a>
+                                </h6>
+                                
+                                <table>
+                                    <thead>
+                                        <tr>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="<%- img %>" width="500"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                  </table>
             </div>
         </div>
     </div>

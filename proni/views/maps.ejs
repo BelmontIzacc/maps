@@ -25,6 +25,30 @@
             width: 100%;
             /* Agrega otros estilos según tus necesidades */
         }
+        .bg-dark {
+            background-color: #941f3e!important;
+        }
+        .btn-secondary {
+            color: #fff;
+            background-color: #741734;
+            border-color: #6C0424;
+        }
+        .btn-secondary:hover {
+            color: #fff;
+            background-color: #941C3C;
+            border-color: #6C0424;
+        }
+        .dropdown-menu {
+            background-color: #741734;
+        }
+        .dropdown-divider{
+            border-color: #6C0424;
+        }
+        .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+            color: #fff;
+            background-color: #941C3C;
+            border-color: #6C0424;
+        }
         .list-group-item:hover {
             background-color: #3b3838; /* Cambia el color al pasar el mouse */
             color: #fff; /* Cambia el color del texto al pasar el mouse */
@@ -34,7 +58,7 @@
 
 <body>
 
-    <nav class="navbar sticky-top navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-dark bg-dark barColor">
         <a class="navbar-brand" href="/vsts/vaneSoftecSolutions" style="max-width: 100%; word-wrap: break-word; white-space: normal;">Mapa de evaluaciones de inglés en escuelas primarias</a>
         <div>
             <button class="btn btn-secondary" type="button"
@@ -253,21 +277,21 @@
         info.addTo(map);
 
         function getColor(d) {
-            return d == 'Cd. Victoria' ? '#1976D2' :
-                d == 'Tula' ? '#3F51B5' :
-                    d == 'Padilla' ? '#FF5722' :
-                        d == 'Soto La Marina' ? '#009688' :
-                            d == 'Altamira' ? '#60D394' :
-                                d == 'Tampico' ? '#45CCB3' :
-                                    d == 'Cd. Madero' ? '#33FF57' :
-                                        d == 'Matamoros' ? '#FFFF00' :
-                                            d == 'Rio Bravo' ? '#333333' :
-                                                d == 'Reynosa' ? '#E74C3C' :
-                                                    d == 'Nvo. Laredo' ? '#7E349D' :
-                                                        d == 'Norte' ? '#00AFAF' :
-                                                            d == 'Centro' ? '#00AF89' :
-                                                                d == 'Sur' ? '#00AF66' :
-                                                                    '#FFEDA0';
+            return d == 'Cd. Victoria' ? '#942E48' :
+                d == 'Tula' ? '#941C3C' :
+                    d == 'Padilla' ? '#B47975' :
+                        d == 'Soto La Marina' ? '#6C0424' :
+                            d == 'Altamira' ? '#BCA1A9' :
+                                d == 'Tampico' ? '#040404' :
+                                    d == 'Cd. Madero' ? '#C68C9C' :
+                                        d == 'Matamoros' ? '#B06F5F' :
+                                            d == 'Río Bravo' ? '#C47E8E' :
+                                                d == 'Reynosa' ? '#741734' :
+                                                    d == 'Nvo. Laredo' ? '#9C455A' :
+                                                        d == 'Norte' ? '#942E48' :
+                                                            d == 'Centro' ? '#A43454' :
+                                                                d == 'Sur' ? '#c47d90' :
+                                                                    '#E0C838';
         }
 
         function style(feature) {

@@ -209,7 +209,7 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
 
         const municipio = await municipioModel.findOne({ 'oid': oid });
         if (!municipio) {
-            return new StandarException('No existe el objeto', codigos.datoNoEncontrado);
+            return new StandarException('No existe el objeto en municipio', codigos.datoNoEncontrado);
         }
         const mun = municipio.feature.properties; // { name, zona, noEscuelas, noAlumnos, topSeccion['mejor','peor'], generos['girls', 'boys']}
         top = mun;
@@ -232,10 +232,9 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
         linkTablas = elementos.linkTablas;
 
         detalle = "Detalles de la zona";
-
         const refZona = await zonaModel.find({ oid: { $in: [Number(oid)] } });
         if (!refZona) {
-            return new StandarException('No existe el objeto', codigos.datoNoEncontrado);
+            return new StandarException('No existe el objeto en zona', codigos.datoNoEncontrado);
         }
         const zona = refZona[0];
         const valores = zona.feature.properties; // { name, mejorEscuela, noEscuelas, noAlumnos, noMunicipios, topSeccion['mejor','peor'], generos['girls', 'boys']}
@@ -277,7 +276,7 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
         top = valores;
     }
     if (tablas.length === 0) {
-        return new StandarException('No existe el objeto', codigos.datoNoEncontrado);
+        return new StandarException('No existe el objeto para tablas', codigos.datoNoEncontrado);
     }
     return { titulo, detalle, imagenes, tablas, cabezeras, top, tipo, topMunicipio, linkTablas, topEscuela };
 }
