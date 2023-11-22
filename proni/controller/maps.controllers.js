@@ -189,8 +189,6 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
     let topEscuela = 0;
     let linkTablas = [];
 
-    const defGeneral = await definicionGraficas();
-
     if (tipo === 'escuela') {
         const buscarImg = ["_6.png", "_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_11.png", "_7.png", "_8.png", "_12.png", "_9.png", "_10.png"];
         const buscarCsv = ["_6.csv", "_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_11.csv", "_7.csv", "_8.csv", "_12.csv", "_9.csv", "_10.csv"];
@@ -280,6 +278,10 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
     if (tablas.length === 0) {
         return new StandarException('No existe el objeto para tablas', codigos.datoNoEncontrado);
     }
+    
+    const defGeneral = await definicionGraficas(imagenes, tipo, 0);
+    console.log(defGeneral);
+
     return { titulo, detalle, imagenes, tablas, cabezeras, top, tipo, topMunicipio, linkTablas, topEscuela, defGeneral };
 }
 
@@ -373,7 +375,11 @@ mapsCtrl.obtenerInformeGeneral = async (tipo) => {
     if (tablas.length === 0) {
         return new StandarException('No existe el objeto', codigos.datoNoEncontrado);
     }
-    return { titulo, imagenes, tablas, cabezeras, tipo, linkTablas };
+
+    const defGeneral = await definicionGraficas(imagenes, tipo, 1);
+    console.log(defGeneral);
+
+    return { titulo, imagenes, tablas, cabezeras, tipo, linkTablas, defGeneral };
 }
 
 mapsCtrl.filtrarRegistros = async () => {
@@ -516,7 +522,44 @@ compararPorNombre = (a, b) => {
     return 0; // Nombres son iguales
 }
 
-definicionGraficas = async () => {
+definicionGraficas = async (imagenes = [], tipo = "", busqueda = 0) => {
+    const definiciones = await explicacionGraficas();
+    //console.log(definiciones);
+    const explicacion = [];
+    for(let img of imagenes){
+        // img = https://raw.githubusercontent.com/BelmontIzacc/maps_datos/master/Escuelas/28DPR0513B_10.png
+        if( ( tipo == 'zona' || tipo == 'municipio' || tipo == 'escuela' ) && busqueda == 0){
+            let detalle = definiciones.find( dato => ( dato.Carpeta == 'area' || dato.Carpeta == 'Zona' || dato.Carpeta == 'Municipios' || dato.Carpeta == 'Escuela')  && img.includes(dato.Archivo));
+            if(detalle !== undefined){
+                explicacion.push({
+                    archivo: detalle.Archivo,
+                    definicion: detalle.Descripcion
+                });
+            } else {
+                explicacion.push({
+                    archivo: "",
+                    definicion: ""
+                });
+            }
+        }else if( ( tipo == 'zona' || tipo == 'municipio' || tipo == 'general' ) && busqueda == 1){
+            let detalle = definiciones.find( dato => ( dato.Carpeta == 'General' || dato.Carpeta == 'Zona' || dato.Carpeta == 'Municipios')  && img.includes(dato.Archivo));
+            if(detalle !== undefined){
+                explicacion.push({
+                    archivo: detalle.Archivo,
+                    definicion: detalle.Descripcion
+                });
+            } else {
+                explicacion.push({
+                    archivo: "",
+                    definicion: ""
+                });
+            }
+        }
+    }
+    return explicacion;
+}
+
+explicacionGraficas = async () => {
     const urlDef = csvURL + "explicacion_graficas.csv";
     const response = await axios.get(urlDef);
     let data = []
@@ -526,12 +569,5 @@ definicionGraficas = async () => {
     }
     return data;
 }
-
-/*
-// img = https://raw.githubusercontent.com/BelmontIzacc/maps_datos/master/Escuelas/28DPR0513B_10.png
-        const ultimosSieteCaracteres = img.slice(-7); // = _10.png
-        const elementos = <%- JSON.stringify(defGeneral) %>;
-        console.log(elementos);
-        */
 
 module.exports = mapsCtrl;
