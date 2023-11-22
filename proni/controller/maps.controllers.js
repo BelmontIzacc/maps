@@ -190,8 +190,8 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
     let linkTablas = [];
 
     if (tipo === 'escuela') {
-        const buscarImg = ["_6.png", "_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_11.png", "_7.png", "_8.png", "_12.png", "_9.png", "_10.png"];
-        const buscarCsv = ["_6.csv", "_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_11.csv", "_7.csv", "_8.csv", "_12.csv", "_9.csv", "_10.csv"];
+        const buscarImg = ["_6.png", "_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_11.png", "_7.png", "_8.png"];
+        const buscarCsv = ["_6.csv", "_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_11.csv", "_7.csv", "_8.csv"];
 
         const elementos = await recuperarElementos(buscarImg, buscarCsv, "Escuelas", clave)
         imagenes = elementos.imagenes;
@@ -214,8 +214,8 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
         const mun = municipio.feature.properties; // { name, zona, noEscuelas, noAlumnos, topSeccion['mejor','peor'], generos['girls', 'boys']}
         top = mun;
     } else if (tipo === 'municipio') {
-        const buscarImg = ["_6.png", "_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_11.png", "_7.png", "_8.png", "_12.png", "_9.png", "_10.png"];
-        const buscarCsv = ["_6.csv", "_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_11.csv", "_7.csv", "_8.csv", "_12.csv", "_9.csv", "_10.csv"];
+        const buscarImg = ["_6.png", "_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_11.png", "_7.png", "_8.png"];
+        const buscarCsv = ["_6.csv", "_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_11.csv", "_7.csv", "_8.csv"];
 
         const municipio = await municipioModel.findOne({ 'oid': oid });
         if (!municipio) {
@@ -240,8 +240,8 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
         const valores = zona.feature.properties; // { name, mejorEscuela, noEscuelas, noAlumnos, noMunicipios, topSeccion['mejor','peor'], generos['girls', 'boys']}
         top = valores;
     } else if (tipo === 'zona'){
-        const buscarImg = ["_0.png", "_6.png", "_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_11.png", "_7.png", "_8.png", "_12.png", "_9.png", "_10.png"];
-        const buscarCsv = ["_0.csv", "_6.csv", "_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_11.csv", "_7.csv", "_8.csv", "_12.csv", "_9.csv", "_10.csv"];
+        const buscarImg = ["_0.png", "_6.png", "_1.png", "_2.png", "_3.png", "_4.png", "_5.png", "_11.png", "_7.png", "_8.png"];
+        const buscarCsv = ["_0.csv", "_6.csv", "_1.csv", "_2.csv", "_3.csv", "_4.csv", "_5.csv", "_11.csv", "_7.csv", "_8.csv"];
         // oid -> Zona A
         const refZona = await zonaModel.find({ nombre: oid });
         if (!refZona) {
@@ -360,6 +360,7 @@ mapsCtrl.obtenerInformeGeneral = async (tipo) => {
         cabezeras = cabezeras.concat(preguntas.cabezeras);
         linkTablas = linkTablas.concat(preguntas.linkTablas);
 
+        /*
         buscarImg = ["_12.png", "_9.png", "_10.png"];
         buscarCsv = ["_12.csv", "_9.csv", "_10.csv"];
 
@@ -368,7 +369,7 @@ mapsCtrl.obtenerInformeGeneral = async (tipo) => {
         tablas = tablas.concat(preguntas.tablas);
         cabezeras = cabezeras.concat(preguntas.cabezeras);
         linkTablas = linkTablas.concat(preguntas.linkTablas);
-
+        */
         titulo = "Detalles generales de los registros";
     }
 
@@ -414,6 +415,7 @@ convertirAEntero = (objeto) => {
         students_number: parseInt(objeto.students_number, 10),
         girl: parseInt(objeto.girl, 10),
         boy: parseInt(objeto.boy, 10),
+        percentage_correct: parseFloat(objeto.percentage_correct)
     };
 }
 
@@ -467,7 +469,8 @@ recuperarDatosGenerales = async (csvUrl, dataBase = [], tipo) => {
                     titulo: titulo,
                     oid: oid,
                     tipo: "" + tipo,
-                    clave: clave
+                    clave: clave,
+                    percentage_correct: data.percentage_correct
                 }
             );
         }

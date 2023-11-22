@@ -180,14 +180,14 @@
                             </div>
                         </td>
                         <td>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="customCheck" id="redWri">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="customCheck" id="redWri">
                                 <label class="custom-control-label" for="redWri">Reading/Writing</label>
                             </div>
                         </td>
                         <td>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input"  name="customCheck" id="speak1">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input"  name="customCheck" id="speak1">
                                 <label class="custom-control-label" for="speak1">Speaking part 1</label>
                             </div>
                             <!--
@@ -212,14 +212,14 @@
                             </div>
                         </td>
                         <td>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="customCheck" id="lis">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="customCheck" id="lis">
                                 <label class="custom-control-label" for="lis">Listening</label>
                             </div>
                         </td>
                         <td>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input"  name="customCheck" id="speak2">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input"  name="customCheck" id="speak2">
                                 <label class="custom-control-label" for="speak2">Speaking part 2</label>
                             </div>
                             <!--
@@ -244,18 +244,16 @@
                             </div>
                         </td>
                         <td>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="customCheck" id="speak">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="customCheck" id="speak">
                                 <label class="custom-control-label" for="speak">Speaking</label>
                             </div>
                         </td>
                         <td>
-                            <!--
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="customCheckIns" id="boy">
-                                <label class="custom-control-label" for="boy">Niños</label>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="customCheck" id="general">
+                                <label class="custom-control-label" for="general">General</label>
                             </div>
-                            -->
                         </td>
                         <td>
                             
@@ -303,7 +301,7 @@
             </table>
 
             <div class="table-responsive-md">
-                <div style="overflow-x: auto; max-width: 100%; max-height: 400px;" class="table-responsive table-container">
+                <div style="overflow-x: auto; max-width: 1200px; max-height: 400px;" class="table-responsive table-container">
                     <table class="table table-borderless table-hover" style="width: 100%;">
                         <thead class="thead-light">
                         <tr>
@@ -311,23 +309,25 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Reading/Writing</th>
 
-                            <th scope="col">P. Aciertos. Reading/Writing</th>
+                            <th scope="col">P. Aciertos</th>
 
                             <th scope="col">Listening</th>
 
-                            <th scope="col">P. Aciertos. Listening</th>
+                            <th scope="col">P. Aciertos</th>
                             
                             <th scope="col">Speaking</th>
 
-                            <th scope="col">P. Aciertos. Speaking</th>
+                            <th scope="col">P. Aciertos</th>
 
                             <th scope="col">Speaking part1</th>
 
-                            <th scope="col">P. Aciertos. Speaking part 1</th>
+                            <th scope="col">P. Aciertos</th>
 
                             <th scope="col">Speaking part2</th>
                             
-                            <th scope="col">P. Aciertos. Speaking part 2</th>
+                            <th scope="col">P. Aciertos</th>
+
+                            <th scope="col">Rendimiento</th>
 
                             <th scope="col">Alumnos</th>
                             
@@ -411,7 +411,7 @@
                 imprimirTabla(mostrar);
             });
 
-            // Seccion
+            // Seccion y general
             $('input[name="customCheck"]').change(function () {
                 var idsGrupo2 = obtenerIdsMarcados('customCheck');
                 secciones = idsGrupo2;
@@ -443,11 +443,12 @@
                 // Limpiar el contenido existente
                 tablaResultados.empty();
 
-                const newFiltro = filtrado.slice(0, 10);
+                // const newFiltro = filtrado.slice(0, 10);
+                const newFiltro = filtrado;
 
                 newFiltro.forEach(function (objeto, index) {
                     var fila = $('<tr>'); // Crear una fila
-
+                    console.log(objeto);
                     fila.append($('<td>').text(index + 1));
                     if(objeto.tipo === "1"){
                         var enlace = $('<a>').attr('href', "/vsts/proni/escuela/" + objeto.oid + "/" + objeto.clave + ""); // Reemplaza 'URL_DEL_ENLACE' con la URL deseada
@@ -481,8 +482,10 @@
                     fila.append($('<td>').text(objeto.qualification_speaking_part_2));
                     fila.append($('<td>').text(objeto.correct_answers_speaking_part_2));
 
+                    fila.append($('<td>').text(objeto.percentage_correct));
+                    
                     fila.append($('<td>').text(objeto.students_number));
-
+                    
                     /*
                     fila.append($('<td>').text(objeto.girl));
                     fila.append($('<td>').text(objeto.boy));
@@ -529,6 +532,8 @@
                             filtros.push("correct_answers_speaking_part_1");
                         }  else if(filtro === 'speak2'){
                             filtros.push("correct_answers_speaking_part_2");
+                        } else if (filtro === 'general'){
+                            filtros.push("percentage_correct");
                         }
                     }
                 }
