@@ -457,7 +457,6 @@
 
                 newFiltro.forEach(function (objeto, index) {
                     var fila = $('<tr>'); // Crear una fila
-                    console.log(objeto);
                     fila.append($('<td>').text(index + 1));
                     if(objeto.tipo === "1"){
                         var enlace = $('<a>').attr('href', "/vsts/proni/escuela/" + objeto.oid + "/" + objeto.clave + ""); // Reemplaza 'URL_DEL_ENLACE' con la URL deseada
@@ -475,7 +474,6 @@
 
                     // Agregar celdas con la información correspondiente a cada columna
                     // fila.append($('<td>').text(objeto.titulo));
-                    console.log(objeto);
                     fila.append($('<td>').text(objeto.qualification_reading));
                     fila.append($('<td>').text(objeto.correct_answers_reading_writing));
 
@@ -499,7 +497,6 @@
                     fila.append($('<td>').text(objeto.girl));
                     fila.append($('<td>').text(objeto.boy));
                     */
-                    console.log(objeto);
 
                     // Agregar la fila a la tabla
                     tablaResultados.append(fila);

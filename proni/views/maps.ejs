@@ -209,7 +209,7 @@
                                     '</li> <li>Peor sección: ' + esc.peorSeccion + 
                                         '</li></ul>' + 'Promedio de calificaciónes<br>' + '<ul> <li>Reading/Writing: ' + esc.reading + 
                                             '</li> <li>Speaking: ' + esc.speaking +
-                                                '</li> <li>listening: ' + esc.listen + '</li> </ul>' +
+                                                '</li> <li>Listening: ' + esc.listen + '</li> </ul>' +
                             '<br> <a href="/vsts/proni/escuela/' + esc.oid + '/' + esc.clave + '">Detalles</a> ';
                     // marker.bindPopup(esc.nombre + ' | ' + esc.municipio + '<br> <a href="/vsts/proni/' + esc.clave + '">Website</a> ');
                     marker.bindPopup(detalle);
@@ -270,7 +270,7 @@
                     "<br> Promedio de calificaciónes " + ' <br />' +
                     " - Reading/Writing: <b>"+ props.qualification_reading + '</b><br />' + 
                     " - Speaking: <b>"+ props.qualification_speaking + '</b> <br>' +
-                    " - listening: <b>" + props.qualification_listening + '</b> <br>' +
+                    " - Listening: <b>" + props.qualification_listening + '</b> <br>' +
                     '<br> <a href="/vsts/proni/municipio/' + props.oid + '/0">Detalles</a> ';
                 } else {
                     this._div.innerHTML = '<h4>' + "Zona &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + '</h4>' +
@@ -294,7 +294,7 @@
                     "<br> Promedio de calificaciónes " + ' <br />' +
                     " - Reading/Writing: <b>"+ props.qualification_reading + '</b><br />' + 
                     " - Speaking: <b>"+ props.qualification_speaking + '</b> <br>' +
-                    " - listening: <b>" + props.qualification_listening + '</b> <br>' +
+                    " - Listening: <b>" + props.qualification_listening + '</b> <br>' +
                     '<br> <a href="/vsts/proni/zona/' + props.name + '/0">Detalles</a> ';
                 }
             } else {
@@ -528,7 +528,7 @@
                         enlace.append($('<p>').addClass('mb-1').html('<strong>Promedio de calificaciónes</strong>'));
                         enlace.append($('<p>').addClass('mb-1').html(' - <strong>Reading/Writing:</strong> ' + item.reading));
                         enlace.append($('<p>').addClass('mb-1').html(' - <strong>Speaking:</strong> ' + item.speaking));
-                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>listening:</strong> ' + item.listen));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Listening:</strong> ' + item.listen));
                     }
 
                     // Agrega el enlace a la celda

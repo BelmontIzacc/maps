@@ -280,7 +280,6 @@ mapsCtrl.obtenerInforme = async (tipo, clave, oid) => {
     }
     
     const defGeneral = await definicionGraficas(imagenes, tipo, 0);
-    console.log(defGeneral);
 
     return { titulo, detalle, imagenes, tablas, cabezeras, top, tipo, topMunicipio, linkTablas, topEscuela, defGeneral };
 }
@@ -378,7 +377,6 @@ mapsCtrl.obtenerInformeGeneral = async (tipo) => {
     }
 
     const defGeneral = await definicionGraficas(imagenes, tipo, 1);
-    console.log(defGeneral);
 
     return { titulo, imagenes, tablas, cabezeras, tipo, linkTablas, defGeneral };
 }
@@ -527,7 +525,6 @@ compararPorNombre = (a, b) => {
 
 definicionGraficas = async (imagenes = [], tipo = "", busqueda = 0) => {
     const definiciones = await explicacionGraficas();
-    //console.log(definiciones);
     const explicacion = [];
     for(let img of imagenes){
         // img = https://raw.githubusercontent.com/BelmontIzacc/maps_datos/master/Escuelas/28DPR0513B_10.png
