@@ -127,9 +127,9 @@
 
 <body>
     <nav class="navbar sticky-top navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="/vsts/vaneSoftecSolutions"
+        <a class="navbar-brand" href="/vsts/cretam/proni"
             style="max-width: 100%; word-wrap: break-word; white-space: normal;">Clasificación</a>
-        <a href="/vsts/vaneSoftecSolutions" class="btn btn-secondary" type="button" aria-haspopup="true"
+        <a href="/vsts/cretam/proni" class="btn btn-secondary" type="button" aria-haspopup="true"
             data-display="static">
             <img src="/icon/left.svg" alt="Icono">
         </a>
@@ -346,7 +346,8 @@
 
     <footer>
         <!-- Pie de página -->
-        <p>Vanessa Melenciano Llamas, Isaul Ibarra Belmonte, Ezra federico Parra Gonzalez © 2023 VSTS</p>
+        <!-- <p>Vanessa Melenciano Llamas, Isaul Ibarra Belmonte, Ezra federico Parra Gonzalez © 2023 VSTS</p>  -->
+        <p>CRETAM 2023 - PRONI © <a id="enlaceTexto">VSTS</a> </p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -371,6 +372,14 @@
             enlaceTemporal.click();
             document.body.removeChild(enlaceTemporal);
         }
+    </script>
+
+    <script>
+        document.getElementById('enlaceTexto').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+            // Puedes cambiar la URL a la que quieres redirigir
+            window.location.href = 'https://diagnostico-nacional-vsts.1.us-1.fl0.io/vsts/vsts';
+        });
     </script>
 
     <script>

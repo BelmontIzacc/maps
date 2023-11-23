@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easter Egg</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #inputField {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="text" id="inputField" placeholder="">
+
+<script>
+    document.getElementById('inputField').addEventListener('input', function() {
+        var userInput = this.value.toLowerCase();
+
+        // Enviar la palabra ingresada al servidor para verificar
+        fetch('/vsts/vsts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userInput }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.esEasterEgg) {
+                alert('¡Has encontrado el Easter egg!');
+                // Redirigir al usuario desde el servidor
+                window.location.href = data.urlRedireccion;
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+
+</body>
+</html>

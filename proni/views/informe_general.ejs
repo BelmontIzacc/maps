@@ -100,8 +100,8 @@
 
 <body>
     <nav class="navbar sticky-top navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="/vsts/vaneSoftecSolutions" style="max-width: 100%; word-wrap: break-word; white-space: normal;"><%= titulo %></a>
-        <a href="/vsts/vaneSoftecSolutions" class="btn btn-secondary" type="button"
+        <a class="navbar-brand" href="/vsts/cretam/proni" style="max-width: 100%; word-wrap: break-word; white-space: normal;"><%= titulo %></a>
+        <a href="/vsts/cretam/proni" class="btn btn-secondary" type="button"
                aria-haspopup="true" data-display="static">
                 <img src="/icon/left.svg" alt="Icono">
         </a>
@@ -135,7 +135,7 @@
 
     <div class="container">
         <div class="columna">
-            <img src="/img/logo.png" width="350">
+            <img src="/img/logo.png" width="350px">
             <!-- Contenido de la primera columna -->
             <h2>Tablas</h2>
             <p style="text-align: justify;">Las tablas presentan los datos que sirvieron como base para la creación de las gráficas. 
@@ -158,8 +158,10 @@
                         <tr>
                             <!-- Tabla -->
                             <td>
+                                <br>
                                 <h6 style="text-align: left;">Tabla <%= indexTlb + 1%> : <a class="enlace-descarga" onclick="descargarCSV('<%= linkTablas[indexTlb] %>', <%= indexTlb %>)">Ver CSV</a>
-                                </h6> 
+                                </h6>
+                                <br> 
                                 <div style="overflow-x: auto; max-width: 500px; max-height: 400px;"> <!-- Establece un ancho máximo para la tabla y permite el desplazamiento horizontal -->
                                     <table class="table table-bordered" style="width: 100%;"> <!-- Hace que la tabla ocupe el 100% del ancho del contenedor -->
                                         <thead>
@@ -188,8 +190,10 @@
                             <!-- Imagen -->
                             <td>
                                 <% img = imagenes[indexTlb] %>
+                                <br>
                                 <h6 style="text-align: left;">Imagen <%= indexTlb + 1%> : <a class="enlace-descarga" href="<%- img %>" target="_blank">Abrir Imagen</a>
                                 </h6>
+                                <br>
                                 <table>
                                     <thead>
                                         <tr>
@@ -334,7 +338,8 @@
 
     <footer>
         <!-- Pie de página -->
-        <p>Vanessa Melenciano Llamas, Isaul Ibarra Belmonte, Ezra federico Parra Gonzalez © 2023 VSTS</p>
+        <!-- <p>Vanessa Melenciano Llamas, Isaul Ibarra Belmonte, Ezra federico Parra Gonzalez © 2023 VSTS</p>  -->
+        <p>CRETAM 2023 - PRONI © VSTS</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -20,7 +20,7 @@ const StandarException = require('../exception/StandarException');
 
 // mapas
 
-router.get('/vaneSoftecSolutions', async (req, res, next) => {
+router.get('/cretam/proni', async (req, res, next) => {
     const resultado = await mapsCtrl.renderMap();
     if (resultado instanceof StandarException) {
         next(resultado);
@@ -85,6 +85,27 @@ router.get('/proni/:tipo/:oid/:id', async (req, res, next) => {
         linkTablas: resultado.linkTablas, topEscuela: resultado.topEscuela,
         defGeneral: resultado.defGeneral
     });
+});
+
+router.get('/vsts', async(req, res, next) => {
+    res.render('easter.ejs');
+});
+
+router.post('/vsts', async(req, res, next) => {
+    const userInput = req.body.userInput.toLowerCase();
+    const secretWord = 'vanesoftecsolutions';
+    const esEasterEgg = userInput === secretWord;
+
+    if (esEasterEgg) {
+        // Proporciona la URL de redirección en caso de que sea un Easter egg
+        res.json({ esEasterEgg, urlRedireccion: 'https://diagnostico-nacional-vsts.1.us-1.fl0.io/vsts/make'});
+    } else {
+        res.json({ esEasterEgg: false });
+    }
+});
+
+router.get('/make', async (req, res, next) => {
+    res.render('creditos.ejs');
 });
 
 // Esta ruta será una vista por defecto para rutas no definidas
