@@ -54,13 +54,27 @@
             color: #fff; /* Cambia el color del texto al pasar el mouse */
         }
     </style>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evitar que la imagen genere barras de desplazamiento */
+        }
+
+        .marca-agua {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            opacity: 0.5; /* Valor de opacidad entre 0 (transparente) y 1 (opaco) */
+            z-index: 999;
+        }
+    </style>
 </head>
 
 <body>
 
     <nav class="navbar sticky-top navbar-dark bg-dark barColor">
         <div>
-            <img src="/img/logo.png" width="100px"> 
             <a class="navbar-brand" href="/vsts/cretam/proni" style="max-width: 100%; word-wrap: break-word; white-space: normal;">Mapa de evaluaciones de inglés en escuelas primarias</a>
         </div>
         <div>
@@ -104,6 +118,7 @@
         </div>
     </nav>
 
+    <img src="/img/logo.png" alt="Marca de agua" width="250px" class="marca-agua">
     <div id="map-template"></div>
 
     <!-- Modal -->
