@@ -404,11 +404,11 @@ mapsCtrl.filtrarRegistros = async () => {
 convertirAEntero = (objeto) => {
     return {
         ...objeto,
-        correct_answers_reading_writing: parseInt(objeto.correct_answers_reading_writing, 10),
-        correct_answers_listening: parseInt(objeto.correct_answers_listening, 10),
-        correct_answers_speaking: parseInt(objeto.correct_answers_speaking, 10),
-        correct_answers_speaking_part_1: parseInt(objeto.correct_answers_speaking_part_1, 10),
-        correct_answers_speaking_part_2: parseInt(objeto.correct_answers_speaking_part_2, 10),
+        correct_answers_reading_writing: parseFloat(objeto.correct_answers_reading_writing),
+        correct_answers_listening: parseFloat(objeto.correct_answers_listening),
+        correct_answers_speaking: parseFloat(objeto.correct_answers_speaking),
+        correct_answers_speaking_part_1: parseFloat(objeto.correct_answers_speaking_part_1),
+        correct_answers_speaking_part_2: parseFloat(objeto.correct_answers_speaking_part_2),
 
         students_number: parseInt(objeto.students_number, 10),
         girl: parseInt(objeto.girl, 10),
