@@ -181,13 +181,13 @@
                         </td>
                         <td>
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="customCheck" id="redWri">
+                                <input type="radio" class="custom-control-input" name="customCheck" id="redWri" disabled>
                                 <label class="custom-control-label" for="redWri">Reading/Writing</label>
                             </div>
                         </td>
                         <td>
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input"  name="customCheck" id="speak1">
+                                <input type="radio" class="custom-control-input"  name="customCheck" id="speak1" disabled>
                                 <label class="custom-control-label" for="speak1">Speaking part 1</label>
                             </div>
                             <!--
@@ -199,7 +199,7 @@
                         </td>
                         <td>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="asc" name="customRadioOrd" class="custom-control-input">
+                                <input type="radio" id="asc" name="customRadioOrd" class="custom-control-input" disabled>
                                 <label class="custom-control-label" for="asc">Ascendente</label>
                             </div>
                         </td>
@@ -213,13 +213,13 @@
                         </td>
                         <td>
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="customCheck" id="lis">
+                                <input type="radio" class="custom-control-input" name="customCheck" id="lis" disabled>
                                 <label class="custom-control-label" for="lis">Listening</label>
                             </div>
                         </td>
                         <td>
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input"  name="customCheck" id="speak2">
+                                <input type="radio" class="custom-control-input"  name="customCheck" id="speak2" disabled>
                                 <label class="custom-control-label" for="speak2">Speaking part 2</label>
                             </div>
                             <!--
@@ -231,7 +231,7 @@
                         </td>
                         <td>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="des" name="customRadioOrd" class="custom-control-input" checked>
+                                <input type="radio" id="des" name="customRadioOrd" class="custom-control-input" disabled checked>
                                 <label class="custom-control-label" for="des">Descendente</label>
                             </div>
                         </td>
@@ -245,13 +245,13 @@
                         </td>
                         <td>
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="customCheck" id="speak">
+                                <input type="radio" class="custom-control-input" name="customCheck" id="speak" disabled>
                                 <label class="custom-control-label" for="speak">Speaking</label>
                             </div>
                         </td>
                         <td>
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="customCheck" id="general">
+                                <input type="radio" class="custom-control-input" name="customCheck" id="general" disabled>
                                 <label class="custom-control-label" for="general">General</label>
                             </div>
                         </td>
@@ -416,7 +416,10 @@
                 } else if(idsGrupo1 === 'zon'){
                     data = zona;
                 }
-                const mostrar = filtrarDatos(data, secciones, alumnos, orden);
+                $("#general").prop("checked", true);
+                desactivarCampos();
+                secciones = ["general"];
+                const mostrar = filtrarDatos(data, ["general"], alumnos, orden);
                 imprimirTabla(mostrar);
             });
 
@@ -574,6 +577,30 @@
                     }
                     return 0; // Si todos los campos son iguales
                 };
+            }
+
+            function desactivarCampos(){
+                // deshabilitar 
+                
+                // redWri
+                // speak1
+                // lis
+                // speak2
+                // speak
+
+                // asc
+                // des
+
+                $("#redWri").prop("disabled", false);
+                $("#speak").prop("disabled", false);
+                $("#lis").prop("disabled", false);
+                $("#general").prop("disabled", false);
+                $("#speak2").prop("disabled", false);
+                $("#speak1").prop("disabled", false);
+                $("#asc").prop("disabled", false);
+                $("#des").prop("disabled", false);
+                $("#general").prop("disabled", false);
+
             }
 
         });

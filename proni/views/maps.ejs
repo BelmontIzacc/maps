@@ -205,8 +205,8 @@
                     const detalle = '<h5 style="margin-bottom: initial; ">' + esc.nombre + 
                         '</h5> <small>' + esc.municipio + 
                             '</small> <br> Detalles <ul> <li>Estudiantes: ' + esc.noEstudiantes +
-                                '</li> <li>Mejor sección: ' + esc.mejorSeccion + 
-                                    '</li> <li>Peor sección: ' + esc.peorSeccion + 
+                                '</li> <li>Mejor desempeño: ' + esc.mejorSeccion + 
+                                    '</li> <li>Menor desempeño: ' + esc.peorSeccion + 
                                         '</li></ul>' + 'Promedio de calificaciónes<br>' + '<ul> <li>Reading/Writing: ' + esc.reading + 
                                             '</li> <li>Speaking: ' + esc.speaking +
                                                 '</li> <li>Listening: ' + esc.listen + '</li> </ul>' +
@@ -253,7 +253,7 @@
                     this._div.innerHTML = '<h4>' + props.name + '</h4>' +
                     '<b>' + props.zona + '</b><br /><br />' +
                     "Mejor escuela <br><b>" + props.best_school + "</b>" +
-                    "<br><br>Peor escuela <br><b>" + props.worst_school + "</b>" +
+                    "<br><br>Escuela con menor desempeño <br><b>" + props.worst_school + "</b>" +
                     "<br><br>Detalles " + '<br />' +
                     " - Escuelas: <b>"+ props.noEscuelas + '</b><br />' + 
                     " - Alumnos: <b>"+ props.noAlumnos + '</b><br />' + 
@@ -265,8 +265,8 @@
                     " - 12 años: <b>" + props.age_12 + '</b> <br>' +
                     " - 13 años: <b>" + props.age_13 + '</b> <br>' +
                     "<br> Secciones " + ' <br />' +
-                    " - Mejor: <b>"+ props.topSeccion.mejor + '</b><br />' + 
-                    " - Peor: <b>"+ props.topSeccion.peor + '</b> <br>' +
+                    " - Mejor desempeño: <b>"+ props.topSeccion.mejor + '</b><br />' + 
+                    " - Menor desempeño: <b>"+ props.topSeccion.peor + '</b> <br>' +
                     "<br> Promedio de calificaciónes " + ' <br />' +
                     " - Reading/Writing: <b>"+ props.qualification_reading + '</b><br />' + 
                     " - Speaking: <b>"+ props.qualification_speaking + '</b> <br>' +
@@ -276,7 +276,7 @@
                     this._div.innerHTML = '<h4>' + "Zona &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + '</h4>' +
                     '<b>' + props.name + '</b><br /><br />' + 
                     "Mejor escuela <br><b>" + props.best_school + "</b>" +
-                    "<br><br>Peor escuela <br><b>" + props.worst_school + "</b>" +
+                    "<br><br>Escuela con menor desempeño<br><b>" + props.worst_school + "</b>" +
                     "<br><br>Detalles " + '<br />' +
                     " - Escuelas: <b>"+ props.noEscuelas + '</b><br />' + 
                     " - Alumnos: <b>"+ props.noAlumnos + '</b><br />' + 
@@ -289,8 +289,8 @@
                     " - 12 años: <b>" + props.age_12 + '</b> <br>' +
                     " - 13 años: <b>" + props.age_13 + '</b> <br>' +
                     "<br> Secciones " + ' <br />' +
-                    " - Mejor: <b>"+ props.topSeccion.mejor + '</b><br />' + 
-                    " - Peor: <b>"+ props.topSeccion.peor+ '</b> <br>' +
+                    " - Mejor desempeño: <b>"+ props.topSeccion.mejor + '</b><br />' + 
+                    " - Menor desempeño: <b>"+ props.topSeccion.peor+ '</b> <br>' +
                     "<br> Promedio de calificaciónes " + ' <br />' +
                     " - Reading/Writing: <b>"+ props.qualification_reading + '</b><br />' + 
                     " - Speaking: <b>"+ props.qualification_speaking + '</b> <br>' +
@@ -500,8 +500,8 @@
                         enlace.append($('<p>').addClass('mb-1').html(' - <strong>Niños:</strong> ' + item.generoH));
 
                         enlace.append($('<p>').addClass('mb-1').html('<strong>Seccion</strong>'));
-                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Mejor:</strong> ' + item.topSeccionM));
-                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Peor:</strong> ' + item.topSeccionP));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Mejor desempeño:</strong> ' + item.topSeccionM));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Menor desempeño:</strong> ' + item.topSeccionP));
                     }
                     if(item.tipo == 2){
                         // zona
@@ -514,8 +514,8 @@
                         enlace.append($('<p>').addClass('mb-1').html(' - <strong>Niños:</strong> ' + item.generoH));
 
                         enlace.append($('<p>').addClass('mb-1').html('<strong>Seccion</strong>'));
-                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Mejor:</strong> ' + item.topSeccionM));
-                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Peor:</strong> ' + item.topSeccionP));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Mejor desempeño:</strong> ' + item.topSeccionM));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Menor desempeño:</strong> ' + item.topSeccionP));
                     }
                     if(item.clave != ""){
                         // escuela
@@ -523,8 +523,8 @@
                         enlace.append($('<small>').text(''+ item.clave));
                         enlace.append($('<p>').addClass('mb-1').html('<strong>Numero total de estudiantes:</strong> ' + item.noEstudiantes));
                         enlace.append($('<p>').addClass('mb-1').html('<strong>Seccion</strong>'));
-                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Mejor:</strong> ' + item.mejorSeccion));
-                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Peor:</strong> ' + item.peorSeccion));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Mejor desempeño:</strong> ' + item.mejorSeccion));
+                        enlace.append($('<p>').addClass('mb-1').html(' - <strong>Menor desempeño:</strong> ' + item.peorSeccion));
                         enlace.append($('<p>').addClass('mb-1').html('<strong>Promedio de calificaciónes</strong>'));
                         enlace.append($('<p>').addClass('mb-1').html(' - <strong>Reading/Writing:</strong> ' + item.reading));
                         enlace.append($('<p>').addClass('mb-1').html(' - <strong>Speaking:</strong> ' + item.speaking));
