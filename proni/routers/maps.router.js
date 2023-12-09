@@ -10,13 +10,22 @@ const router = express.Router();
 
 // import de controlador
 const mapsCtrl = require('../controller/maps.controllers');
-
 const cargarCtrl = require('../controller/cargardb.controller');
+const reporteCtrl = require('../controller/reporte.controller');
 
 // import de exceptions
 const StandarException = require('../exception/StandarException');
 
 // rutas
+
+// reporte
+
+router.get('/reporte/xls', async (req, res, next) => {
+    const excelBase64Escuela = await reporteCtrl.crearXls(1);
+    const excelBase64Municipio = await reporteCtrl.crearXls(2);
+    const excelBase64Zona = await reporteCtrl.crearXls(3);
+    res.render('reporte.ejs', { escuela: excelBase64Escuela, municipio: excelBase64Municipio, zona: excelBase64Zona });
+});
 
 // mapas
 
@@ -31,7 +40,7 @@ router.get('/cretam/proni', async (req, res, next) => {
 
 router.get('/cargar/:clave', async (req, res, next) => {
     const clave = req.params.clave;
-    if(clave == 'belmont'){
+    if (clave == 'belmont') {
         const resultado = await cargarCtrl.iniciar();
         res.json({ status: resultado });
     } else {
@@ -51,7 +60,7 @@ router.get('/init/:clave', async (req, res, next) => {
 
 router.get('/proni/general/top', async (req, res, next) => {
     const resultado = await mapsCtrl.filtrarRegistros();
-    res.render('top.ejs', { escuela: resultado.escuela, municipio: resultado.municipio, zona: resultado.zona});
+    res.render('top.ejs', { escuela: resultado.escuela, municipio: resultado.municipio, zona: resultado.zona });
 });
 
 router.get('/proni/general/:tipo', async (req, res, next) => {
@@ -87,18 +96,18 @@ router.get('/proni/:tipo/:oid/:id', async (req, res, next) => {
     });
 });
 
-router.get('/vsts', async(req, res, next) => {
+router.get('/vsts', async (req, res, next) => {
     res.render('easter.ejs');
 });
 
-router.post('/vsts', async(req, res, next) => {
+router.post('/vsts', async (req, res, next) => {
     const userInput = req.body.userInput.toLowerCase();
     const secretWord = 'vanesoftecsolutions';
     const esEasterEgg = userInput === secretWord;
 
     if (esEasterEgg) {
         // Proporciona la URL de redirección en caso de que sea un Easter egg
-        res.json({ esEasterEgg, urlRedireccion: 'https://diagnostico-nacional-vsts.1.us-1.fl0.io/vsts/make'});
+        res.json({ esEasterEgg, urlRedireccion: 'https://diagnostico-nacional-vsts.1.us-1.fl0.io/vsts/make' });
     } else {
         res.json({ esEasterEgg: false });
     }
