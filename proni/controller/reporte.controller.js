@@ -52,16 +52,17 @@ hojaEscuelas = (data) => {
     sheetData.push(['CCT: ' + data[i].CCT, 'Nombre: ' + data[i].school_name, 'Municipio: ' + data[i].municipio, 'Zona: ' + data[i].zona, '']);
     sheetData.push(['Numero de grupos: ', '' + data[i].group_number, 'Mejor grupo: ', '' + data[i].best_group, '']);
     sheetData.push(['Total de estudiantes: ', '' + data[i].numAlumnos, 'Estudiantes evaluados: ', '' + data[i].students_number, '']);
+    sheetData.push(['Niñas', '' + data[i].girl, 'Niños', '' + data[i].boy, '']);
     sheetData.push(['Listening', 'Reading/Writing', 'Speaking part 1', 'Speaking part 2', 'Desempeño general']);
     sheetData.push(['' + data[i].qualification_listening, '' + data[i].qualification_reading, '' + data[i].qualification_speaking_part_1, '' + data[i].qualification_speaking_part_2, '' + data[i].percentage_correct + ' / 100']);
     sheetData.push(['Rendimiento', '', '', '', '']);
     sheetData.push(['Mejor: ', '' + data[i].best_section, 'Menor: ', '' + data[i].worst_section, '']);
     sheetData.push(['Preguntas', '', '', '', '']);
     sheetData.push(['Mejor: ', '' + data[i].best_question, 'Menor: ', '' + data[i].worst_question, '']);
-    sheetData.push(['Niñas', '' + data[i].girl, 'Niños', '' + data[i].boy, '']);
     sheetData.push(['Edades', '', '', '', '']);
     sheetData.push(['Alumnos de 10', 'Alumnos de 11', 'Alumnos de 12', 'Alumnos de 13', '']);
     sheetData.push(['' + data[i].age_10, '' + data[i].age_11, '' + data[i].age_12, '' + data[i].age_13, '']);
+    sheetData.push(['', '', '', '', '']);
     sheetData.push(['', '', '', '', '']);
   }
 
@@ -79,6 +80,7 @@ hojaMunicipio = (data) => {
   for (let i = 0; i < data.length; i++) {
     sheetData.push(['Nombre: ' + data[i].municipality, 'Zona: ' + data[i].zone, 'Numero de escuelas: ' + data[i].schools_number]);
     sheetData.push(['Total de estudiantes: ', '' + data[i].numAlumnos, 'Estudiantes evaluados: ', '' + data[i].students_number, '']);
+    sheetData.push(['Niñas', '' + data[i].girl, 'Niños', '' + data[i].boy, '']);
     sheetData.push(['Listening', 'Reading/Writing', 'Speaking part 1', 'Speaking part 2', 'Desempeño general']);
     sheetData.push(['' + data[i].qualification_listening, '' + data[i].qualification_reading, '' + data[i].qualification_speaking_part_1, '' + data[i].qualification_speaking_part_2, '' + data[i].percentage_correct + ' / 100']);
     sheetData.push(['Escuelas', '', '', '', '']);
@@ -87,10 +89,10 @@ hojaMunicipio = (data) => {
     sheetData.push(['Mejor: ', '' + data[i].best_section, 'Menor: ', '' + data[i].worst_section, '']);
     sheetData.push(['Preguntas', '', '', '', '']);
     sheetData.push(['Mejor: ', '' + data[i].best_question, 'Menor: ', '' + data[i].worst_question, '']);
-    sheetData.push(['Niñas', '' + data[i].girl, 'Niños', '' + data[i].boy, '']);
     sheetData.push(['Edades', '', '', '', '']);
     sheetData.push(['Alumnos de 10', 'Alumnos de 11', 'Alumnos de 12', 'Alumnos de 13', '']);
     sheetData.push(['' + data[i].age_10, '' + data[i].age_11, '' + data[i].age_12, '' + data[i].age_13, '']);
+    sheetData.push(['', '', '', '', '']);
     sheetData.push(['', '', '', '', '']);
   }
 
@@ -108,6 +110,7 @@ hojaZona = (data) => {
   for (let i = 0; i < data.length; i++) {
     sheetData.push(['Zona: ' + data[i].zone, 'Numero de escuelas: ' + data[i].schools_number, 'Numero de municipios: ' + data[i].municipalities_number, 'Numero de escuelas: ' + data[i].schools_number]);
     sheetData.push(['Total de estudiantes: ', '' + data[i].numAlumnos, 'Estudiantes evaluados: ', '' + data[i].students_number, '']);
+    sheetData.push(['Niñas', '' + data[i].girl, 'Niños', '' + data[i].boy, '']);
     sheetData.push(['Listening', 'Reading/Writing', 'Speaking part 1', 'Speaking part 2', 'Desempeño general']);
     sheetData.push(['' + data[i].qualification_listening, '' + data[i].qualification_reading, '' + data[i].qualification_speaking_part_1, '' + data[i].qualification_speaking_part_2, '' + data[i].percentage_correct + ' / 100']);
     sheetData.push(['Escuelas', '', '', '', '']);
@@ -116,10 +119,10 @@ hojaZona = (data) => {
     sheetData.push(['Mejor: ', '' + data[i].best_section, 'Menor: ', '' + data[i].worst_section, '']);
     sheetData.push(['Preguntas', '', '', '', '']);
     sheetData.push(['Mejor: ', '' + data[i].best_question, 'Menor: ', '' + data[i].worst_question, '']);
-    sheetData.push(['Niñas', '' + data[i].girl, 'Niños', '' + data[i].boy, '']);
     sheetData.push(['Edades', '', '', '', '']);
     sheetData.push(['Alumnos de 10', 'Alumnos de 11', 'Alumnos de 12', 'Alumnos de 13', '']);
     sheetData.push(['' + data[i].age_10, '' + data[i].age_11, '' + data[i].age_12, '' + data[i].age_13, '']);
+    sheetData.push(['', '', '', '', '']);
     sheetData.push(['', '', '', '', '']);
   }
 
