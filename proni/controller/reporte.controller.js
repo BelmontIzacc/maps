@@ -63,7 +63,6 @@ hojaEscuelas = (data) => {
     sheetData.push(['Alumnos de 10', 'Alumnos de 11', 'Alumnos de 12', 'Alumnos de 13', '']);
     sheetData.push(['' + data[i].age_10, '' + data[i].age_11, '' + data[i].age_12, '' + data[i].age_13, '']);
     sheetData.push(['', '', '', '', '']);
-    sheetData.push(['', '', '', '', '']);
   }
 
   const sheet = XLSX.utils.aoa_to_sheet(sheetData);
