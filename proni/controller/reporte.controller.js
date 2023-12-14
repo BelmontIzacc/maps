@@ -27,15 +27,11 @@ reporteCtrl.reporteGeneral = async () => {
 
   const workbook = XLSX.utils.book_new();
 
-  console.log("Escuela: "+escuela.length);
-  console.log("Municipio: "+municipio.length);
-  console.log("Zona: " + zona.length );
   let customSheet = await generarHojaGeneral(escuela, municipio, zona);
-  console.log("REgistros recuperados: " +customSheet.length);
 
   await XLSX.utils.book_append_sheet(workbook, customSheet, 'Hoja Personalizada');
-  const excelFileName = 'general.xls';
-  await XLSX.writeFile(workbook, excelFileName);
+  // const excelFileName = 'general.xls';
+  // await XLSX.writeFile(workbook, excelFileName);
 
   const excelData = await XLSX.write(workbook, { bookType: 'xls', bookSST: false, type: 'base64' });
   return excelData;
@@ -45,20 +41,16 @@ generarHojaGeneral = (escuelas = [], municipios = [], zonas = []) => {
   const sheetData = [];
   for (let i = 0; i < zonas.length; i++) {
     const nombreZona = zonas[i].zone;
-    console.log(nombreZona);
-    sheetData.push([' ' + nombreZona, '', '', '', '', '', '']); // agregar zona
+    sheetData.push(['' + nombreZona, '', '', '', '', '', '']); // agregar zona
     const munsZona = buscarEnArray(nombreZona, municipios, 0);
-    console.log("Municipios para esa zona: "+ munsZona.length);
     for (let j = 0; j < munsZona.length; j++) {
       const nombreMun = munsZona[j].municipality;
-      console.log("Municipio: " + nombreMun);
-      sheetData.push([' ' + nombreMun, '', '', '', '', '', '']); // agregar municipio
+      sheetData.push(['' + nombreMun, '', '', '', '', '', '']); // agregar municipio
       const escsMun = buscarEnArray(nombreMun, escuelas, 1);
-      console.log("escuelas para ese mun: " + escsMun.length);
       for (let k = 0; k < escsMun.length; k++) {
         const esc = escsMun[k];
         if (k === 0) {
-          sheetData.push(['CCT', 'Nombre', 'Estudiantes y genero', 'Calificaciones', '%Participacion', 'Desempeño', 'Edades']);
+          sheetData.push(['CCT', 'Nombre', 'Estudiantes y genero', 'Calificaciones', '% Participacion', 'Desempeño', 'Edades']);
         }
         sheetData.push(['' + esc.CCT, '' + esc.school_name, 'Total: ' + esc.numAlumnos + ' Niñas: ' + esc.girl + ' Niños: ' + esc.boy,
         'Listening: ' + esc.qualification_listening + ' Reading: ' + esc.qualification_reading + ' Speaking part 1: ' + esc.qualification_speaking_part_1 + ' Speaking part 2: ' + esc.qualification_speaking_part_2,
@@ -67,8 +59,14 @@ generarHojaGeneral = (escuelas = [], municipios = [], zonas = []) => {
       }
     }
   }
-  console.log("Retorna un total de: " + sheetData.length);
-  return sheetData;
+  
+  const sheet = XLSX.utils.aoa_to_sheet(sheetData);
+  sheet['!cols'] = fitToColumn(sheetData);
+  function fitToColumn(arrayOfArray) {
+    return arrayOfArray[0].map((a, i) => ({ wch: Math.max(...arrayOfArray.map(a2 => a2[i] ? a2[i].toString().length : 0)) }));
+  }
+
+  return sheet;
 }
 
 buscarEnArray = (nombre = '', data = [], tipo = 0) => {
