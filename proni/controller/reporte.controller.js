@@ -30,23 +30,23 @@ reporteCtrl.reporteGeneral = async () => {
   let customSheet = await generarHojaGeneral(escuela, municipio, zona);
 
   await XLSX.utils.book_append_sheet(workbook, customSheet, 'Hoja Personalizada');
-  // const excelFileName = 'general.xls';
-  // await XLSX.writeFile(workbook, excelFileName);
+  const excelFileName = 'general.xls';
+  await XLSX.writeFile(workbook, excelFileName);
 
   const excelData = await XLSX.write(workbook, { bookType: 'xls', bookSST: false, type: 'base64' });
   return excelData;
 }
 
-generarHojaGeneral = (escuelas = [], municipios = [], zonas = []) => {
+generarHojaGeneral = async (escuelas = [], municipios = [], zonas = []) => {
   const sheetData = [];
   for (let i = 0; i < zonas.length; i++) {
     const nombreZona = zonas[i].zone;
     sheetData.push(['' + nombreZona, '', '', '', '', '', '']); // agregar zona
-    const munsZona = buscarEnArray(nombreZona, municipios, 0);
+    const munsZona = await buscarEnArray(nombreZona, municipios, 0);
     for (let j = 0; j < munsZona.length; j++) {
       const nombreMun = munsZona[j].municipality;
       sheetData.push(['' + nombreMun, '', '', '', '', '', '']); // agregar municipio
-      const escsMun = buscarEnArray(nombreMun, escuelas, 1);
+      const escsMun = await buscarEnArray(nombreMun, escuelas, 1);
       for (let k = 0; k < escsMun.length; k++) {
         const esc = escsMun[k];
         if (k === 0) {
@@ -69,14 +69,14 @@ generarHojaGeneral = (escuelas = [], municipios = [], zonas = []) => {
   return sheet;
 }
 
-buscarEnArray = (nombre = '', data = [], tipo = 0) => {
+buscarEnArray = async (nombre = '', data = [], tipo = 0) => {
   let busqueda = [];
 
   // municipio
   if (tipo === 0) {
     busqueda = data.filter(m => m.zone === nombre);
 
-    function compararNombres(a, b) {
+    busqueda = busqueda.sort( (a, b) => {
       const nombreA = a.municipality.toLowerCase();
       const nombreB = b.municipality.toLowerCase();
 
@@ -87,16 +87,14 @@ buscarEnArray = (nombre = '', data = [], tipo = 0) => {
         return 1;
       }
       return 0;
-    }
-
-    busqueda = busqueda.sort(compararNombres);
+    });
   } else if (tipo === 1) {
     // escuela
     busqueda = data.filter(m => m.municipio === nombre);
 
     function compararNombres(a, b) {
-      const nombreA = a.municipio.toLowerCase();
-      const nombreB = b.municipio.toLowerCase();
+      const nombreA = a.school_name.toLowerCase();
+      const nombreB = b.school_name.toLowerCase();
 
       if (nombreA < nombreB) {
         return -1;
