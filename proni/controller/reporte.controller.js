@@ -32,7 +32,6 @@ reporteCtrl.reporteGeneral = async () => {
   console.log("Zona: " + zona.length );
   let customSheet = await generarHojaGeneral(escuela, municipio, zona);
   console.log("REgistros recuperados: " +customSheet.length);
-  console.log(customSheet);
 
   await XLSX.utils.book_append_sheet(workbook, customSheet, 'Hoja Personalizada');
   const excelFileName = 'general.xls';
