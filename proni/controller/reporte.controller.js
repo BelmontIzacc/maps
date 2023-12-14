@@ -30,8 +30,8 @@ reporteCtrl.reporteGeneral = async () => {
   let customSheet = await generarHojaGeneral(escuela, municipio, zona);
 
   await XLSX.utils.book_append_sheet(workbook, customSheet, 'Hoja Personalizada');
-  const excelFileName = 'general.xls';
-  await XLSX.writeFile(workbook, excelFileName);
+  // const excelFileName = 'general.xls';
+  // await XLSX.writeFile(workbook, excelFileName);
 
   const excelData = await XLSX.write(workbook, { bookType: 'xls', bookSST: false, type: 'base64' });
   return excelData;
