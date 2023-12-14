@@ -16,6 +16,107 @@ const csv = require('csvtojson');
 // import para peticion http
 const axios = require('axios');
 
+reporteCtrl.reporteGeneral = async () => {
+  const csvEscuela = csvURL + 'Informacion_general/escuelas.csv';
+  const csvMun = csvURL + 'Informacion_general/municipios.csv';
+  const csvZona = csvURL + 'Informacion_general/zonas.csv';
+
+  const escuela = await recuperarDatosGeneralesEscuela(csvEscuela);
+  const municipio = await recuperarDatosGeneral(csvMun);
+  const zona = await recuperarDatosGeneral(csvZona);
+
+  const workbook = XLSX.utils.book_new();
+
+  console.log("Escuela: "+escuela.length);
+  console.log("Municipio: "+municipio.length);
+  console.log("Zona: " + zona.length );
+  let customSheet = await generarHojaGeneral(escuela, municipio, zona);
+  console.log("REgistros recuperados: " +customSheet.length);
+  console.log(customSheet);
+
+  await XLSX.utils.book_append_sheet(workbook, customSheet, 'Hoja Personalizada');
+  const excelFileName = 'general.xls';
+  await XLSX.writeFile(workbook, excelFileName);
+
+  const excelData = await XLSX.write(workbook, { bookType: 'xls', bookSST: false, type: 'base64' });
+  return excelData;
+}
+
+generarHojaGeneral = (escuelas = [], municipios = [], zonas = []) => {
+  const sheetData = [];
+  for (let i = 0; i < zonas.length; i++) {
+    const nombreZona = zonas[i].zone;
+    console.log(nombreZona);
+    sheetData.push([' ' + nombreZona, '', '', '', '', '', '']); // agregar zona
+    const munsZona = buscarEnArray(nombreZona, municipios, 0);
+    console.log("Municipios para esa zona: "+ munsZona.length);
+    for (let j = 0; j < munsZona.length; j++) {
+      const nombreMun = munsZona[j].municipality;
+      console.log("Municipio: " + nombreMun);
+      sheetData.push([' ' + nombreMun, '', '', '', '', '', '']); // agregar municipio
+      const escsMun = buscarEnArray(nombreMun, escuelas, 1);
+      console.log("escuelas para ese mun: " + escsMun.length);
+      for (let k = 0; k < escsMun.length; k++) {
+        const esc = escsMun[k];
+        if (k === 0) {
+          sheetData.push(['CCT', 'Nombre', 'Estudiantes y genero', 'Calificaciones', '%Participacion', 'Desempeño', 'Edades']);
+        }
+        sheetData.push(['' + esc.CCT, '' + esc.school_name, 'Total: ' + esc.numAlumnos + ' Niñas: ' + esc.girl + ' Niños: ' + esc.boy,
+        'Listening: ' + esc.qualification_listening + ' Reading: ' + esc.qualification_reading + ' Speaking part 1: ' + esc.qualification_speaking_part_1 + ' Speaking part 2: ' + esc.qualification_speaking_part_2,
+        '' + esc.porcentaje_participacion, 'Mejor: ' + esc.best_section + ' Menor: ' + esc.worst_section,
+        '' + esc.age_10 + " (10 años) "+ esc.age_11 + " (11 años) " + esc.age_12 + " (12 años) " + esc.age_13 + " (13 años) "]);
+      }
+    }
+  }
+  console.log("Retorna un total de: " + sheetData.length);
+  return sheetData;
+}
+
+buscarEnArray = (nombre = '', data = [], tipo = 0) => {
+  let busqueda = [];
+
+  // municipio
+  if (tipo === 0) {
+    busqueda = data.filter(m => m.zone === nombre);
+
+    function compararNombres(a, b) {
+      const nombreA = a.municipality.toLowerCase();
+      const nombreB = b.municipality.toLowerCase();
+
+      if (nombreA < nombreB) {
+        return -1;
+      }
+      if (nombreA > nombreB) {
+        return 1;
+      }
+      return 0;
+    }
+
+    busqueda = busqueda.sort(compararNombres);
+  } else if (tipo === 1) {
+    // escuela
+    busqueda = data.filter(m => m.municipio === nombre);
+
+    function compararNombres(a, b) {
+      const nombreA = a.municipio.toLowerCase();
+      const nombreB = b.municipio.toLowerCase();
+
+      if (nombreA < nombreB) {
+        return -1;
+      }
+      if (nombreA > nombreB) {
+        return 1;
+      }
+      return 0;
+    }
+
+    busqueda = busqueda.sort(compararNombres);
+  }
+
+  return busqueda;
+}
+
+
 reporteCtrl.crearXls = async (tipo = 0) => {
   const csvEscuela = csvURL + 'Informacion_general/escuelas.csv';
   const csvMun = csvURL + 'Informacion_general/municipios.csv';
@@ -179,7 +280,8 @@ recuperarDatosGeneralesEscuela = async (csvUrl) => {
           zona: data.zona,
           best_question: data.best_question,
           worst_question: data.worst_question,
-          CCT: data.CCT
+          CCT: data.CCT,
+          porcentaje_participacion: data.porcentaje_participacion
         }
       );
     }

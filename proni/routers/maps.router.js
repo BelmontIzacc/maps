@@ -27,6 +27,11 @@ router.get('/reporte/xls', async (req, res, next) => {
     res.render('reporte.ejs', { escuela: excelBase64Escuela, municipio: excelBase64Municipio, zona: excelBase64Zona });
 });
 
+router.get('/reporte/general', async (req, res, next) => {
+    const reporteGeneral = await reporteCtrl.reporteGeneral();
+    res.render('general.ejs', {reporteGeneral: reporteGeneral});
+});
+
 // mapas
 
 router.get('/cretam/proni', async (req, res, next) => {
